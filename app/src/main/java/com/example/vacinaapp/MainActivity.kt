@@ -7,6 +7,7 @@ import com.example.vacinaapp.fragments.InicioFragment
 import com.example.vacinaapp.fragments.LocaisFragment
 import com.example.vacinaapp.fragments.PesquisarFragment
 import com.example.vacinaapp.fragments.SettingsFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +21,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         replaceFragment(inicioFragment)
 
+
         bottom_navigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.ic_home -> replaceFragment(inicioFragment)
+                R.id.ic_dashboard -> replaceFragment(locaisFragment)
+                R.id.ic_lupa -> replaceFragment(pesquisarFragment)
+                R.id.ic_config -> replaceFragment(settingsFragment)
+            }
+            true
         }
     }
 
