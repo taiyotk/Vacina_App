@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.ic_home -> replaceFragment(inicioFragment)
-                R.id.ic_dashboard -> replaceFragment(locaisFragment)
-                R.id.ic_lupa -> replaceFragment(pesquisarFragment)
+                R.id.ic_local -> replaceFragment(locaisFragment)
+                R.id.ic_syringe -> replaceFragment(pesquisarFragment)
                 R.id.ic_config -> replaceFragment(settingsFragment)
             }
             true
