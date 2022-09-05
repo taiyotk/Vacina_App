@@ -6,17 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vacinaapp.R
-/**
- * A simple [Fragment] subclass.
- */
-class PesquisarFragment : Fragment() {
+import com.example.vacinaapp.databinding.FragmentPesquisarBinding
 
+class PesquisarFragment : Fragment() {
+    lateinit var binding: FragmentPesquisarBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pesquisar, container, false)
+        binding = FragmentPesquisarBinding.inflate(inflater)
+        return binding.root
     }
 
 }
