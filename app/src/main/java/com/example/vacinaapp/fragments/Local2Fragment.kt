@@ -10,7 +10,6 @@ import com.example.vacinaapp.databinding.FragmentLocal2Binding
 
 class Local2Fragment : Fragment() {
     lateinit var binding: FragmentLocal2Binding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -19,6 +18,5 @@ class Local2Fragment : Fragment() {
         binding = FragmentLocal2Binding.inflate(inflater)
         return binding.root
     }
-
 
 }

@@ -9,7 +9,7 @@ import com.example.vacinaapp.R
 import com.example.vacinaapp.databinding.FragmentLocal1Binding
 
 class Local1Fragment : Fragment() {
-    lateinit var binding: FragmentLocal1Binding
+    private lateinit var binding: FragmentLocal1Binding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
