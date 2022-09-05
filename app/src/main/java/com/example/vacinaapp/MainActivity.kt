@@ -26,6 +26,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
     private val locaisFragment = LocaisFragment()
     private val configFragment = ConfigFragment()
     private val pesquisarFragment = PesquisarFragment()
+    private val usuarioFragment = UsuarioFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +55,8 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
             R.id.ic_local -> replaceFragment(locaisFragment)
             R.id.ic_syringe -> replaceFragment(pesquisarFragment)
             R.id.ic_config -> replaceFragment(configFragment)
+            R.id.meusdados -> replaceFragment(usuarioFragment)
+
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
