@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Vacina App</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
@@ -17,4 +15,24 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="titulo_app">Vacina App</string>
+    <string name="inicio">Início</string>
+    <string name="vacinacao">Vacinação</string>
+    <string name="config">Config.</string>
+    <string name="locais">Locais</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Pesquisar">Pesquisar</string>
+    <string name="acessar_alterar_meus_dados">Acessar/alterar meus dados</string>
+    <string name="locais_de_vacinacao">Locais de Vacinação</string>
+    <string name="usuario_comum">Usuário Comum</string>
+    <string name="agente_de_saude">Agente de Saúde</string>
+    <string name="home">Home</string>
+    <string name="sair_logout">Sair/Logout</string>
+    <string name="inserir_alterar_campanhas">Inserir/Alterar campanhas</string>
+    <string name="campanhas_finalizadas">Campanhas finalizadas</string>
+    <string name="inserir_alterar_vacinas">Inserir/Alterar vacinas</string>
+    <string name="entrar_login">Entrar/Login</string>
+
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>
