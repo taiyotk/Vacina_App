@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vacinaapp.R
-import com.example.vacinaapp.databinding.FragmentInicioBinding
+import com.example.vacinaapp.databinding.FragmentLocal2Binding
+import com.example.vacinaapp.databinding.FragmentModificarCampanhaBinding
 
-class InicioFragment : Fragment() {
-    private lateinit var binding: FragmentInicioBinding
+class ModificarCampanhaFragment : Fragment() {
+    private lateinit var binding: FragmentModificarCampanhaBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false)
+        binding = FragmentModificarCampanhaBinding.inflate(inflater)
+        return binding.root
     }
 
 }

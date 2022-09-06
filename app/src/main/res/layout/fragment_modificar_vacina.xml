@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.PesquisarFragment"
+    tools:context=".fragments.ModificarVacinaFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/pesquisar"
+        android:id="@+id/modificar_vacina_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pesquisar"
+        android:text="Modificar vacinas Fragment"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="36sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
