@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ic_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Início"/>
+    <item
+        android:id="@+id/ic_local"
+        android:icon="@drawable/ic_clinic"
+        android:title="Locais"/>
+    <item
+        android:id="@+id/ic_syringe"
+        android:icon="@drawable/ic_syringe"
+        android:title="Vacinação"/>
+    <item
+        android:id="@+id/ic_config"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Config."/>
+</menu>
