@@ -35,4 +35,7 @@
 
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="pesquisar_vacina">Pesquisar vacina</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="pesquisar">Pesquisar</string>
 </resources>
