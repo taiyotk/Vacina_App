@@ -10,7 +10,7 @@ import com.example.vacinaapp.databinding.FragmentLocal2Binding
 import com.example.vacinaapp.databinding.FragmentModificarCampanhaBinding
 
 class ModificarCampanhaFragment : Fragment() {
-    private lateinit var binding: FragmentModificarCampanhaBinding
+    lateinit var binding: FragmentModificarCampanhaBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
