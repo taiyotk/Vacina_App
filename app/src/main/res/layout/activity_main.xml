@@ -10,6 +10,12 @@
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
@@ -17,17 +23,13 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
+        app:itemMaxLines="2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="nav_header_main"
+        app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/drawer_menu"/>
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar_main_id"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
