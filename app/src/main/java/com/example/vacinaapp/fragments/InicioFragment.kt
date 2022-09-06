@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vacinaapp.R
+import com.example.vacinaapp.databinding.FragmentInicioBinding
 
-/**
- * A simple [Fragment] subclass.
- */
 class InicioFragment : Fragment() {
-
+    lateinit var binding: FragmentInicioBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
