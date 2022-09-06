@@ -6,17 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vacinaapp.R
-import com.example.vacinaapp.databinding.FragmentLocaisBinding
 
+
+
+/**
+ * A simple [Fragment] subclass.
+ */
 class LocaisFragment : Fragment() {
-    lateinit var binding: FragmentLocaisBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentLocaisBinding.inflate(inflater)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_locais, container, false)
     }
 
 }
