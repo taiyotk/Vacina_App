@@ -13,14 +13,13 @@
                     android:icon="@drawable/ic_clinic"
                     android:title="@string/locais"/>
                 <item
-                    android:id="@+id/ic_syringe"
-                    android:icon="@drawable/ic_syringe"
-                    android:title="@string/Pesquisar"
-                    />
+                    android:id="@+id/pesquisar"
+                    android:icon="@drawable/ic_search"
+                    android:title="@string/pesquisar_vacina"/>
                 <item
                     android:id="@+id/ic_config"
                     android:icon="@drawable/ic_baseline_settings_24"
-                    android:title="@string/config"/>
+                    android:title="@string/configuracoes"/>
             </group>
         </menu>
     </item>
@@ -37,7 +36,7 @@
                     android:title="@string/entrar_login"/>
                 <item
                     android:id="@+id/meusdados"
-                    android:icon="@drawable/ic_baseline_home_24"
+                    android:icon="@drawable/ic_baseline_account_box_24"
                     android:title="@string/acessar_alterar_meus_dados"/>
                 <item
                     android:id="@+id/sair"
