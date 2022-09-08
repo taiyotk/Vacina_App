@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_App3/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_App3/app/src/main/res/layout/activity_splash_screen.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_App3/app/src/main/res/layout/app_bar_main.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_App3/app/src/main/res/layout/fragment_campanhas_finalizadas.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_App3/app/src/main/res/layout/fragment_inicio.xml" value="0.25" />
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_App3/app/src/main/res/layout/fragment_pesquisar.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_App3/app/src/main/res/layout/fragment_usuario.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_App3/app/src/main/res/menu/drawer_menu.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/taiyo/AndroidStudioProjects/VacinaApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.201" />
         <entry key="..\:/Users/taiyo/AndroidStudioProjects/VacinaApp/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.194" />
         <entry key="..\:/Users/taiyo/AndroidStudioProjects/VacinaApp/app/src/main/res/drawable/ic_baseline_arrow_drop_up_24.xml" value="0.194" />
