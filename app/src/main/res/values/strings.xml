@@ -38,4 +38,19 @@
     <string name="pesquisar_vacina">Pesquisar vacina</string>
     <string name="configuracoes">Configurações</string>
     <string name="pesquisar">Pesquisar</string>
+
+    <!-- Inicio -->
+    <string name="campanhas">Campanhas</string>
+    <string name="campanha_de_vacina_o">Campanha De Vacinação:</string>
+    <string name="tipo_da_campanha">Gripe</string>
+    <string name="data_01_01_2022_at_05_01_2022">Data: 01/01/2022 até 05/01/2022</string>
+    <string name="local_posto_de_sa_de_a">Local: Posto de Saúde A</string>
+    <string name="ver_mais">Ver mais</string>
+    <string name="hor_rio_8_00_s_14_00">Horário: 8:00 às 14:00</string>
+    <string name="posto_de_saude_a">Posto de Saúde A</string>
+    <string name="localizaçao">Localização: Rua 00, S/N, bairro “XXX” – Distrito “XXXXX XXXX”, 00000–000(CEP)</string>
+    <string name="posto_de_saude_b">Posto de Saúde B</string>
+    <string name="posto_de_saude_c">Posto de Saúde C</string>
+    <string name="local_posto_de_saude_b">Local: Posto de Saúde B</string>
+    <string name="variola">Variola</string>
 </resources>
