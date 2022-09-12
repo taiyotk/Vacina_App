@@ -53,4 +53,10 @@
     <string name="posto_de_saude_c">Posto de Saúde C</string>
     <string name="local_posto_de_saude_b">Local: Posto de Saúde B</string>
     <string name="variola">Variola</string>
+    <string name="um_agente_de_sa_de_fa_a_login_para_continuar">É um agente de saúde? Faça login para continuar.</string>
+    <string name="digite_aqui">Digite aqui…</string>
+    <string name="usuario">Usuário:</string>
+    <string name="senha">Senha:</string>
+    <string name="entrar">Entrar</string>
+    <string name="crie_sua_conta_aqui">Crie sua conta aqui</string>
 </resources>

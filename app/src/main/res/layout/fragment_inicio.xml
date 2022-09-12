@@ -34,9 +34,11 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
-                android:layout_width="340dp"
+                android:layout_width="0dp"
                 android:layout_height="230dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
                 android:background="@color/cor_do_quadrado"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,10 +91,12 @@
                     app:layout_constraintVertical_bias="0.502" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/hor_rio_8_00_s_14_00"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +105,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto_medium"
@@ -128,7 +132,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout3"
-                android:layout_width="340dp"
+                android:layout_width="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/cor_do_quadrado"
@@ -184,7 +190,9 @@
                     app:layout_constraintVertical_bias="0.502" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/hor_rio_8_00_s_14_00"
@@ -236,7 +244,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout4"
-                android:layout_width="340dp"
+                android:layout_width="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="15dp"
                 android:background="@color/cor_do_quadrado"
@@ -261,8 +271,10 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="317dp"
-                    android:layout_height="117dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="24dp"
                     android:text="@string/localizaçao"
                     android:textColor="@color/black"
@@ -277,7 +289,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout5"
-                android:layout_width="340dp"
+                android:layout_width="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_height="230dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/cor_do_quadrado"
@@ -302,9 +316,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="317dp"
+                    android:layout_width="0dp"
                     android:layout_height="117dp"
                     android:layout_marginTop="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:text="@string/localizaçao"
                     android:textColor="@color/black"
                     android:textSize="24sp"
@@ -317,8 +333,10 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="340dp"
+                android:layout_width="0dp"
                 android:layout_height="230dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/cor_do_quadrado"
                 android:orientation="vertical"
@@ -328,7 +346,8 @@
 
                 <TextView
                     android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:textAlignment="center"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/posto_de_saude_c"
@@ -341,8 +360,10 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="317dp"
-                    android:layout_height="117dp"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@string/localizaçao"
                     android:textColor="@color/black"
