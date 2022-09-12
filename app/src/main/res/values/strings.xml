@@ -1,25 +1,52 @@
 <resources>
     <string name="app_name">Vacina App</string>
+    <!--Strings das configuracoes-->
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="tela_inicial">Tela Inicial</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <!--Filtrar distritos preferences-->
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="descricao_filtrar_distritos">Definir os distritos a serem mostrados na tela inicial do app</string>
+    <string name="galena_entrada">Galena</string>
+    <string name="ponte_firme_entrada">Ponte Firme</string>
+    <string name="santiago_de_minas_entrada">Santiago de Minas</string>
+    <string name="presidente_olegario_entrada">Presidente Olegário</string>
+
+    <string name="galena_valor">Galena</string>
+    <string name="ponte_firme_valor">Ponte Firme</string>
+    <string name="santiago_de_minas_valor">Santiago de Minas</string>
+    <string name="presidente_olegario_valor">Presidente Olegário</string>
+
+    <!--Tema preferences-->
+    <string name="tema_claro_entrada">Tema claro</string>
+    <string name="tema_escuro_entrada">Tema escuro</string>
+
+    <string name="tema_claro_valor">Tema claro</string>
+    <string name="tema_escuro_valor">Tema escuro</string>
+
+    <string name="escolher_tema">Escolher tema do app</string>
+
+    <!--App preferences-->
+    <string name="area_usuario_ativo">Ativo</string>
+    <string name="area_usuario_inativo">Inativo</string>
+
+    <string name="pequena_entrada">Pequena</string>
+    <string name="media_entrada">Média</string>
+    <string name="grande_entrada">Grande</string>
+
+    <string name="pequena_valor">Pequena</string>
+    <string name="media_valor">Média</string>
+    <string name="grande_valor">Grande</string>
+
+    <string name="restaurar_configuracoes">Restaurar configurações</string>
+    <string name="restaurar_configuracoes_para_padrao">Restaurar configurações para padrão</string>
+
+    <!--Textos do app-->
     <string name="titulo_app">Vacina App</string>
     <string name="inicio">Início</string>
     <string name="vacinacao">Vacinação</string>
     <string name="config">Config.</string>
     <string name="locais">Locais</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Pesquisar">Pesquisar</string>
     <string name="acessar_alterar_meus_dados">Acessar/alterar meus dados</string>

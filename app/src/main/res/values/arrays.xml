@@ -9,4 +9,38 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="reply_entries_distritos">
+        <item>@string/galena_entrada</item>
+        <item>@string/ponte_firme_entrada</item>
+        <item>@string/presidente_olegario_entrada</item>
+        <item>@string/santiago_de_minas_entrada</item>
+    </string-array>
+
+    <string-array name="reply_values_distritos">
+        <item>@string/galena_valor</item>
+        <item>@string/ponte_firme_valor</item>
+        <item>@string/presidente_olegario_valor</item>
+        <item>@string/santiago_de_minas_valor</item>
+    </string-array>
+
+    <string-array name="reply_entries_temas">
+        <item>@string/tema_claro_entrada</item>
+        <item>@string/tema_escuro_entrada</item>
+    </string-array>
+    <string-array name="reply_values_temas">
+        <item>@string/tema_claro_valor</item>
+        <item>@string/tema_escuro_valor</item>
+    </string-array>
+
+    <string-array name="reply_entries_fontsize">
+        <item>@string/pequena_entrada</item>
+        <item>@string/media_entrada</item>
+        <item>@string/grande_entrada</item>
+    </string-array>
+    <string-array name="reply_values_fontsize">
+        <item>@string/pequena_valor</item>
+        <item>@string/media_valor</item>
+        <item>@string/grande_valor</item>
+    </string-array>
 </resources>

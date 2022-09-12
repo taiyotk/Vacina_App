@@ -1,65 +1,60 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <Preference
+        app:layout="@layout/preferences_layout"/>
 
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
+    <PreferenceCategory app:title="@string/tela_inicial">
+
+        <MultiSelectListPreference
+            app:key="resposta_distritos"
+            app:title="Filtrar distritos"
+            app:summary="@string/descricao_filtrar_distritos"
+            app:defaultValue="@array/reply_values_distritos"
+            app:entries="@array/reply_entries_distritos"
+            app:entryValues="@array/reply_values_distritos"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Preferências do app">
 
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
+            app:key="tema_escolhido"
+            app:title="Tema do app"
+            app:summary="@string/escolher_tema"
+            app:dialogTitle="Escolha o seu tema"
+            app:defaultValue="@string/tema_claro_valor"
 
-    </PreferenceCategory>
-
-    <PreferenceCategory app:title="@string/sync_header">
-
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+            app:entries="@array/reply_entries_temas"
+            app:entryValues="@array/reply_entries_temas"
+            />
 
         <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
-
-    </PreferenceCategory>
-    <PreferenceCategory app:title="@string/messages_header">
-
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
+            app:key="menu_visibilidade"
+            app:title="Menu do agente de saúde - Visibilidade"
+            app:summary="Ocultar área do menu do agente de saúde"
+            app:singleLineTitle="false"
+            app:summaryOn="@string/area_usuario_ativo"
+            app:summaryOff="@string/area_usuario_inativo"
+            app:defaultValue="@string/area_usuario_ativo"/>
 
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
+            app:key="fonte_preferencia"
+            app:title="Tamanho da fonte"
+            app:summary="Definir tamanho da fonte"
+            app:defaultValue="@string/media_valor"
+            app:entries="@array/reply_entries_fontsize"
+            app:entryValues="@array/reply_values_fontsize"/>
+
+        <Preference
+            app:layout="@layout/reset_item_preference"
+            app:key="default_preference"
+            app:selectable="false"
+            />
 
     </PreferenceCategory>
-    <PreferenceCategory app:title="@string/sync_header">
 
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
 
-    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.OnConfigurationChangedProvider
@@ -12,8 +13,10 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.vacinaapp.fragments.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
-
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -90,5 +93,24 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun showAlertDialog(view: View) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Restaurar Configurações")
+            .setMessage("Deseja realmente restaurar as configurações para o original?")
+            .setPositiveButton("Sim"
+            ) {
+                    dialog, _ -> showSnackbar("Sim foi Marcado")
+            }
+            .setNegativeButton("Cancelar"
+            ) {
+                    dialog, _ -> dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun showSnackbar(msg: String) {
+        Snackbar.make(fragment_container, msg, Snackbar.LENGTH_SHORT).show()
     }
 }
