@@ -59,6 +59,7 @@
     <string name="campanhas_finalizadas">Campanhas finalizadas</string>
     <string name="inserir_alterar_vacinas">Inserir/Alterar vacinas</string>
     <string name="entrar_login">Entrar/Login</string>
+    <string name="vacina_app">Vacina App</string>
 
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
