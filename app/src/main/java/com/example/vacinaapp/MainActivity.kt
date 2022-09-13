@@ -42,8 +42,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         replaceFragment(inicioFragment)
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
-        setSupportActionBar(toolbar)
-
+        supportActionBar?.hide()
         drawer = findViewById(R.id.drawer_layout)
 
         toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,

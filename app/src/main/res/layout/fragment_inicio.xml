@@ -18,7 +18,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="50sp">
+            android:paddingBottom="50sp"
+            android:paddingTop="60dp">
 
 
             <TextView
@@ -28,7 +29,7 @@
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/work_sans_bold"
                 android:text="@string/campanhas"
-                android:textColor="@color/black"
+                android:textColor="?android:textColorPrimary"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -238,7 +239,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/work_sans_bold"
                 android:text="@string/locais_de_vacinacao"
-                android:textColor="@color/black"
+                android:textColor="?android:textColorPrimary"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />

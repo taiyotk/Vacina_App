@@ -2,7 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
-        app:layout="@layout/preferences_layout"/>
+        app:layout="@layout/preferences_layout"
+        app:selectable="false"/>
 
     <PreferenceCategory app:title="@string/tela_inicial">
 
@@ -36,7 +37,7 @@
             app:singleLineTitle="false"
             app:summaryOn="@string/area_usuario_ativo"
             app:summaryOff="@string/area_usuario_inativo"
-            app:defaultValue="@string/area_usuario_ativo"/>
+            app:defaultValue="true"/>
 
         <ListPreference
             app:key="fonte_preferencia"
@@ -53,8 +54,6 @@
             />
 
     </PreferenceCategory>
-
-
 
 
 </PreferenceScreen>
