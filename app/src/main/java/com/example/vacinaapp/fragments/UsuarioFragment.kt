@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.FragmentTransaction
+
+import com.example.vacinaapp.R
 import com.example.vacinaapp.databinding.FragmentUsuarioBinding
 
 
@@ -14,8 +18,21 @@ class UsuarioFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentUsuarioBinding.inflate(inflater)
-        return binding.root
+        // Inflate the layout for this fragment
+        val inflar = inflater.inflate(R.layout.fragment_usuario, container, false)
+
+        val botaoentrar = inflar.findViewById<Button>(R.id.botao_entrar)
+        botaoentrar.setOnClickListener {
+            val inicioFragment = InicioFragment()
+
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.usuario_layout, inicioFragment)
+
+            transaction.commit()
+        }
+
+        return inflar
     }
+
 
 }
