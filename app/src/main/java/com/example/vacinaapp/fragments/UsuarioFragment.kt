@@ -26,7 +26,7 @@ class UsuarioFragment : Fragment() {
             val inicioFragment = InicioFragment()
 
             val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.usuario_layout, inicioFragment)
+            transaction.replace(R.id.fragment_container, inicioFragment)
 
             transaction.commit()
         }
