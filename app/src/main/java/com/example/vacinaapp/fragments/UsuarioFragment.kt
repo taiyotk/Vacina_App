@@ -15,23 +15,11 @@ import com.example.vacinaapp.databinding.FragmentUsuarioBinding
 class UsuarioFragment : Fragment() {
     lateinit var binding: FragmentUsuarioBinding
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val inflar = inflater.inflate(R.layout.fragment_usuario, container, false)
-
-        val botaoentrar = inflar.findViewById<Button>(R.id.botao_entrar)
-        botaoentrar.setOnClickListener {
-            val inicioFragment = InicioFragment()
-
-            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, inicioFragment)
-
-            transaction.commit()
-        }
-
-        return inflar
+        return inflater.inflate(R.layout.fragment_usuario, container, false)
     }
 
 

@@ -30,6 +30,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
     private val modificarCampanhaFragment = ModificarCampanhaFragment()
     private val modificarVacinaFragment = ModificarVacinaFragment()
     private val campanhasFinalizadasFragment = CampanhasFinalizadasFragment()
+    private val loginFragment = LoginFragment()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +65,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
             R.id.modificar_campanha -> replaceFragment(modificarCampanhaFragment)
             R.id.modificar_vacina -> replaceFragment(modificarVacinaFragment)
             R.id.campanhas_finalizadas -> replaceFragment(campanhasFinalizadasFragment)
+            R.id.entrar -> replaceFragment(loginFragment)
 
         }
         drawer.closeDrawer(GravityCompat.START)
