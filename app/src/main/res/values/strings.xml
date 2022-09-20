@@ -66,6 +66,10 @@
     <string name="pesquisar_vacina">Pesquisar vacina</string>
     <string name="configuracoes">Configurações</string>
     <string name="pesquisar">Pesquisar</string>
+    <!--strings temporárias-->
+    <string name="local_exemplo">Exemplo de nome posto 1</string>
+    <string name="local_exemplo_2">Exemplo de nome posto 2</string>
+    <string name="endereco_exemplo">Endereço: texto longo de duas linhas \ntexto longo</string>
 
     <!-- Inicio -->
     <string name="campanhas">Campanhas</string>
@@ -89,4 +93,5 @@
     <string name="crie_sua_conta_aqui">Crie sua conta aqui</string>
     <string name="menu">MENU</string>
     <string name="app_logo">app_logo</string>
+    <string name="unidades_de_saude">Unidades de Saúde</string>
 </resources>

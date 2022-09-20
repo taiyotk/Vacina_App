@@ -32,6 +32,9 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
     private val campanhasFinalizadasFragment = CampanhasFinalizadasFragment()
     private val loginFragment = LoginFragment()
 
+    //classe do banco de dados
+    private lateinit var databaseHelper:  DataHelper
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +54,10 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+
+        //inicializacao do databasehelper
+        databaseHelper = DataHelper(this)
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
