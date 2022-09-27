@@ -60,7 +60,8 @@ class LocaisFragment : Fragment() {
         db = DataHelper(requireContext())
 
         //checa se o fetch deu certo
-        var locaisCursor: Cursor? = db!!.rawQuery("SELECT id, posto_saude, endereco FROM tabela_postos WHERE id > 0")
+        var locaisCursor: Cursor? = db!!.rawQuery("SELECT id_local, posto_saude, distrito, endereco, telefone," +
+                "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local > 0")
         var locaisSize: Int = locaisCursor!!.count
         Log.d("listLocais()", "locaisSize=" + locaisSize)
 
@@ -69,10 +70,22 @@ class LocaisFragment : Fragment() {
         while (locaisCursor.moveToNext()) {
             val localId = locaisCursor.getInt(0)
             val localPosto = locaisCursor.getString(1)
-            val localEndereco = locaisCursor.getString(2)
-            Log.d("listCategories()", "id=" + localId + " posto_saude=" + localPosto + " endereco=" +
+            val localDistrito = locaisCursor.getString(2)
+            val localEndereco = locaisCursor.getString(3)
+            val telefone = locaisCursor.getString(4)
+            val horSegunda = locaisCursor.getString(5)
+            val horTerca = locaisCursor.getString(6)
+            val horQuarta = locaisCursor.getString(7)
+            val horQuinta = locaisCursor.getString(8)
+            val horSexta = locaisCursor.getString(9)
+            val horSabado = locaisCursor.getString(10)
+            val horDomingo = locaisCursor.getString(11)
+
+
+            Log.d("listCategories()", "id_local=" + localId + " posto_saude=" + localPosto + " endereco=" +
                     localEndereco)
-            locaisArraylist.add(LocaisDataclass(localId, localPosto, localEndereco))
+            locaisArraylist.add(LocaisDataclass(localId, localPosto, localDistrito, localEndereco, telefone,
+            horSegunda, horTerca, horQuarta, horQuinta, horSexta, horSabado, horDomingo))
 
         }
 

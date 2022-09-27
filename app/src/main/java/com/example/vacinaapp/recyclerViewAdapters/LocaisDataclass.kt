@@ -1,3 +1,5 @@
 package com.example.vacinaapp.recyclerViewAdapters
 
-data class LocaisDataclass(val id:Int, val posto_saude:String, val endereco: String)
+data class LocaisDataclass(val id_local:Int, val posto_saude:String, val distrito: String, val endereco: String, val telefone: String,
+                           val segunda: String, val terca: String, val quarta: String, val quinta: String, val sexta: String,
+                            val sabado: String, val domingo: String)

@@ -26,7 +26,7 @@ class LocaisAdapter(val listaLocais: ArrayList<LocaisDataclass>, val clickLambda
 
 
         holder.itemView.setOnClickListener {
-            clickLambda(currentItem.id)
+            clickLambda(currentItem.id_local)
         }
     }
 

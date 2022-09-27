@@ -18,7 +18,8 @@
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:textSize="25sp"
-            android:textColor="?android:textColorPrimary"/>
+            android:textColor="?android:textColorPrimary"
+            android:textStyle="bold"/>
 
 
     </LinearLayout>
@@ -27,8 +28,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         tools:listitem="@layout/recycler_view_item_model" />
-
 
 </FrameLayout>
