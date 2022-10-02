@@ -41,10 +41,10 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         private const val ID_POSTO_CAMPANHA = "id_posto_campanha"
         private const val NOME_CAMPANHA = "nome_campanha"
         private const val DOENCA_CAMPANHA = "doenca_campanha"
-        private const val DATA = "data"                       //inclui a data de inicio e fim
-        private const val HORARIO = "horario"                 //inclui o horario de inicio e fim
+        private const val DATA = "data"                          //inclui a data de inicio e fim
+        private const val HORARIO = "horario"                    //inclui o horario de inicio e fim
         private const val PUBLICO_CAMPANHA = "publico_campanha"
-        private const val DETALHES = "detalhes"                //detalhes da campanha
+        private const val DETALHES = "detalhes"                  //detalhes da campanha
 
     }
 

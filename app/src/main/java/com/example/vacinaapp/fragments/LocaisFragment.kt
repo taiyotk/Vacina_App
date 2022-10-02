@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.LocaisAdapter
-import com.example.vacinaapp.recyclerViewAdapters.LocaisDataclass
+import com.example.vacinaapp.dataClass.LocaisDataclass
 import com.example.vacinaapp.R
 import com.example.vacinaapp.databinding.FragmentLocaisBinding
 
@@ -84,8 +84,10 @@ class LocaisFragment : Fragment() {
 
             Log.d("listCategories()", "id_local=" + localId + " posto_saude=" + localPosto + " endereco=" +
                     localEndereco)
-            locaisArraylist.add(LocaisDataclass(localId, localPosto, localDistrito, localEndereco, telefone,
-            horSegunda, horTerca, horQuarta, horQuinta, horSexta, horSabado, horDomingo))
+            locaisArraylist.add(
+                LocaisDataclass(localId, localPosto, localDistrito, localEndereco, telefone,
+            horSegunda, horTerca, horQuarta, horQuinta, horSexta, horSabado, horDomingo)
+            )
 
         }
 
