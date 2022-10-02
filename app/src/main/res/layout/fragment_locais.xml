@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/locais_fragment_layout_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.LocaisFragment"
-    android:id="@+id/locais_fragment_layout_id"
-    >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/unidades_de_saude"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:textSize="25sp"
-            android:textColor="?android:textColorPrimary"
-            android:textStyle="bold"/>
+    android:orientation="vertical"
+    tools:context=".fragments.LocaisFragment">
 
 
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        tools:listitem="@layout/recycler_view_item_model" />
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/unidades_de_saude"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:iconifiedByDefault="false"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:queryHint="Insira o nome ou endereço" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/recycler_view_item_model" />
+
+    </FrameLayout>
+
+</LinearLayout>
