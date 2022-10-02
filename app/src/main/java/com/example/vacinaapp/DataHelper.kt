@@ -24,12 +24,34 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         private const val SABADO = "sabado"
         private const val DOMINGO = "domingo"
 
+        //TABELA DE VACINAS
+        private const val TABELA_VACINA = "tabela_vacina"
+        private const val ID_VACINA = "id_vacina"             //id único da vacina
+        private const val ID_POSTO = "id_posto"               //id do posto a qual a vacina pertence
+                                                              // (SERVE PARA ORGANIZAR AS VACINAS EM CADA POSTO)
+        private const val POSTO_NOME = "posto_nome"
+        private const val DOENCA = "doenca"               //nome da doenca a qual a vacina combate
+        private const val DISPONIBILIDADE = "disponibilidade" //(sim ou não)
+        private const val PUBLICO = "publico"                 //descrição do púico alvo da vacina
+
+        //TABELA DE CAMPANHAS
+        private const val TABELA_CAMPANHA = "tab_campanha"
+        private const val ID_CAMPANHA = "id_campanha"
+        private const val DISTRITO_CAMPANHA = "distrito_campanha"
+        private const val ID_POSTO_CAMPANHA = "id_posto_campanha"
+        private const val NOME_CAMPANHA = "nome_campanha"
+        private const val DOENCA_CAMPANHA = "doenca_campanha"
+        private const val DATA = "data"                       //inclui a data de inicio e fim
+        private const val HORARIO = "horario"                 //inclui o horario de inicio e fim
+        private const val PUBLICO_CAMPANHA = "publico_campanha"
+        private const val DETALHES = "detalhes"                //detalhes da campanha
+
     }
 
 
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val query = ("CREATE TABLE " + TABELANOME + " ("
+        val criaTab1 = ("CREATE TABLE " + TABELANOME + " ("
                 + ID + " INTEGER PRIMARY KEY, " +
                 POSTO + " TEXT, " +
                 DISTRITO + " TEXT, " +
@@ -44,9 +66,34 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                 DOMINGO + " TEXT" +
                 ")")
 
-        db?.execSQL(query)
+        db?.execSQL(criaTab1)
 
-        val q2 =(
+        val criaTab2 = (
+                "CREATE TABLE " + TABELA_VACINA + " (" +
+                ID_VACINA + " INTEGER PRIMARY KEY, " +
+                ID_POSTO + " INTEGER NOT NULL, " +
+                POSTO_NOME + " TEXT, " +
+                DOENCA + " TEXT, " +
+                DISPONIBILIDADE + " TEXT, " +
+                PUBLICO + " TEXT" + ")"
+                )
+        db?.execSQL(criaTab2)
+
+        val criaTab3 = (
+                "CREATE TABLE " + TABELA_CAMPANHA + " (" +
+                ID_CAMPANHA + " INTEGER PRIMARY KEY, " +
+                DISTRITO_CAMPANHA + " TEXT NOT NULL, " +
+                ID_POSTO_CAMPANHA + " INTEGER, " +
+                NOME_CAMPANHA + " TEXT, " +
+                DOENCA_CAMPANHA + " TEXT, " +
+                DATA + " TEXT, " +
+                HORARIO + " TEXT, " +
+                PUBLICO_CAMPANHA + " TEXT, " +
+                DETALHES + " TEXT" + ")"
+                )
+        db?.execSQL(criaTab3)
+
+        val q1 =(
             "INSERT INTO tabela_postos(id_local, posto_saude, distrito, endereco, telefone, segunda, terca, quarta, quinta, sexta, sabado, domingo) "+
                     "VALUES " +
                     "(1, 'POSTO DE SAÚDE DE GALENA', 'Galena', 'Zona rural - Galena, Pres. Olegário - MG, 38750-000', "+
@@ -86,7 +133,43 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                     "'(34) 38112973', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00'," +
                     "'Fechado', 'Fechado')"
             )
-                    db?.execSQL(q2)
+        db?.execSQL(q1)
+
+        val q2 = (
+                "INSERT INTO tabela_vacina(id_vacina, id_posto, posto_nome, doenca, disponibilidade, publico)"+
+                    "VALUES" +
+                        "(1, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(2, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(3, 1, 'POSTO DE SAÚDE DE GALENA', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(4, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(5, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(6, 1, 'POSTO DE SAÚDE DE GALENA', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(7, 1, 'POSTO DE SAÚDE DE GALENA', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+                        "(8, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Crianças de até 2 meses')," +
+                        "(9, 1, 'POSTO DE SAÚDE DE GALENA', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
+                        "(10, 1, 'POSTO DE SAÚDE DE GALENA', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
+                        "(11, 1, 'POSTO DE SAÚDE DE GALENA', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
+                        "(12, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(13, 1, 'POSTO DE SAÚDE DE GALENA', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
+                        "(14, 1, 'POSTO DE SAÚDE DE GALENA', 'Covid-19', 'Sim', 'Maiores de 40 anos')," +
+                        "(15, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(16, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Difteria', 'Sim', 'Adolescentes')," +
+
+                        "(17, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(18, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(19, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(20, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(21, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+                        "(22, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Difteria', 'Sim', 'Crianças de até 2 meses')," +
+                        "(23, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
+                        "(24, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
+                        "(25, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
+                        "(26, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(27, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
+                        "(28, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Covid-19', 'Sim', 'Maiores de 40 anos')"
+                )
+        db?.execSQL(q2)
+
 
     }
 
@@ -100,5 +183,6 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         val mCursor: Cursor = db.rawQuery(query, null)
         return mCursor
     }
+
 
 }
