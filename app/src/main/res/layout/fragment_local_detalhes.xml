@@ -24,6 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:fontFamily="@font/work_sans_bold"
                 android:text="@string/locais_de_vacinacao"
                 android:textColor="?android:textColorPrimary"
@@ -36,10 +38,11 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_1"
                 android:layout_width="0dp"
-                android:layout_height="190dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="20dp"
+                android:paddingBottom="30dp"
                 android:background="@drawable/fundo_recyclerview"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -101,6 +104,7 @@
                     android:id="@+id/textview_telefone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/telefone_exemplo"
                     android:textColor="@color/black"
@@ -116,6 +120,7 @@
                     android:id="@+id/telefone_subtitulo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
                     android:fontFamily="@font/roboto_medium"
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp"
@@ -125,14 +130,14 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textview_endereco"
-                    app:layout_constraintVertical_bias="0.284" />
+                    app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_2"
                 android:layout_width="0dp"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="20dp"
