@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
@@ -34,6 +36,7 @@ class LocaisFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentLocaisBinding.inflate(inflater)
+
         return binding.root
     }
 
@@ -61,7 +64,7 @@ class LocaisFragment : Fragment() {
 
         //checa se o fetch deu certo
         var locaisCursor: Cursor? = db!!.rawQuery("SELECT id_local, posto_saude, distrito, endereco, telefone," +
-                "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local > 0")
+                "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos")
         var locaisSize: Int = locaisCursor!!.count
         Log.d("listLocais()", "locaisSize=" + locaisSize)
 
@@ -94,7 +97,12 @@ class LocaisFragment : Fragment() {
     }
 
     fun listOnClick(itemID: Int){
-        Toast.makeText(context, "Item clicked has ID " + itemID, Toast.LENGTH_SHORT).show()
+        val fragmentoDetalhes = LocalDetalhesFragment()
+        val bundle = Bundle()
+        bundle.putInt("key", itemID)
+        fragmentoDetalhes.arguments = bundle
+        parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentoDetalhes).commit()
+
     }
 
 }
