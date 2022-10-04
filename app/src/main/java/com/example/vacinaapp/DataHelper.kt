@@ -138,35 +138,85 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         val q2 = (
                 "INSERT INTO tabela_vacina(id_vacina, id_posto, posto_nome, doenca, disponibilidade, publico)"+
                     "VALUES" +
-                        "(1, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
-                        "(2, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Adolescentes')," +
-                        "(3, 1, 'POSTO DE SAÚDE DE GALENA', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
-                        "(4, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
-                        "(5, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
-                        "(6, 1, 'POSTO DE SAÚDE DE GALENA', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
-                        "(7, 1, 'POSTO DE SAÚDE DE GALENA', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
-                        "(8, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Crianças de até 2 meses')," +
-                        "(9, 1, 'POSTO DE SAÚDE DE GALENA', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
-                        "(10, 1, 'POSTO DE SAÚDE DE GALENA', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
-                        "(11, 1, 'POSTO DE SAÚDE DE GALENA', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
-                        "(12, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
-                        "(13, 1, 'POSTO DE SAÚDE DE GALENA', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
-                        "(14, 1, 'POSTO DE SAÚDE DE GALENA', 'Covid-19', 'Sim', 'Maiores de 40 anos')," +
-                        "(15, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
-                        "(16, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Crianças de até 2 meses')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Covid-19', 'Sim', 'Maiores de 40 anos')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
 
-                        "(17, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
-                        "(18, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
-                        "(19, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
-                        "(20, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
-                        "(21, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
-                        "(22, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Difteria', 'Sim', 'Crianças de até 2 meses')," +
-                        "(23, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
-                        "(24, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
-                        "(25, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
-                        "(26, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
-                        "(27, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
-                        "(28, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Covid-19', 'Sim', 'Maiores de 40 anos')"
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Difteria', 'Sim', 'Crianças de até 2 meses')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Covid-19', 'Sim', 'Maiores de 40 anos')," +
+                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+
+                        "(NULL, 3, 'PSF AEROPORTO', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 3, 'PSF AEROPORTO', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 3, 'PSF AEROPORTO', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 3, 'PSF AEROPORTO', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 3, 'PSF AEROPORTO', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 3, 'PSF AEROPORTO', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+
+                        "(NULL, 4, 'UBS ANDORINHAS', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 4, 'UBS ANDORINHAS', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 4, 'UBS ANDORINHAS', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 4, 'UBS ANDORINHAS', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 4, 'UBS ANDORINHAS', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 4, 'UBS ANDORINHAS', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+
+                        "(NULL, 5, 'UBS BILÉ GODINHO', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 5, 'UBS BILÉ GODINHO', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 5, 'UBS BILÉ GODINHO', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 5, 'UBS BILÉ GODINHO', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 5, 'UBS BILÉ GODINHO', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 5, 'UBS BILÉ GODINHO', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+
+                        "(NULL, 6, 'UBS DERCINA MARIA ANDRÉ', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 6, 'UBS DERCINA MARIA ANDRÉ', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 6, 'UBS DERCINA MARIA ANDRÉ', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 6, 'UBS DERCINA MARIA ANDRÉ', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 6, 'UBS DERCINA MARIA ANDRÉ', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 6, 'UBS DERCINA MARIA ANDRÉ', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+
+                        "(NULL, 7, 'UBS MATEUS CAIXETA', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 7, 'UBS MATEUS CAIXETA', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 7, 'UBS MATEUS CAIXETA', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 7, 'UBS MATEUS CAIXETA', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 7, 'UBS MATEUS CAIXETA', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 7, 'UBS MATEUS CAIXETA', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+
+                        "(NULL, 8, 'UBS PLANALTO', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 8, 'UBS PLANALTO', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 8, 'UBS PLANALTO', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 8, 'UBS PLANALTO', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 8, 'UBS PLANALTO', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 8, 'UBS PLANALTO', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')," +
+
+                        "(NULL, 9, 'UBS ZONA RURAL', 'Difteria', 'Sim', 'Adolescentes')," +
+                        "(NULL, 9, 'UBS ZONA RURAL', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
+                        "(NULL, 9, 'UBS ZONA RURAL', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
+                        "(NULL, 9, 'UBS ZONA RURAL', 'Hepatite B', 'Sim', 'Desde recém-nascidos até pessoas com 59 anos')," +
+                        "(NULL, 9, 'UBS ZONA RURAL', 'HPV', 'Sim', 'Meninas de 9 a 14 anos e meninos de 11 a 14 anos')," +
+                        "(NULL, 9, 'UBS ZONA RURAL', 'Meningite', 'Sim', 'Crianças de 3 meses até 10 anos de idade')"
                 )
         db?.execSQL(q2)
 
