@@ -50,14 +50,18 @@ class LocalDetalhesFragment : Fragment() {
 
     }
 
-
-    fun getData(){
+    fun getKey(): Int { //pega o id do local do bundle
         val args = this.arguments
         val inputData = args?.get("key") // variavel do id_local
+        return inputData.toString().toInt()
+    }
+
+    private fun getData(){
+        val key_local = getKey()
 
         val db = DataHelper(requireContext())
         val CursorDados: Cursor? = db.rawQuery("SELECT id_local, posto_saude, distrito, endereco, telefone," +
-                "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local = " + inputData )
+                "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local = " + key_local )
         if(CursorDados!!.moveToNext()){
             val localId = CursorDados.getInt(0)
             val localPosto = CursorDados.getString(1)
