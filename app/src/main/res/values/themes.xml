@@ -31,4 +31,14 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--radiobutton style-->
+    <style name="radioButtonStyle">
+        <item name="colorAccent">@color/Azul_base</item>
+        <item name="android:textColorPrimary">@android:color/darker_gray</item>
+    </style>
+
+    <style name="ColoredHandleTheme">
+        <item name="colorControlActivated">@color/azul_cursor</item>
+    </style>
 </resources>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AdicionarVacinaFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/titulo_adicionar_vacina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/adicionar_vacina"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/distrito_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/distrito"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titulo_adicionar_vacina" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_distrito"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/distrito_titulo">
+
+                <RadioButton
+                    android:id="@+id/galena_radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/galena"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/ponte_firme_radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ponte_firme"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/presidente_olegario_radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/presidente_olegario"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/santiago_de_minas_radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/santiago_de_minas"
+                    android:theme="@style/radioButtonStyle"/>
+
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/posto_titulo_advac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/unidade_de_saude"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup_distrito" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_postos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/posto_titulo_advac">
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_galena"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:minHeight="48dp"
+                    android:text="@string/posto_de_saude_de_galena"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_ponte_firme"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/posto_de_saude_de_ponte_firme"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_aeroporto"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/psf_aeroporto"
+                    android:theme="@style/radioButtonStyle" />
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_andorinhas"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_andorinhas"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_godinho"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_bile_godinho"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_dercina_maria"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_dercina_maria_andre"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_mateus_caixeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_mateus_caixeta"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_planalto"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_planalto"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_zona_rural"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_zona_rural"
+                    android:theme="@style/radioButtonStyle"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/doenca_adicionar_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:paddingStart="22dp"
+                android:paddingEnd="20dp"
+                android:text="@string/doenca_sub"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup_postos" />
+
+            <EditText
+                android:id="@+id/label_doenca"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="name"
+                android:background="@drawable/layout_borda_edittext"
+                android:hint="@string/nome_da_doenca_hint"
+                android:inputType="text"
+                android:singleLine="true"
+                android:theme="@style/ColoredHandleTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.225"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doenca_adicionar_titulo" />
+
+            <TextView
+                android:id="@+id/disponibilidade_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:text="@string/disponibilidade"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_doenca" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_disponibilidade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/disponibilidade_titulo">
+
+                <RadioButton
+                    android:id="@+id/disp_sim"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="@string/sim"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/disp_nao"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="@string/nao"
+                    android:theme="@style/radioButtonStyle"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/publico_subtitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:text="@string/publico"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup_disponibilidade" />
+
+            <EditText
+                android:id="@+id/edittext_publico"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/layout_borda_edittext"
+                android:gravity="top"
+                android:hint="@string/publico_hint"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/publico_subtitulo"
+                android:autofillHints="name"
+                android:theme="@style/ColoredHandleTheme"/>
+
+            <Button
+                android:id="@+id/adicionar_vacina_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/adicionar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edittext_publico" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

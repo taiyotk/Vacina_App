@@ -1,5 +1,6 @@
 package com.example.vacinaapp
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -138,7 +139,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         val q2 = (
                 "INSERT INTO tabela_vacina(id_vacina, id_posto, posto_nome, doenca, disponibilidade, publico)"+
                     "VALUES" +
-                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(NULL, 1, 'C', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Adolescentes')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
@@ -232,6 +233,19 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         val db = this.writableDatabase
         val mCursor: Cursor = db.rawQuery(query, null)
         return mCursor
+    }
+
+    fun insert(id_posto: Int, posto_nome: String, doenca_nome: String, disponibilidade: String, publico: String): Long{
+        val db: SQLiteDatabase = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(ID_POSTO, id_posto)
+        contentValues.put(POSTO_NOME, posto_nome)
+        contentValues.put(DOENCA, doenca_nome)
+        contentValues.put(DISPONIBILIDADE, disponibilidade)
+        contentValues.put(PUBLICO, publico)
+
+        val result: Long = db.insert(TABELA_VACINA, null, contentValues)
+        return result
     }
 
 

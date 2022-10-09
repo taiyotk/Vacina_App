@@ -75,9 +75,9 @@
                     android:icon="@drawable/edit_property_ic"
                     android:title="@string/inserir_alterar_campanhas"/>
                 <item
-                    android:id="@+id/modificar_vacina"
+                    android:id="@+id/adicionar_vacina"
                     android:icon="@drawable/edit_property_ic"
-                    android:title="@string/inserir_alterar_vacinas"/>
+                    android:title="@string/adicionar_vacina"/>
                 <item
                     android:id="@+id/campanhas_finalizadas"
                     android:icon="@drawable/calendar_checked_ic"
