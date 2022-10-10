@@ -8,8 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
+import com.example.vacinaapp.LocaisAdapter
 import com.example.vacinaapp.R
+import com.example.vacinaapp.VacinasAdapter
+import com.example.vacinaapp.dataClass.LocaisDataclass
+import com.example.vacinaapp.dataClass.VacinasDataClass
 
 
 class LocalDetalhesFragment : Fragment() {
@@ -23,6 +29,12 @@ class LocalDetalhesFragment : Fragment() {
     //private lateinit var recyclerViewVacina: RecyclerView
     //private lateinit var locaisArraylist: ArrayList<LocaisDataclass>
 
+
+    var db: DataHelper? = null
+
+    private lateinit var adapter: VacinasAdapter
+    private lateinit var recyclerViewVacina: RecyclerView
+    private lateinit var vacinasArraylist: ArrayList<VacinasDataClass>
 
     companion object {
 
@@ -47,6 +59,14 @@ class LocalDetalhesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getData()
+        dataInitializeVacinas()
+        val vacinaslayoutManager = LinearLayoutManager(context)
+        recyclerViewVacina = view.findViewById(R.id.vacinas_recyclerview)
+        recyclerViewVacina.layoutManager = vacinaslayoutManager
+        recyclerViewVacina.setHasFixedSize(true)
+        recyclerViewVacina.adapter = VacinasAdapter(vacinasArraylist) {
+            vacinasArraylist[it]
+        }
 
     }
 
@@ -56,13 +76,56 @@ class LocalDetalhesFragment : Fragment() {
         return inputData.toString().toInt()
     }
 
-    private fun getData(){
+    fun dataInitializeVacinas() {
+        val idposto = getKey()
+
+        db = DataHelper(requireContext())
+
+        //checa se o fetch deu certo
+        val vacinasCursor: Cursor? = db!!.rawQuery(
+            "SELECT id_vacina, id_posto, posto_nome, doenca, disponibilidade, publico" +
+                    " FROM tabela_vacina WHERE id_posto = " + idposto + " ORDER BY doenca ASC"
+        )
+
+        val vacinasSize: Int = vacinasCursor!!.count
+        Log.d("listVacinas()", "vacinasSize=" + vacinasSize)
+
+        // Add a list of vacinas
+        vacinasArraylist = ArrayList<VacinasDataClass>()
+        while (vacinasCursor.moveToNext()) {
+            val vacinaId = vacinasCursor.getInt(0)
+            val postoId = vacinasCursor.getInt(1)
+            val postoNome = vacinasCursor.getString(2)
+            val doenca = vacinasCursor.getString(3)
+            val disponibilidade = vacinasCursor.getString(4)
+            val publico = vacinasCursor.getString(5)
+
+
+            Log.d(
+                "listCategories()",
+                "id_local=" + postoId + " doenca=" + doenca + " disponibilidade=" +
+                        disponibilidade + "publico=" + publico
+            )
+
+            vacinasArraylist.add(
+                VacinasDataClass(vacinaId, postoId, postoNome, doenca, disponibilidade, publico)
+            )
+
+        }
+
+    }
+
+    private fun getData() {
         val key_local = getKey()
 
         val db = DataHelper(requireContext())
-        val CursorDados: Cursor? = db.rawQuery("SELECT id_local, posto_saude, distrito, endereco, telefone," +
-                "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local = " + key_local )
-        if(CursorDados!!.moveToNext()){
+        val CursorDados: Cursor? = db.rawQuery(
+            "SELECT id_local, posto_saude, distrito, endereco, telefone," +
+                    "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local = " + key_local
+        )
+
+
+        if (CursorDados!!.moveToNext()) {
             val localId = CursorDados.getInt(0)
             val localPosto = CursorDados.getString(1)
             val localDistrito = CursorDados.getString(2)
@@ -76,8 +139,11 @@ class LocalDetalhesFragment : Fragment() {
             val horSabado = CursorDados.getString(10)
             val horDomingo = CursorDados.getString(11)
 
-            Log.d("Dados_posto: ", "id_local=" + localId + " posto_saude=" + localPosto + " distrito= " + localDistrito
-                    + " endereco=" + localEndereco + " telefone=" + telefone + " segunda=" + horSegunda)
+            Log.d(
+                "Dados_posto: ",
+                "id_local=" + localId + " posto_saude=" + localPosto + " distrito= " + localDistrito
+                        + " endereco=" + localEndereco + " telefone=" + telefone + " segunda=" + horSegunda
+            )
 
             val textviewPosto: TextView = requireView().findViewById(R.id.nome_posto_titulo)
             val textviewEndereco: TextView = requireView().findViewById(R.id.textview_endereco)
@@ -102,6 +168,9 @@ class LocalDetalhesFragment : Fragment() {
             textviewDomingo.text = horDomingo
 
         }
+
+
+
 
     }
 
