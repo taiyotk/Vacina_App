@@ -139,7 +139,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         val q2 = (
                 "INSERT INTO tabela_vacina(id_vacina, id_posto, posto_nome, doenca, disponibilidade, publico)"+
                     "VALUES" +
-                        "(NULL, 1, 'C', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Adolescentes')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
@@ -245,6 +245,24 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         contentValues.put(PUBLICO, publico)
 
         val result: Long = db.insert(TABELA_VACINA, null, contentValues)
+        return result
+    }
+
+    fun insertCampanha(distrito_campanha: String, id_posto_campanha: Int, nome_campanha: String,
+                       doenca_campanha: String, data_campanha: String, horario: String, publico_campanha: String, detalhes_campanha: String): Long{
+
+        val db: SQLiteDatabase = this.writableDatabase
+        val contentValuesCamp = ContentValues()
+        contentValuesCamp.put(DISTRITO_CAMPANHA, distrito_campanha)
+        contentValuesCamp.put(ID_POSTO_CAMPANHA, id_posto_campanha)
+        contentValuesCamp.put(NOME_CAMPANHA, nome_campanha)
+        contentValuesCamp.put(DOENCA_CAMPANHA, doenca_campanha)
+        contentValuesCamp.put(DATA, data_campanha)
+        contentValuesCamp.put(HORARIO, horario)
+        contentValuesCamp.put(PUBLICO_CAMPANHA, publico_campanha)
+        contentValuesCamp.put(DETALHES, detalhes_campanha)
+
+        val result: Long = db.insert(TABELA_CAMPANHA, null, contentValuesCamp)
         return result
     }
 

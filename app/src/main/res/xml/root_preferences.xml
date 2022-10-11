@@ -25,7 +25,6 @@
             app:summary="@string/escolher_tema"
             app:dialogTitle="Escolha o seu tema"
             app:defaultValue="@string/tema_claro_valor"
-
             app:entries="@array/reply_entries_temas"
             app:entryValues="@array/reply_entries_temas"
             />

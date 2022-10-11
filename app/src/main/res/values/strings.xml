@@ -65,6 +65,7 @@
     <string name="pesquisar_vacina">Pesquisar vacina</string>
     <string name="configuracoes">Configurações</string>
     <string name="pesquisar">Pesquisar</string>
+    <string name="escolha_um_distrito">Escolha um distrito:</string>
     <!--strings temporárias-->
     <string name="local_exemplo">Exemplo de nome posto 1</string>
     <string name="local_exemplo_2">Exemplo de nome posto 2</string>
@@ -140,4 +141,30 @@
     <string name="publico_hint">Público</string>
     <string name="adicionar">Adicionar</string>
     <string name="editar">Editar</string>
+    <string name="adicionar_modificar_campanha">Adicionar/Modificar Campanha</string>
+    <string name="adicionar_nova_campanha">Adicionar Nova Campanha</string>
+    <string name="lista_de_campanhas">Lista de campanhas</string>
+    <string name="filtrar_campanhas">Filtrar campanhas</string>
+    <string name="distrito_texview">Distrito:</string>
+    <string name="exemplo_de_titulo_de_campanha">Exemplo de Título de campanha</string>
+    <string name="exemplo_data">00/00/0000 até 00/00/0000</string>
+    <string name="data">Data:</string>
+    <string name="horario">Horário:</string>
+    <string name="horario_exemplo">00:00 às 00:00</string>
+
+
+    <!--Array de postos spinner-->
+    <string-array name="postos_array">
+        <item>Todos os postos</item>
+        <item>POSTO DE SAÚDE DE GALENA</item>
+        <item>POSTO DE SAÚDE DE PONTE FIRME</item>
+        <item>PSF AEROPORTO</item>
+        <item>UBS ANDORINHAS</item>
+        <item>UBS BILÉ GODINHO</item>
+        <item>UBS DERCINA MARIA ANDRÉ</item>
+        <item>UBS MATEUS CAIXETA</item>
+        <item>UBS PLANALTO</item>
+        <item>UBS ZONA RURAL</item>
+    </string-array>
+
 </resources>
