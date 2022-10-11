@@ -60,6 +60,7 @@ class LocalDetalhesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getData()
         dataInitializeVacinas()
+
         val vacinaslayoutManager = LinearLayoutManager(context)
         recyclerViewVacina = view.findViewById(R.id.vacinas_recyclerview)
         recyclerViewVacina.layoutManager = vacinaslayoutManager
@@ -168,8 +169,6 @@ class LocalDetalhesFragment : Fragment() {
             textviewDomingo.text = horDomingo
 
         }
-
-
 
 
     }
