@@ -20,7 +20,7 @@
             android:paddingBottom="5dp"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_weight=".35"
+            android:layout_weight="1.5"
             android:background="@drawable/border"
             />
         <TextView
@@ -34,7 +34,7 @@
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_weight=".22"
+            android:layout_weight="1"
             android:background="@drawable/border"
             />
 
@@ -50,7 +50,7 @@
             android:paddingBottom="5dp"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_weight=".23"
+            android:layout_weight="1.5"
             android:background="@drawable/border"
             />
         <TextView
@@ -65,7 +65,7 @@
             android:paddingBottom="5dp"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_weight=".20"
+            android:layout_weight="1"
             android:background="@drawable/border"
             />
 

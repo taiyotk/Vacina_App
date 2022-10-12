@@ -401,7 +401,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/vacinas_area"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -445,7 +445,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cabecalho_tabela_layout"
-                    tools:layout_editor_absoluteY="90dp"
                     tools:listitem="@layout/recyclerview_item_vacina" />
 
 

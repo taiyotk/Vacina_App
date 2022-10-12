@@ -1,75 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_vacina_recyclerview"
-    android:layout_marginEnd="15dp"
-    android:layout_marginStart="15dp">
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/doenca_textview"
-            android:layout_width="0dp"
-            android:text="@string/doenca"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_weight=".35"
-            android:background="@drawable/border"
-            />
-        <TextView
-            android:id="@+id/disp_textview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textAlignment="center"
-            android:text="@string/dispon"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_weight=".22"
-            android:background="@drawable/border"
-            />
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp">
 
-        <TextView
-            android:id="@+id/ver_textview"
-            android:layout_width="0dp"
-            android:textAlignment="center"
-            android:text="@string/ver"
-            android:clickable="true"
-            android:focusable="true"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_weight=".23"
-            android:background="@drawable/border"
-            />
 
-        <TextView
-            android:id="@+id/editar_textview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".20"
-            android:background="@drawable/border"
-            android:drawablePadding="0dp"
-            android:paddingTop="5dp"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:paddingBottom="5dp"
-            android:text="@string/editar"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:clickable="true"
-            android:focusable="true"
-            app:drawableTint="@color/Azul_base"
-            app:drawableRightCompat="@drawable/ic_baseline_edit_24" />
+    <TextView
+        android:id="@+id/doenca_textview"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:text="@string/doenca"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
-    </TableRow>
-</LinearLayout>
+    <TextView
+        android:id="@+id/disp_textview"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/dispon"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/ver_textview"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:background="@drawable/border"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/ver"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/editar_textview"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/border"
+        android:clickable="true"
+        android:drawablePadding="0dp"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/editar"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:drawableRightCompat="@drawable/ic_baseline_edit_24"
+        app:drawableTint="@color/Azul_base" />
+
+
+</TableRow>

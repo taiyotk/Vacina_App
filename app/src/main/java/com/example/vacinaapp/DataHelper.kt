@@ -139,7 +139,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         val q2 = (
                 "INSERT INTO tabela_vacina(id_vacina, id_posto, posto_nome, doenca, disponibilidade, publico)"+
                     "VALUES" +
-                        "(NULL, 1, 'C', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Difteria', 'Sim', 'Adolescentes')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Hepatite A', 'Sim', 'Crianças de 15 meses')," +
@@ -150,10 +150,9 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
-                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Covid-19', 'Sim', 'Maiores de 40 anos')," +
-                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+
 
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Difteria', 'Sim', 'Adolescentes')," +
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
