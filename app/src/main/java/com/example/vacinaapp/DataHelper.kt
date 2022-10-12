@@ -221,12 +221,63 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                 )
         db?.execSQL(q2)
 
+        val q3 = (
+                "INSERT INTO ${TABELA_CAMPANHA}(${ID_CAMPANHA}, ${DISTRITO_CAMPANHA}, ${ID_POSTO_CAMPANHA}, ${NOME_CAMPANHA}," +
+                        "${DOENCA_CAMPANHA}, ${DATA}, ${HORARIO}, ${PUBLICO_CAMPANHA}, ${DETALHES}) " +
+                        "VALUES" +
+                        "(NULL, 'Galena', 1, 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
+                        " 'Crianças menores de 5 anos, idosos com mais de 59 anos e profissionais da área da saúde', " +
+                        "'Campanha sazonal de combate a gripe na região de Galena. Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade'), "+
+                        "(NULL, 'Galena', 1, 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
+                        "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
+                        "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
+                        "(NULL, 'Galena', 1, 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
+                        "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
+                        "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
+                        "(NULL, 'Galena', 1, 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
+                        "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
+                        "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
+                        "(NULL, 'Galena', 1, 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
+                        "'Público dos 4 anos de idade a 59 anos', " +
+                        "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço'), "+
+                        "(NULL, 'Ponte Firme', 2, 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
+                        " 'Crianças menores de 5 anos, idosos com mais de 59 anos e profissionais da área da saúde', " +
+                        "'Campanha sazonal de combate a gripe na região de Ponte Firme. Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade'), "+
+                        "(NULL, 'Ponte Firme', 2, 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
+                        "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
+                        "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
+                        "(NULL, 'Ponte Firme', 2, 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
+                        "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
+                        "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
+                        "(NULL, 'Ponte Firme', 2, 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
+                        "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
+                        "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
+                        "(NULL, 'Ponte Firme', 2, 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
+                        "'Público dos 4 anos de idade a 59 anos', " +
+                        "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço'), "+
+                        "(NULL, 'Presidente Olegário', 3, 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
+                        " 'Crianças menores de 5 anos, idosos com mais de 59 anos e profissionais da área da saúde', " +
+                        "'Campanha sazonal de combate a gripe na região de Presidente Olegário. Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade'), "+
+                        "(NULL, 'Presidente Olegário', 3, 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
+                        "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
+                        "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
+                        "(NULL, 'Presidente Olegário', 3, 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
+                        "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
+                        "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
+                        "(NULL, 'Presidente Olegário', 3, 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
+                        "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
+                        "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
+                        "(NULL, 'Presidente Olegário', 3, 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
+                        "'Público dos 4 anos de idade a 59 anos', " +
+                        "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço')"
+                )
+        db?.execSQL(q3)
 
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         //Usar o código abaixo para reiniciar a tabela
-        //db!!.execSQL("DROP TABLE IF EXISTS tabela_postos")
+        db!!.execSQL("DROP TABLE IF EXISTS tabela_postos")
     }
 
     fun rawQuery(query: String?): Cursor {
