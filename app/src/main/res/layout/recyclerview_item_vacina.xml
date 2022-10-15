@@ -1,72 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_vacina_recyclerview"
-    android:layout_marginEnd="15dp"
-    android:layout_marginStart="15dp">
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/doenca_textview"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:background="@drawable/border"
-            android:gravity="center"
-            android:text="@string/doenca"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp">
 
-        <TextView
-            android:id="@+id/disp_textview"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.6"
-            android:background="@drawable/border"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/dispon"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            />
-        <TextView
-            android:id="@+id/ver_textview"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.4"
-            android:background="@drawable/border"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingStart="13dp"
-            android:paddingEnd="0dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:drawableStartCompat="@drawable/ic_eye" />
+    <TextView
+        android:id="@+id/doenca_textview"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/doenca"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/edit_icon_clickable"
-            android:layout_width="0dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="22dp"
-            android:textSize="16sp"
-            android:clickable="true"
-            android:focusable="true"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:background="@drawable/border"
-            android:layout_weight="0.5"
-            app:drawableRightCompat="@drawable/ic_baseline_edit_24" />
+    <TextView
+        android:id="@+id/disp_textview"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/dispon"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
-    </TableRow>
-</LinearLayout>
+    <TextView
+        android:id="@+id/ver_textview"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/border"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:drawableStartCompat="@drawable/ic_eye"
+        />
+
+    <TextView
+        android:id="@+id/edit_icon_clickable"
+        android:layout_width="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1.5"
+        android:background="@drawable/border"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="5dp"
+        android:textAlignment="center"
+        app:drawableRightCompat="@drawable/ic_baseline_edit_24" />
+
+</TableRow>
