@@ -11,10 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
-import com.example.vacinaapp.LocaisAdapter
 import com.example.vacinaapp.R
-import com.example.vacinaapp.VacinasAdapter
-import com.example.vacinaapp.dataClass.LocaisDataclass
+import com.example.vacinaapp.recyclerViewAdapters.VacinasAdapter
 import com.example.vacinaapp.dataClass.VacinasDataClass
 
 

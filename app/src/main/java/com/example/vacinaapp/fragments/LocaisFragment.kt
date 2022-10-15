@@ -7,13 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
-import com.example.vacinaapp.LocaisAdapter
+import com.example.vacinaapp.recyclerViewAdapters.LocaisAdapter
 import com.example.vacinaapp.dataClass.LocaisDataclass
 import com.example.vacinaapp.R
 import com.example.vacinaapp.databinding.FragmentLocaisBinding

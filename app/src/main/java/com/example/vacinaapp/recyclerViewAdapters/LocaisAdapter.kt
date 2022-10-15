@@ -1,10 +1,11 @@
-package com.example.vacinaapp
+package com.example.vacinaapp.recyclerViewAdapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.LocaisDataclass
 
 class LocaisAdapter(val listaLocais: ArrayList<LocaisDataclass>, val clickLambda: (Int)->Unit): RecyclerView.Adapter<LocaisViewHolder>() {
