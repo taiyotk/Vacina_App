@@ -35,7 +35,7 @@
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_weight="0.6"
+            android:layout_weight="0.8"
             android:background="@drawable/border"
             />
 
@@ -51,7 +51,7 @@
             android:paddingBottom="5dp"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_weight="0.4"
+            android:layout_weight="0.5"
             android:background="@drawable/border"
             />
         <TextView
@@ -66,7 +66,7 @@
             android:paddingBottom="5dp"
             android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_weight="0.5"
+            android:layout_weight="0.6"
             android:background="@drawable/border"/>
 
     </TableRow>

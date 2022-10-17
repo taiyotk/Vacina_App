@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AdicionarCampanhaFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:id="@+id/Adicionar_campanha_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/adicionar_campanha"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/distrito_titulo_camp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/distrito_texview"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Adicionar_campanha_titulo" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_distrito_camp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/distrito_titulo_camp">
+
+                <RadioButton
+                    android:id="@+id/galena_radioButton_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/galena"
+                    android:theme="@style/radioButtonStyle" />
+
+                <RadioButton
+                    android:id="@+id/ponte_firme_radioButton_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ponte_firme"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/presidente_olegario_radioButton_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/presidente_olegario"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/santiago_de_minas_radioButton_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/santiago_de_minas"
+                    android:theme="@style/radioButtonStyle"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/posto_titulo_camp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/unidade_de_saude"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup_distrito_camp"/>
+
+            <RadioGroup
+                android:id="@+id/radioGroup_postos_camp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/posto_titulo_camp">
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_galena_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:minHeight="48dp"
+                    android:text="@string/posto_de_saude_de_galena"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_ponte_firme_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/posto_de_saude_de_ponte_firme"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_aeroporto_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/psf_aeroporto"
+                    android:theme="@style/radioButtonStyle" />
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_andorinhas_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_andorinhas"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_godinho_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_bile_godinho"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_dercina_maria_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_dercina_maria_andre"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_mateus_caixeta_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_mateus_caixeta"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_planalto_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_planalto"
+                    android:theme="@style/radioButtonStyle"/>
+
+                <RadioButton
+                    android:id="@+id/rb_posto_saude_zona_rural_camp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/ubs_zona_rural"
+                    android:theme="@style/radioButtonStyle"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/campanha_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/titulo_da_campanha"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup_postos_camp"/>
+
+            <EditText
+                android:id="@+id/label_campanha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="name"
+                android:background="@drawable/layout_borda_edittext"
+                android:hint="@string/nome_da_campanha_hint"
+                android:inputType="text"
+                android:singleLine="true"
+                android:theme="@style/ColoredHandleTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.225"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/campanha_titulo" />
+
+            <TextView
+                android:id="@+id/doenca_nome_camp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/doenca_sub"
+                android:layout_marginTop="40dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@id/label_campanha"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <EditText
+                android:id="@+id/label_doenca_camp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="name"
+                android:background="@drawable/layout_borda_edittext"
+                android:hint="@string/nome_da_doenca_hint"
+                android:inputType="text"
+                android:singleLine="true"
+                android:theme="@style/ColoredHandleTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.225"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/doenca_nome_camp" />
+
+            <TextView
+                android:id="@+id/data_inicio_tit_camp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/data_do_inicio"
+                android:layout_marginTop="40dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_doenca_camp"/>
+
+            <EditText
+                android:id="@+id/label_data_inicio_campanha"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="name"
+                android:background="@drawable/layout_borda_edittext"
+                android:hint="@string/data_exemplo"
+                android:textAlignment="center"
+                android:inputType="datetime"
+                android:singleLine="true"
+                android:theme="@style/ColoredHandleTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/data_inicio_tit_camp" />
+
+            <TextView
+                android:id="@+id/data_fim_tit_camp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/data_do_fim"
+                android:layout_marginTop="30dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_data_inicio_campanha"/>
+
+            <EditText
+                android:id="@+id/label_data_fim_campanha"
+                android:layout_width="140dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="name"
+                android:background="@drawable/layout_borda_edittext"
+                android:hint="@string/data_exemplo"
+                android:textAlignment="center"
+                android:inputType="datetime"
+                android:singleLine="true"
+                android:theme="@style/ColoredHandleTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/data_fim_tit_camp" />
+
+            <TextView
+                android:id="@+id/horario_tit_campanha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/horario"
+                android:layout_marginTop="30dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_data_fim_campanha"/>
+
+            <TextView
+                android:id="@+id/horario_inicio_camp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="20dp"
+                android:text="@string/inicio_text"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horario_tit_campanha" />
+
+            <EditText
+                android:id="@+id/label_hor_inicio_campanha"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:autofillHints="name"
+                android:background="@drawable/layout_borda_edittext"
+                android:hint="@string/horario_ex"
+                android:inputType="time"
+                android:singleLine="true"
+                android:textAlignment="center"
+                android:theme="@style/ColoredHandleTheme"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horario_inicio_camp" />
+
+            <TextView
+                android:id="@+id/horario_final_camp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/final_textview"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/horario_tit_campanha"
+                app:layout_constraintHorizontal_bias="0.61"
+                app:layout_constraintStart_toEndOf="@+id/horario_inicio_camp"
+                app:layout_constraintTop_toBottomOf="@id/horario_tit_campanha" />
+
+            <TextView
+                android:id="@+id/texview_ligacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="38dp"
+                android:text="@string/as_ligacao"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/label_hor_final_campanha"
+                app:layout_constraintHorizontal_bias="0.469"
+                app:layout_constraintStart_toEndOf="@id/label_hor_inicio_campanha"
+                app:layout_constraintTop_toBottomOf="@id/horario_tit_campanha" />
+
+            <EditText
+                android:id="@+id/label_hor_final_campanha"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="36dp"
+                android:autofillHints="name"
+                android:background="@drawable/layout_borda_edittext"
+                android:hint="@string/horario_ex"
+                android:inputType="time"
+                android:singleLine="true"
+                android:textAlignment="center"
+                android:theme="@style/ColoredHandleTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horario_final_camp" />
+
+            <TextView
+                android:id="@+id/publico_tit_camp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/publico_alvo"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_hor_inicio_campanha" />
+
+            <EditText
+                android:id="@+id/label_publico_alvo_camp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/layout_borda_edittext"
+                android:gravity="top"
+                android:hint="@string/publico_alvo_hint"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/publico_tit_camp"
+                android:autofillHints="name"
+                android:theme="@style/ColoredHandleTheme"/>
+
+            <TextView
+                android:id="@+id/detalhes_tit_camp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/detalhes_informacoes_adicionais"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="22sp"
+                app:layout_constraintTop_toBottomOf="@id/label_publico_alvo_camp"/>
+
+            <EditText
+                android:id="@+id/label_detalhes_camp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/layout_borda_edittext"
+                android:gravity="top"
+                android:hint="@string/publico_alvo_hint"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detalhes_tit_camp"
+                android:autofillHints="name"
+                android:theme="@style/ColoredHandleTheme"/>
+
+            <Button
+                android:id="@+id/btn_ad_campanha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/adicionar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_detalhes_camp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

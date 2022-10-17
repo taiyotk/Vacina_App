@@ -143,6 +143,7 @@
     <string name="editar">Editar</string>
     <string name="adicionar_modificar_campanha">Adicionar/Modificar Campanha</string>
     <string name="adicionar_nova_campanha">Adicionar Nova Campanha</string>
+    <string name="adicionar_campanha">Adicionar Campanha</string>
     <string name="lista_de_campanhas">Lista de campanhas</string>
     <string name="filtrar_campanhas">Filtrar campanhas</string>
     <string name="distrito_texview">Distrito:</string>
@@ -151,6 +152,23 @@
     <string name="data">Data:</string>
     <string name="horario">Horário:</string>
     <string name="horario_exemplo">00:00 às 00:00</string>
+    <string name="Local">Local:</string>
+    <string name="exemplo_de_nome_de_posto">Exemplo de nome de posto</string>
+    <string name="remover">Remover</string>
+    <string name="posto_textview">Posto:</string>
+    <string name="nome_da_campanha">Nome da campanha:</string>
+    <string name="nome_da_campanha_hint">Nome da Campanha</string>
+    <string name="titulo_da_campanha">Título da campanha:</string>
+    <string name="data_exemplo">00/00/0000</string>
+    <string name="data_do_inicio">Data do início da campanha:</string>
+    <string name="data_do_fim">Data do fim da campanha:</string>
+    <string name="inicio_text">Início:</string>
+    <string name="final_textview">Final:</string>
+    <string name="as_ligacao">às</string>
+    <string name="horario_ex">00:00</string>
+    <string name="publico_alvo">Público-alvo:</string>
+    <string name="publico_alvo_hint">Público-alvo</string>
+    <string name="detalhes_informacoes_adicionais">Detalhes(Informações adicionais):</string>
 
 
     <!--Array de postos spinner-->

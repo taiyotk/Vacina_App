@@ -17,7 +17,7 @@ import com.example.vacinaapp.databinding.FragmentLocaisBinding
 
 class LocaisFragment : Fragment() {
 
-    var db: DataHelper? = null
+    private var db: DataHelper? = null
 
     private lateinit var adapter: LocaisAdapter
     private lateinit var recyclerView: RecyclerView
