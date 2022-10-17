@@ -1,73 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cabecalho_tabela"
-    android:layout_marginEnd="15dp"
-    android:layout_marginStart="15dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp">
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/doenca_subtitulo"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="1.8"
+            android:background="@drawable/border"
             android:text="@string/doenca"
             android:textAlignment="center"
-            android:textStyle="bold"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="16sp"
             android:textColor="@color/black"
-            android:layout_weight="1.5"
-            android:background="@drawable/border"
-            />
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/disp_subtitulo"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textAlignment="center"
-            android:text="@string/dispon"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_weight="0.8"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
             android:background="@drawable/border"
-            />
+            android:text="@string/dispon"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/ver_subtitulo"
             android:layout_width="0dp"
-            android:textAlignment="center"
-            android:text="@string/ver"
-            android:textStyle="bold"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:background="@drawable/border"
             android:clickable="true"
             android:focusable="true"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="16sp"
+            android:padding="5dp"
+            android:text="@string/ver"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:layout_weight="0.5"
-            android:background="@drawable/border"
-            />
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/editar"
             android:layout_width="0dp"
-            android:textAlignment="center"
-            android:text="@string/editar"
-            android:textStyle="bold"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:background="@drawable/border"
             android:clickable="true"
             android:focusable="true"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="16sp"
+            android:padding="5dp"
+            android:text="@string/editar"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:layout_weight="0.6"
-            android:background="@drawable/border"/>
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
     </TableRow>
 </LinearLayout>
