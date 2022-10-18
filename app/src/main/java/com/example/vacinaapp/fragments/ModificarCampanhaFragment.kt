@@ -63,13 +63,13 @@ class ModificarCampanhaFragment : Fragment() {
             changeFragment()
         }
 
-        val  btnDeleteCampanha = view.findViewById<Button>(R.id.button_delete_campanha)
+        /*val  btnDeleteCampanha = view.findViewById<Button>(R.id.button_delete_campanha)
         btnDeleteCampanha.setOnClickListener {
 
 
             //val dialog = DialogDeleteFragment.newInstance(item)
             //dialog.show(childFragmentManager, "dialog")
-        }//funcionalidade para apagar a campanha
+        }//funcionalidade para apagar a campanha*/
 
 
         ArrayAdapter.createFromResource(
@@ -151,10 +151,6 @@ class ModificarCampanhaFragment : Fragment() {
         recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
             arrayCampanhasEdit[it]
         }
-        /*recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit){
-            listOnClick(it)//é uma funcao para saber o id ver no fragment de locais
-        }*/
-
 
 
     }
@@ -164,6 +160,7 @@ class ModificarCampanhaFragment : Fragment() {
     }
 
     fun carregarCampanhas(valorIdFiltro: Int) {
+        val btnDel = view?.findViewById<Button>(R.id.button_delete_campanha)
         db = DataHelper(requireContext())
         arrayCampanhasEdit = ArrayList()
 
@@ -175,6 +172,13 @@ class ModificarCampanhaFragment : Fragment() {
             recyclerView.isNestedScrollingEnabled = false
             recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
                 arrayCampanhasEdit[it]
+            }
+            //o que eu a
+            recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit){
+                btnDel?.setOnClickListener {
+                    listId(id)//é uma funcao para saber o id ver no fragment de locais
+                }
+
             }
 
             val campanhasCursor: Cursor = db!!.rawQuery("SELECT * FROM tab_campanha")
@@ -264,6 +268,13 @@ class ModificarCampanhaFragment : Fragment() {
 
     }
 
-
+    fun listId(id_posto: Int){
+        Toast.makeText(context, "$id_posto", Toast.LENGTH_SHORT).show()
+        //val fragmentoDetalhes = LocalDetalhesFragment()
+        //val bundle = Bundle()
+        //bundle.putInt("key", id_posto)
+        //fragmentoDetalhes.arguments = bundle
+        //parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentoDetalhes).commit()
+    }
 
 }
