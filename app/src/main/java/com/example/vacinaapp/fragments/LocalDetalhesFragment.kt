@@ -70,6 +70,7 @@ class LocalDetalhesFragment : Fragment() {
         recyclerViewVacina = view.findViewById(R.id.vacinas_recyclerview)
         recyclerViewVacina.layoutManager = vacinaslayoutManager
         recyclerViewVacina.setHasFixedSize(true)
+        recyclerViewVacina.isNestedScrollingEnabled = false
         recyclerViewVacina.adapter = VacinasAdapter(vacinasArraylist) {
             vacinasArraylist[it]
         }
@@ -78,6 +79,7 @@ class LocalDetalhesFragment : Fragment() {
         recyclerViewCampanha = view.findViewById(R.id.campanhas_recyclerview)
         recyclerViewCampanha.layoutManager = campanhaslayoutManager
         recyclerViewCampanha.setHasFixedSize(true)
+        recyclerViewCampanha.isNestedScrollingEnabled = false
         recyclerViewCampanha.adapter = CampanhasAdapter(campanhasArraylist) {
             campanhasArraylist[it]
         }

@@ -2,7 +2,6 @@ package com.example.vacinaapp.fragments
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +38,6 @@ class DialogDeleteFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val id_camp = arguments?.getInt("ID_CAMPANHA_KEY")
-
 
         val dataHelper = DataHelper(requireContext())
 
