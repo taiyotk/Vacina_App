@@ -1,19 +1,18 @@
 package com.example.vacinaapp.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.vacinaapp.R
+import androidx.fragment.app.Fragment
 import com.example.vacinaapp.databinding.FragmentPesquisarBinding
 
 class PesquisarFragment : Fragment() {
-    lateinit var binding: FragmentPesquisarBinding
+    private lateinit var binding: FragmentPesquisarBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentPesquisarBinding.inflate(inflater)
         return binding.root

@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.R
+import com.example.vacinaapp.dataClass.CampanhasDataClass
 import com.example.vacinaapp.recyclerViewAdapters.VacinasAdapter
 import com.example.vacinaapp.dataClass.VacinasDataClass
+import com.example.vacinaapp.recyclerViewAdapters.CampanhasAdapter
+
 
 
 class LocalDetalhesFragment : Fragment() {
@@ -28,11 +31,14 @@ class LocalDetalhesFragment : Fragment() {
     //private lateinit var locaisArraylist: ArrayList<LocaisDataclass>
 
 
-    var db: DataHelper? = null
+    private var db: DataHelper? = null
 
-    private lateinit var adapter: VacinasAdapter
     private lateinit var recyclerViewVacina: RecyclerView
     private lateinit var vacinasArraylist: ArrayList<VacinasDataClass>
+
+
+    private lateinit var recyclerViewCampanha: RecyclerView
+    private lateinit var campanhasArraylist: ArrayList<CampanhasDataClass>
 
     companion object {
 
@@ -58,6 +64,7 @@ class LocalDetalhesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getData()
         dataInitializeVacinas()
+        dataInitializeCampanhas()
 
         val vacinaslayoutManager = LinearLayoutManager(context)
         recyclerViewVacina = view.findViewById(R.id.vacinas_recyclerview)
@@ -67,26 +74,37 @@ class LocalDetalhesFragment : Fragment() {
             vacinasArraylist[it]
         }
 
+        val campanhaslayoutManager = LinearLayoutManager(context)
+        recyclerViewCampanha = view.findViewById(R.id.campanhas_recyclerview)
+        recyclerViewCampanha.layoutManager = campanhaslayoutManager
+        recyclerViewCampanha.setHasFixedSize(true)
+        recyclerViewCampanha.adapter = CampanhasAdapter(campanhasArraylist) {
+            campanhasArraylist[it]
+        }
+        recyclerViewCampanha.adapter = CampanhasAdapter(campanhasArraylist){
+            listOnClick(it)
+        }
+
     }
 
-    fun getKey(): Int { //pega o id do local do bundle
+    private fun getKey(): Int { //pega o id do local do bundle
         val args = this.arguments
         val inputData = args?.get("key") // variavel do id_local
         return inputData.toString().toInt()
     }
 
-    fun dataInitializeVacinas() {
+    private fun dataInitializeVacinas() {
         val idposto = getKey()
 
         db = DataHelper(requireContext())
 
         //checa se o fetch deu certo
-        val vacinasCursor: Cursor? = db!!.rawQuery(
+        val vacinasCursor: Cursor = db!!.rawQuery(
             "SELECT id_vacina, id_posto, posto_nome, doenca, disponibilidade, publico" +
                     " FROM tabela_vacina WHERE id_posto = " + idposto + " ORDER BY doenca ASC"
         )
 
-        val vacinasSize: Int = vacinasCursor!!.count
+        val vacinasSize: Int = vacinasCursor.count
         Log.d("listVacinas()", "vacinasSize=" + vacinasSize)
 
         // Add a list of vacinas
@@ -114,29 +132,74 @@ class LocalDetalhesFragment : Fragment() {
 
     }
 
+    private fun dataInitializeCampanhas() {
+        val idposto = getKey()
+
+        db = DataHelper(requireContext())
+
+        //checa se o fetch deu certo
+        val campanhasCursor: Cursor = db!!.rawQuery(
+            "SELECT id_campanha, distrito_campanha, id_posto_campanha, posto_nome_campanha, nome_campanha, doenca_campanha, data, horario, publico_campanha, detalhes" +
+                    " FROM tab_campanha WHERE id_posto_campanha = " + idposto
+        )
+
+        val vacinasSize: Int = campanhasCursor.count
+        Log.d("listVacinas()", "vacinasSize=" + vacinasSize)
+
+        // Add a list of vacinas
+        campanhasArraylist = ArrayList<CampanhasDataClass>()
+        while (campanhasCursor.moveToNext()) {
+            val idCampanha = campanhasCursor.getInt(0)
+            val distritoCampanha = campanhasCursor.getString(1)
+            val idPostoCampanha = campanhasCursor.getInt(2)
+            val postoNomeCampanha = campanhasCursor.getString(3)
+            val nomeCampanha = campanhasCursor.getString(4)
+            val doencaCampanha = campanhasCursor.getString(5)
+            val data = campanhasCursor.getString(6)
+            val horario = campanhasCursor.getString(7)
+            val publicoCampanha = campanhasCursor.getString(8)
+            val detalhes = campanhasCursor.getString(9)
+
+            campanhasArraylist.add(
+                CampanhasDataClass(idCampanha,distritoCampanha,idPostoCampanha,postoNomeCampanha,nomeCampanha,doencaCampanha,data,horario,publicoCampanha,detalhes)
+            )
+
+        }
+
+    }
+
+    private fun listOnClick(itemID: Int){
+        val fragmentoDetalhesCampanha = CampanhaDetalhesFragment()
+        val bundle = Bundle()
+        bundle.putInt("key", itemID)
+        fragmentoDetalhesCampanha.arguments = bundle
+        parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentoDetalhesCampanha).commit()
+
+    }
+
     private fun getData() {
-        val key_local = getKey()
+        val keyLocal = getKey()
 
         val db = DataHelper(requireContext())
-        val CursorDados: Cursor? = db.rawQuery(
+        val cursorDados: Cursor = db.rawQuery(
             "SELECT id_local, posto_saude, distrito, endereco, telefone," +
-                    "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local = " + key_local
+                    "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local = " + keyLocal
         )
 
 
-        if (CursorDados!!.moveToNext()) {
-            val localId = CursorDados.getInt(0)
-            val localPosto = CursorDados.getString(1)
-            val localDistrito = CursorDados.getString(2)
-            val localEndereco = CursorDados.getString(3)
-            val telefone = CursorDados.getString(4)
-            val horSegunda = CursorDados.getString(5)
-            val horTerca = CursorDados.getString(6)
-            val horQuarta = CursorDados.getString(7)
-            val horQuinta = CursorDados.getString(8)
-            val horSexta = CursorDados.getString(9)
-            val horSabado = CursorDados.getString(10)
-            val horDomingo = CursorDados.getString(11)
+        if (cursorDados.moveToNext()) {
+            val localId = cursorDados.getInt(0)
+            val localPosto = cursorDados.getString(1)
+            val localDistrito = cursorDados.getString(2)
+            val localEndereco = cursorDados.getString(3)
+            val telefone = cursorDados.getString(4)
+            val horSegunda = cursorDados.getString(5)
+            val horTerca = cursorDados.getString(6)
+            val horQuarta = cursorDados.getString(7)
+            val horQuinta = cursorDados.getString(8)
+            val horSexta = cursorDados.getString(9)
+            val horSabado = cursorDados.getString(10)
+            val horDomingo = cursorDados.getString(11)
 
             Log.d(
                 "Dados_posto: ",

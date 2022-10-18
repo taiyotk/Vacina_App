@@ -12,7 +12,7 @@ import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.VacinasDataClass
 
 
-class VacinasAdapter(val listaVacinas: ArrayList<VacinasDataClass>, val clickLambda: (Int)->Unit): RecyclerView.Adapter<VacinasViewHolder>() {
+class VacinasAdapter(private val listaVacinas: ArrayList<VacinasDataClass>, val clickLambda: (Int)->Unit): RecyclerView.Adapter<VacinasViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacinasViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item_vacina,parent,false)

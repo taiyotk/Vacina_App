@@ -19,14 +19,13 @@ class LocaisFragment : Fragment() {
 
     private var db: DataHelper? = null
 
-    private lateinit var adapter: LocaisAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var locaisArraylist: ArrayList<LocaisDataclass>
 
 
 
 
-    lateinit var binding: FragmentLocaisBinding
+    private lateinit var binding: FragmentLocaisBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,13 +55,13 @@ class LocaisFragment : Fragment() {
     }
 
 
-    fun dataInitialize(){
+    private fun dataInitialize(){
         db = DataHelper(requireContext())
 
         //checa se o fetch deu certo
-        var locaisCursor: Cursor? = db!!.rawQuery("SELECT id_local, posto_saude, distrito, endereco, telefone," +
+        val locaisCursor: Cursor = db!!.rawQuery("SELECT id_local, posto_saude, distrito, endereco, telefone," +
                 "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos")
-        var locaisSize: Int = locaisCursor!!.count
+        val locaisSize: Int = locaisCursor.count
         Log.d("listLocais()", "locaisSize=" + locaisSize)
 
         // Add a list of locais
@@ -93,7 +92,7 @@ class LocaisFragment : Fragment() {
 
     }
 
-    fun listOnClick(itemID: Int){
+    private fun listOnClick(itemID: Int){
         val fragmentoDetalhes = LocalDetalhesFragment()
         val bundle = Bundle()
         bundle.putInt("key", itemID)

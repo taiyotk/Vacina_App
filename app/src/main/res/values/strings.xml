@@ -169,6 +169,10 @@
     <string name="publico_alvo">Público-alvo:</string>
     <string name="publico_alvo_hint">Público-alvo</string>
     <string name="detalhes_informacoes_adicionais">Detalhes(Informações adicionais):</string>
+    <string name="local">Local:</string>
+    <string name="datas">00/00/0000 até 00/00/0000</string>
+    <string name="dataa">Data:</string>
+    <string name="detalhess">Detalhes:</string>
 
 
     <!--Array de postos spinner-->
