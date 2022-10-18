@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.LocaisDataclass
 
-class LocaisAdapter(val listaLocais: ArrayList<LocaisDataclass>, val clickLambda: (Int)->Unit): RecyclerView.Adapter<LocaisViewHolder>() {
+class LocaisAdapter(private val listaLocais: ArrayList<LocaisDataclass>, val clickLambda: (Int)->Unit): RecyclerView.Adapter<LocaisViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocaisViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item_model,parent,false)
