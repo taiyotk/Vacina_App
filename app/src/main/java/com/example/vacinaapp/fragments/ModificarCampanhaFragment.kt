@@ -25,6 +25,7 @@ import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.CampanhasDataClass
 import com.example.vacinaapp.recyclerViewAdapters.CampanhasEditAdapter
 import kotlinx.android.synthetic.main.fragment_modificar_campanha.*
+import kotlinx.android.synthetic.main.layout_item_campanha_edit.view.*
 
 class ModificarCampanhaFragment : Fragment() {
 
@@ -33,6 +34,7 @@ class ModificarCampanhaFragment : Fragment() {
     private lateinit var distrito_array: Array<String>
     private lateinit var arrayCampanhasEdit: ArrayList<CampanhasDataClass>
     private lateinit var recyclerView: RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -173,13 +175,13 @@ class ModificarCampanhaFragment : Fragment() {
             recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
                 arrayCampanhasEdit[it]
             }
-            //o que eu a
+
+            /*
             recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit){
                 btnDel?.setOnClickListener {
                     listId(id)//é uma funcao para saber o id ver no fragment de locais
-                }
+                }*/
 
-            }
 
             val campanhasCursor: Cursor = db!!.rawQuery("SELECT * FROM tab_campanha")
             val campanhasSize: Int = campanhasCursor.count
@@ -268,13 +270,5 @@ class ModificarCampanhaFragment : Fragment() {
 
     }
 
-    fun listId(id_posto: Int){
-        Toast.makeText(context, "$id_posto", Toast.LENGTH_SHORT).show()
-        //val fragmentoDetalhes = LocalDetalhesFragment()
-        //val bundle = Bundle()
-        //bundle.putInt("key", id_posto)
-        //fragmentoDetalhes.arguments = bundle
-        //parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentoDetalhes).commit()
-    }
 
 }

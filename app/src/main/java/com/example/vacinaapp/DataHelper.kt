@@ -319,7 +319,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         return result
     }
 
-    fun deleteCampanha(_id: Long): Boolean{
+    fun deleteCampanha(_id: Int?): Boolean{
         val db = this.writableDatabase
         val success = db.delete(TABELA_CAMPANHA, ID_CAMPANHA + "=" + _id, null)
         db.close()

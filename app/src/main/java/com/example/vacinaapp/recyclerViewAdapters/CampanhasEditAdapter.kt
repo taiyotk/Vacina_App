@@ -1,19 +1,27 @@
 package com.example.vacinaapp.recyclerViewAdapters
 
+import android.app.Activity
+import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.CampanhasDataClass
+import com.example.vacinaapp.fragments.DialogDeleteFragment
 
 class CampanhasEditAdapter(val listaCampanhasEdit: ArrayList<CampanhasDataClass>, val clickId: (Int)-> Unit): RecyclerView.Adapter<CampanhasEditViewHolder>() {
 
-
+    private lateinit var context: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CampanhasEditViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.layout_item_campanha_edit,parent,false)
         return CampanhasEditViewHolder(itemView)
@@ -30,14 +38,24 @@ class CampanhasEditAdapter(val listaCampanhasEdit: ArrayList<CampanhasDataClass>
         holder.dataTextview.text = currentItem.data
         holder.horarioTextview.text = currentItem.horario
         holder.postoNomeCampanha.text = currentItem.nome_posto
+        holder.btnDelete.setOnClickListener {
+            context = holder.btnDelete.context
+            fun onClick(v: View){
+                val id = currentItem.id_campanha
+                val fragment = DialogDeleteFragment.newInstance(id)
+                val fm = (context as FragmentActivity).supportFragmentManager.beginTransaction()
+                fragment.show(fm, "myFragment")
 
-        /*holder.btnDelete.setOnClickListener {
-            val id = clickId(currentItem.id_campanha)
-            Toast.makeText(holder.itemView.context, "$id", Toast.LENGTH_SHORT).show()
-        }*/
+            }
+            onClick(holder.btnDelete)
+
+            //Toast.makeText(holder.itemView.context, "$id", Toast.LENGTH_SHORT).show()
+        }
     }
 
-
+    fun getIdCampanha(id_camp: Int): Int{
+        return id_camp
+    }
 
 }
 
