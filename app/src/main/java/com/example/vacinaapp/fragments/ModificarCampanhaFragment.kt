@@ -1,9 +1,6 @@
 package com.example.vacinaapp.fragments
 
-import android.app.Activity
-import android.app.AlertDialog
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,8 +13,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
@@ -25,13 +20,11 @@ import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.CampanhasDataClass
 import com.example.vacinaapp.recyclerViewAdapters.CampanhasEditAdapter
 import kotlinx.android.synthetic.main.fragment_modificar_campanha.*
-import kotlinx.android.synthetic.main.layout_item_campanha_edit.view.*
 
 class ModificarCampanhaFragment : Fragment() {
 
     private var db: DataHelper? = null
     private lateinit var postoSpinner: Spinner
-    private lateinit var distrito_array: Array<String>
     private lateinit var arrayCampanhasEdit: ArrayList<CampanhasDataClass>
     private lateinit var recyclerView: RecyclerView
 
@@ -45,7 +38,6 @@ class ModificarCampanhaFragment : Fragment() {
 
         return view
     }
-    //id do botao de adicionar vacina button_adic_campanha
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,15 +56,6 @@ class ModificarCampanhaFragment : Fragment() {
         btnAdCampanhaFragment.setOnClickListener {
             changeFragment()
         }
-
-        /*val  btnDeleteCampanha = view.findViewById<Button>(R.id.button_delete_campanha)
-        btnDeleteCampanha.setOnClickListener {
-
-
-            //val dialog = DialogDeleteFragment.newInstance(item)
-            //dialog.show(childFragmentManager, "dialog")
-        }//funcionalidade para apagar a campanha*/
-
 
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -148,8 +131,8 @@ class ModificarCampanhaFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.recycler_view_campanhas_edit)
         recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        recyclerView.isNestedScrollingEnabled = false
+        recyclerView.setHasFixedSize(false)
+        recyclerView.isNestedScrollingEnabled = true
         recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
             arrayCampanhasEdit[it]
         }
@@ -170,17 +153,10 @@ class ModificarCampanhaFragment : Fragment() {
             val layoutManager = LinearLayoutManager(context)
             recyclerView = requireView().findViewById(R.id.recycler_view_campanhas_edit)
             recyclerView.layoutManager = layoutManager
-            recyclerView.setHasFixedSize(true)
             recyclerView.isNestedScrollingEnabled = false
             recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
                 arrayCampanhasEdit[it]
             }
-
-            /*
-            recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit){
-                btnDel?.setOnClickListener {
-                    listId(id)//é uma funcao para saber o id ver no fragment de locais
-                }*/
 
 
             val campanhasCursor: Cursor = db!!.rawQuery("SELECT * FROM tab_campanha")

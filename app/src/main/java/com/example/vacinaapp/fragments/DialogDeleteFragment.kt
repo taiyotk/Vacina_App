@@ -2,13 +2,16 @@ package com.example.vacinaapp.fragments
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentActivity
 import com.example.vacinaapp.DataHelper
+import com.example.vacinaapp.recyclerViewAdapters.CampanhasEditAdapter
 
 
 class DialogDeleteFragment : DialogFragment() {
@@ -24,6 +27,8 @@ class DialogDeleteFragment : DialogFragment() {
         }
     }
 
+    private val dataHelper: DataHelper = DataHelper(requireContext())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -37,22 +42,19 @@ class DialogDeleteFragment : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val id_camp = arguments?.getInt("ID_CAMPANHA_KEY")
 
-        val dataHelper = DataHelper(requireContext())
-
-        val b = AlertDialog.Builder(context)
+        val b = AlertDialog.Builder(requireContext())
             .setTitle("Apagar Campanha")
             .setMessage("Deseja Realmente apagar a campanha?")
             .setPositiveButton("Sim") { _, _ ->
+                val id_camp = arguments?.getInt("ID_CAMPANHA_KEY")
+
                 dataHelper.deleteCampanha(id_camp)
                 if(dataHelper.deleteCampanha(id_camp) == true){
                     Toast.makeText(requireContext(), "Campanha apagada", Toast.LENGTH_SHORT).show()
-
-                } else{
+                } else {
                     Toast.makeText(requireContext(), "Campanha não apagada", Toast.LENGTH_SHORT).show()
                 }
-
             }
             .setNegativeButton("Cancelar") { dialogInterface, _ ->
                 dialogInterface.cancel()
@@ -62,5 +64,16 @@ class DialogDeleteFragment : DialogFragment() {
         return b.create()
     }
 
+    /*fun deleteCamp(): Boolean{
+        val id_camp = arguments?.getInt("ID_CAMPANHA_KEY")
 
+        dataHelper.deleteCampanha(id_camp)
+        if(dataHelper.deleteCampanha(id_camp) == true){
+            Toast.makeText(requireContext(), "Campanha apagada", Toast.LENGTH_SHORT).show()
+            return true
+        } else{
+            Toast.makeText(requireContext(), "Campanha não apagada", Toast.LENGTH_SHORT).show()
+            return false
+        }
+    }*/
 }
