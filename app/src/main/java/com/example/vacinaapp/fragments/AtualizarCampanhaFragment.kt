@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.R
-
+import com.example.vacinaapp.dataClass.CampanhasDataClass
 class AtualizarCampanhaFragment : Fragment() {
 
     companion object {
@@ -35,6 +35,7 @@ class AtualizarCampanhaFragment : Fragment() {
     private lateinit var rgDistritoCamp: RadioGroup
     private lateinit var rgPostosCamp: RadioGroup
     private lateinit var buttonSalvar: Button
+    private lateinit var listaCampanhas: ArrayList<CampanhasDataClass>
 
     //do banco de dados
     private var idCampanha: Int = -1
@@ -332,9 +333,6 @@ class AtualizarCampanhaFragment : Fragment() {
                 Toast.makeText(context, "Nenhum dado foi alterado", Toast.LENGTH_SHORT).show()
 
             } else {
-                println("posto_id" + (posto_id_camp_salvar == idPostoCampanha))
-                println("titulo_camp" +  (titulo_camp_salvar == nomeCampanha))
-                println("doenca" + (doenca_camp_salvar == doencaCampanha))
 
                 val result = db?.updateCampanha(id_campanha, distrito_camp_salvar, posto_id_camp_salvar, posto_nome_camp_salvar, titulo_camp_salvar, doenca_camp_salvar, data_camp_salvar, horarioCampanha, publico_camp_salvar, detalhes_camp_salvar)
 
@@ -347,7 +345,6 @@ class AtualizarCampanhaFragment : Fragment() {
 
         } else {
             Toast.makeText(context, "Por favor preencha todos os dados.", Toast.LENGTH_SHORT).show()
-            println("postoId = $posto_id_camp_salvar")
         }
 
     }
