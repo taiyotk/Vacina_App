@@ -173,6 +173,9 @@
     <string name="datas">00/00/0000 até 00/00/0000</string>
     <string name="dataa">Data:</string>
     <string name="detalhess">Detalhes:</string>
+    <string name="modificar_campanha">Modificar campanha</string>
+    <string name="salvar">Salvar</string>
+    <string name="informacoes_adicionais_hint">Informações adicionais</string>
 
 
     <!--Array de postos spinner-->

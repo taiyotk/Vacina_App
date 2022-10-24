@@ -11,17 +11,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.CampanhasDataClass
+import com.example.vacinaapp.fragments.AtualizarCampanhaFragment
 
 class CampanhasEditAdapter(val listaCampanhasEdit: ArrayList<CampanhasDataClass>, val clickId: (Int)-> Unit): RecyclerView.Adapter<CampanhasEditViewHolder>() {
 
     private lateinit var context: Context
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CampanhasEditViewHolder {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CampanhasEditViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.layout_item_campanha_edit,parent,false)
         return CampanhasEditViewHolder(itemView)
     }
@@ -70,7 +72,27 @@ class CampanhasEditAdapter(val listaCampanhasEdit: ArrayList<CampanhasDataClass>
             onClick(holder.btnDelete)
             //Toast.makeText(holder.itemView.context, "$id", Toast.LENGTH_SHORT).show()
         }
+
+        holder.btnUpdate.setOnClickListener {
+            context = holder.itemView.context
+            val id_key = currentItem.id_campanha
+            fun getKey(key: Int){
+                val fragment = AtualizarCampanhaFragment()
+                val bundle = Bundle()
+                bundle.putInt("Id_campanha", key)
+                fragment.arguments = bundle
+
+                val fm = (context as FragmentActivity).supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.fragment_container, fragment)
+                ft.addToBackStack(null)
+                ft.commit()
+
+            }
+            getKey(id_key)
+        }
     }
+
 
 }
 
