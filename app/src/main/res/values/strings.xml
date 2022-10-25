@@ -166,13 +166,16 @@
     <string name="final_textview">Final:</string>
     <string name="as_ligacao">às</string>
     <string name="horario_ex">00:00</string>
-    <string name="publico_alvo">PÚBLICO-ALVO</string>
+    <string name="publico_alvo">Público-alvo:</string>
     <string name="publico_alvo_hint">Público-alvo</string>
     <string name="detalhes_informacoes_adicionais">Detalhes(Informações adicionais):</string>
     <string name="local">Local:</string>
     <string name="datas">00/00/0000 até 00/00/0000</string>
     <string name="dataa">Data:</string>
     <string name="detalhess">Detalhes:</string>
+    <string name="modificar_campanha">Modificar campanha</string>
+    <string name="salvar">Salvar</string>
+    <string name="informacoes_adicionais_hint">Informações adicionais</string>
     <string name="descricao_botao">Botão do publico</string>
 
 

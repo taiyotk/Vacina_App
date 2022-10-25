@@ -321,9 +321,28 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
 
     fun deleteCampanha(_id: Int?): Boolean{
         val db = this.writableDatabase
-        val success = db.delete(TABELA_CAMPANHA, ID_CAMPANHA + "=" + _id, null)
+        val success = db.delete(TABELA_CAMPANHA, "$ID_CAMPANHA = $_id", null)
         db.close()
         return Integer.parseInt("$success") != -1
+    }
+
+    fun updateCampanha(id_campanha: Int, distrito_campanha: String, id_posto_campanha: Int, nome_posto: String, nome_campanha: String, doenca_campanha: String, data_campanha: String, horario_campanha: String, publico_campanha: String, detalhes_campanha: String): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(DISTRITO_CAMPANHA, distrito_campanha)
+        contentValues.put(ID_POSTO_CAMPANHA, id_posto_campanha)
+        contentValues.put(POSTO_NOME_CAMPANHA, nome_posto)
+        contentValues.put(NOME_CAMPANHA, nome_campanha)
+        contentValues.put(DOENCA_CAMPANHA, doenca_campanha)
+        contentValues.put(DATA, data_campanha)
+        contentValues.put(HORARIO, horario_campanha)
+        contentValues.put(PUBLICO_CAMPANHA, publico_campanha)
+        contentValues.put(DETALHES, detalhes_campanha)
+
+        val success = db.update(TABELA_CAMPANHA, contentValues, "$ID_CAMPANHA = $id_campanha", null)
+        db.close()
+        return success
+
     }
 
 
