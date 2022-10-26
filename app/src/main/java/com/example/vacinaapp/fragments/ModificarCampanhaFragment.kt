@@ -12,7 +12,8 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-import android.widget.Toast
+import androidx.activity.addCallback
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
@@ -28,6 +29,13 @@ class ModificarCampanhaFragment : Fragment() {
     private lateinit var arrayCampanhasEdit: ArrayList<CampanhasDataClass>
     private lateinit var recyclerView: RecyclerView
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //adicionado recente
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -145,7 +153,6 @@ class ModificarCampanhaFragment : Fragment() {
     }
 
     fun carregarCampanhas(valorIdFiltro: Int) {
-        val btnDel = view?.findViewById<Button>(R.id.button_delete_campanha)
         db = DataHelper(requireContext())
         arrayCampanhasEdit = ArrayList()
 
