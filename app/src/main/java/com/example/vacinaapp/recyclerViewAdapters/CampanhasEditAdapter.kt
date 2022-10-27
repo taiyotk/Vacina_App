@@ -84,8 +84,8 @@ class CampanhasEditAdapter(val listaCampanhasEdit: ArrayList<CampanhasDataClass>
 
                 val fm = (context as FragmentActivity).supportFragmentManager
                 val ft = fm.beginTransaction()
-                ft.replace(R.id.fragment_container, fragment)
-                ft.addToBackStack(null)
+                ft.replace(R.id.fragment_container, fragment, "fragment")
+                ft.addToBackStack("fragment")
                 ft.commit()
 
             }
