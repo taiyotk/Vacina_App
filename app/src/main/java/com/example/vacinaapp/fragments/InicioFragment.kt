@@ -14,7 +14,7 @@ import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.CampanhasDataClass
 import com.example.vacinaapp.dataClass.LocaisDataclass
 import com.example.vacinaapp.databinding.FragmentInicioBinding
-import com.example.vacinaapp.recyclerViewAdapters.CampanhasAdapter
+import com.example.vacinaapp.recyclerViewAdapters.CampanhasAdapterHome
 import com.example.vacinaapp.recyclerViewAdapters.LocaisAdapter
 
 class InicioFragment : Fragment() {
@@ -59,10 +59,10 @@ class InicioFragment : Fragment() {
         recyclerViewCampanha.layoutManager = campanhaslayoutManager
         recyclerViewCampanha.setHasFixedSize(true)
         recyclerViewCampanha.isNestedScrollingEnabled = false
-        recyclerViewCampanha.adapter = CampanhasAdapter(campanhasArraylist) {
+        recyclerViewCampanha.adapter = CampanhasAdapterHome(campanhasArraylist) {
             campanhasArraylist[it]
         }
-        recyclerViewCampanha.adapter = CampanhasAdapter(campanhasArraylist) {
+        recyclerViewCampanha.adapter = CampanhasAdapterHome(campanhasArraylist) {
             listOnClickCampanhas(it)
         }
 
@@ -121,7 +121,7 @@ class InicioFragment : Fragment() {
         //checa se o fetch deu certo
         val campanhasCursor: Cursor = db!!.rawQuery(
             "SELECT id_campanha, distrito_campanha, id_posto_campanha, posto_nome_campanha, nome_campanha, doenca_campanha, data, horario, publico_campanha, detalhes" +
-                    " FROM tab_campanha"
+                    " FROM tab_campanha WHERE id_campanha ORDER BY random() LIMIT 3"
         )
 
         val vacinasSize: Int = campanhasCursor.count
