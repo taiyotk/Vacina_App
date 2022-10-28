@@ -43,6 +43,8 @@
             android:layout_height="wrap_content"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="15dp"
             android:text="@string/unidades_de_saude"
             android:textColor="?android:textColorPrimary"
             android:textSize="25sp"
