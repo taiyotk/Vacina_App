@@ -177,6 +177,7 @@
     <string name="salvar">Salvar</string>
     <string name="informacoes_adicionais_hint">Informações adicionais</string>
     <string name="descricao_botao">Botão do publico</string>
+    <string name="modificar_vacina">Modificar vacina</string>
 
 
     <!--Array de postos spinner-->

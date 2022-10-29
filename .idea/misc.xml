@@ -48,6 +48,7 @@
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/fragment_adicionar_campanha.xml" value="0.34782608695652173" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/fragment_adicionar_vacina.xml" value="0.34782608695652173" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/fragment_atualizar_campanha.xml" value="0.2873980054397099" />
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/fragment_atualizar_vacina.xml" value="0.2873980054397099" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/fragment_campanha_detalhes.xml" value="0.34782608695652173" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/fragment_campanhas_finalizadas.xml" value="0.34782608695652173" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/fragment_dialog_delete.xml" value="0.34782608695652173" />
@@ -70,6 +71,7 @@
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/recyclerview_item_campanha_home.xml" value="0.2871376811594203" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/recyclerview_item_vacina.xml" value="0.34782608695652173" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/reset_item_preference.xml" value="0.2873980054397099" />
+        <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/search_vacina_item_layout.xml" value="0.2873980054397099" />
         <entry key="..\:/Users/ghenr/AndroidStudioProjects/Vacina_Appz/app/src/main/res/layout/ver_dialog.xml" value="0.34782608695652173" />
         <entry key="..\:/Users/taiyo/AndroidStudioProjects/VacinaApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.201" />
         <entry key="..\:/Users/taiyo/AndroidStudioProjects/VacinaApp/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.194" />

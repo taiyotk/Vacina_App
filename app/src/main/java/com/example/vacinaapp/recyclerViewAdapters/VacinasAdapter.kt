@@ -4,15 +4,18 @@ import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.VacinasDataClass
+import com.example.vacinaapp.fragments.AtualizarVacinaFragment
 import kotlinx.android.synthetic.main.fragment_dialog_ver.view.*
 
 
@@ -59,7 +62,8 @@ class VacinasAdapter(
             //Toast.makeText(holder.itemView.context, "Ver foi Clicado!", Toast.LENGTH_SHORT).show()
 
             context = holder.itemView.context
-            val verDialogView = LayoutInflater.from(context).inflate(R.layout.fragment_dialog_ver, null)
+            val verDialogView =
+                LayoutInflater.from(context).inflate(R.layout.fragment_dialog_ver, null)
             val builder = AlertDialog.Builder(context).setView(verDialogView)
 
             verDialogView.ver.text = currentItem.publico
@@ -71,6 +75,24 @@ class VacinasAdapter(
         //clicklistener do Editar
         holder.edit.setOnClickListener {
             Toast.makeText(holder.itemView.context, "Editar clicado!", Toast.LENGTH_SHORT).show()
+
+            context = holder.itemView.context
+            val id_key = currentItem.id_vacina
+            fun getKey(key: Int) {
+                val fragment = AtualizarVacinaFragment()
+                val bundle = Bundle()
+                bundle.putInt("Id_vacina", key)
+                fragment.arguments = bundle
+
+                val fm = (context as FragmentActivity).supportFragmentManager
+                val ft = fm.beginTransaction()
+                ft.replace(R.id.fragment_container, fragment, "fragment")
+                ft.addToBackStack("fragment")
+                ft.commit()
+
+            }
+            getKey(id_key)
+
         }
     }
 }

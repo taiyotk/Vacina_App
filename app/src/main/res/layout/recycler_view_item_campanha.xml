@@ -33,7 +33,7 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/work_sans_bold"
                 android:padding="10dp"
-                android:text="@string/campanha_de_vacina_o"
+                android:text="@string/exemplo_de_titulo_de_campanha"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -67,8 +67,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/exemplo_de_horario"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -100,7 +99,7 @@
                     android:text="@string/datas"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+
                     app:layout_constraintBottom_toTopOf="@+id/horarios"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>

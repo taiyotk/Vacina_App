@@ -18,7 +18,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/work_sans_bold"
             android:padding="10dp"
-            android:text="@string/campanha_de_vacina_o"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/exemplo_de_titulo_de_campanha"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="30sp"
@@ -89,7 +91,7 @@
                 android:id="@+id/doenca_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/doenca_sub"
+                android:text="@string/nome_da_doenca_hint"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -157,7 +159,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
@@ -196,7 +197,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:orientation="vertical"
-            android:paddingBottom="10dp"
+            android:paddingBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/linearLayout6"
@@ -219,5 +220,7 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

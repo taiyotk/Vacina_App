@@ -345,5 +345,21 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
 
     }
 
+    fun updateVacina(id_vacina: Int, id_posto: Int, posto_nome: String, doenca: String, disponibilidade: String, publico: String): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(ID_VACINA, id_vacina)
+        contentValues.put(ID_POSTO, id_posto)
+        contentValues.put(POSTO_NOME, posto_nome)
+        contentValues.put(DOENCA, doenca)
+        contentValues.put(DISPONIBILIDADE, disponibilidade)
+        contentValues.put(PUBLICO, publico)
+
+        val success = db.update(TABELA_CAMPANHA, contentValues, "$ID_CAMPANHA = $id_vacina", null)
+        db.close()
+        return success
+
+    }
+
 
 }
