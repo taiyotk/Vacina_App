@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/adicionar_modificar_campanha"
                 android:textColor="?android:textColorPrimary"
-                android:textSize="30sp"
+                android:textSize="27sp"
                 android:textStyle="bold"
                 android:paddingTop="4dp"
                 android:paddingStart="20dp"

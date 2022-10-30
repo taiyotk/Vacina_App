@@ -44,8 +44,6 @@ class PesquisarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         getData()
 
         searchViewVacina.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
