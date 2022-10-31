@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
     tools:context=".fragments.PesquisarFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -29,6 +32,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:focusable="false"
         android:background="@drawable/searchbar_layout"
         android:theme="@style/searchViewStyle"
         app:iconifiedByDefault="false"

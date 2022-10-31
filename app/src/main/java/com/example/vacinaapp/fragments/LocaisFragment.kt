@@ -14,7 +14,6 @@ import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.recyclerViewAdapters.LocaisAdapter
 import com.example.vacinaapp.dataClass.LocaisDataclass
 import com.example.vacinaapp.R
-import com.example.vacinaapp.databinding.FragmentLocaisBinding
 
 class LocaisFragment : Fragment() {
 
@@ -57,6 +56,12 @@ class LocaisFragment : Fragment() {
                 return false
             }
         })
+
+        val closeButton: View? = searchViewLocais.findViewById(androidx.appcompat.R.id.search_close_btn)
+        closeButton?.setOnClickListener{
+            searchViewLocais.clearFocus()
+            searchViewLocais.setQuery("", false)
+        }
 
     }
 

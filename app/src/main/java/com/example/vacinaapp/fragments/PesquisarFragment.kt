@@ -30,6 +30,8 @@ class PesquisarFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_pesquisar, container, false)
+
+
         searchViewVacina = view.findViewById(R.id.searchView_vacina)
 
         val layoutManager = LinearLayoutManager(context)
@@ -58,6 +60,12 @@ class PesquisarFragment : Fragment() {
             }
 
         })
+
+        val closeButton: View? = searchViewVacina.findViewById(androidx.appcompat.R.id.search_close_btn)
+        closeButton?.setOnClickListener{
+            searchViewVacina.clearFocus()
+            searchViewVacina.setQuery("", false)
+        }
 
     }
 
