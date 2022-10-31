@@ -12,8 +12,6 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-import androidx.activity.addCallback
-
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
@@ -28,14 +26,7 @@ class ModificarCampanhaFragment : Fragment() {
     private lateinit var postoSpinner: Spinner
     private lateinit var arrayCampanhasEdit: ArrayList<CampanhasDataClass>
     private lateinit var recyclerView: RecyclerView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //adicionado recente
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-
-        }
-    }
+    private lateinit var btnAdCampanhaFragment: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,23 +35,27 @@ class ModificarCampanhaFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_modificar_campanha, container, false)
 
+        postoSpinner = view.findViewById(R.id.spinner_postos)
+        btnAdCampanhaFragment = view.findViewById(R.id.button_adic_campanha)
+
+        recyclerView = view.findViewById(R.id.recycler_view_campanhas_edit)
+        arrayCampanhasEdit = ArrayList()
+        val layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.isNestedScrollingEnabled = false
+        recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
+            arrayCampanhasEdit[it]
+        }
+
         return view
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fun changeFragment(){
-            val fragAdCampanhaFragment = AdicionarCampanhaFragment()
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragAdCampanhaFragment)
-                .addToBackStack(null)
-                .commit()
-        }
         carregarCampanhas(0)
 
-        //botao para adicionar vacinas
-        val btnAdCampanhaFragment = view.findViewById<Button>(R.id.button_adic_campanha)
         btnAdCampanhaFragment.setOnClickListener {
             changeFragment()
         }
@@ -73,8 +68,6 @@ class ModificarCampanhaFragment : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner_postos.adapter = adapter
         }
-
-        postoSpinner = view.findViewById(R.id.spinner_postos)
 
         postoSpinner.onItemSelectedListener = object :
             OnItemSelectedListener {
@@ -135,17 +128,14 @@ class ModificarCampanhaFragment : Fragment() {
 
         }
 
-        //inicializa o layout do reciclerview
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView = view.findViewById(R.id.recycler_view_campanhas_edit)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(false)
-        recyclerView.isNestedScrollingEnabled = true
-        recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
-            arrayCampanhasEdit[it]
-        }
+    }
 
-
+    private fun changeFragment(){
+        val fragAdCampanhaFragment = AdicionarCampanhaFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragAdCampanhaFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     fun clear() {
@@ -154,21 +144,12 @@ class ModificarCampanhaFragment : Fragment() {
 
     fun carregarCampanhas(valorIdFiltro: Int) {
         db = DataHelper(requireContext())
-        arrayCampanhasEdit = ArrayList()
 
         if (valorIdFiltro == 0) {
-            val layoutManager = LinearLayoutManager(context)
-            recyclerView = requireView().findViewById(R.id.recycler_view_campanhas_edit)
-            recyclerView.layoutManager = layoutManager
-            recyclerView.isNestedScrollingEnabled = false
-            recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
-                arrayCampanhasEdit[it]
-            }
-
 
             val campanhasCursor: Cursor = db!!.rawQuery("SELECT * FROM tab_campanha")
             val campanhasSize: Int = campanhasCursor.count
-            Log.d("listLocais()", "locaisSize=" + campanhasSize)
+            Log.d("listLocais()", "locaisSize= $campanhasSize")
 
 
             while (campanhasCursor.moveToNext()) {
@@ -206,9 +187,7 @@ class ModificarCampanhaFragment : Fragment() {
             recyclerView.adapter?.notifyDataSetChanged()
 
         } else {
-            recyclerView.adapter = CampanhasEditAdapter(arrayCampanhasEdit) {
-                arrayCampanhasEdit[it]
-            }
+            arrayCampanhasEdit.clear()
 
             val campanhasCursor: Cursor =
                 db!!.rawQuery("SELECT * FROM tab_campanha WHERE id_posto_campanha = $valorIdFiltro")
