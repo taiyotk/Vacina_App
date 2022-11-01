@@ -7,50 +7,61 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.recyclerViewAdapters.LocaisAdapter
 import com.example.vacinaapp.dataClass.LocaisDataclass
 import com.example.vacinaapp.R
-import com.example.vacinaapp.databinding.FragmentLocaisBinding
 
 class LocaisFragment : Fragment() {
 
     private var db: DataHelper? = null
-
     private lateinit var recyclerView: RecyclerView
     private lateinit var locaisArraylist: ArrayList<LocaisDataclass>
+    private lateinit var searchViewLocais: SearchView
+    private lateinit var locaisAdapter: LocaisAdapter
 
-
-
-
-    private lateinit var binding: FragmentLocaisBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentLocaisBinding.inflate(inflater)
+        val view = inflater.inflate(R.layout.fragment_locais, container, false)
+        searchViewLocais = view.findViewById(R.id.searchViewLocal)
 
-        return binding.root
+        val layoutManager = LinearLayoutManager(context)
+        locaisArraylist = ArrayList()
+        locaisAdapter = LocaisAdapter(locaisArraylist)
+        recyclerView = view.findViewById(R.id.recycler_view)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = locaisAdapter
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataInitialize()
 
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = LocaisAdapter(locaisArraylist) {
-            locaisArraylist[it]
-        }
-        recyclerView.adapter = LocaisAdapter(locaisArraylist){
-            listOnClick(it)
-        }
+        searchViewLocais.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
 
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                filterLocal(newText)
+                return false
+            }
+        })
+
+        val closeButton: View? = searchViewLocais.findViewById(androidx.appcompat.R.id.search_close_btn)
+        closeButton?.setOnClickListener{
+            searchViewLocais.clearFocus()
+            searchViewLocais.setQuery("", false)
+        }
 
     }
 
@@ -65,7 +76,7 @@ class LocaisFragment : Fragment() {
         Log.d("listLocais()", "locaisSize=" + locaisSize)
 
         // Add a list of locais
-        locaisArraylist = ArrayList<LocaisDataclass>()
+
         while (locaisCursor.moveToNext()) {
             val localId = locaisCursor.getInt(0)
             val localPosto = locaisCursor.getString(1)
@@ -92,13 +103,20 @@ class LocaisFragment : Fragment() {
 
     }
 
-    private fun listOnClick(itemID: Int){
-        val fragmentoDetalhes = LocalDetalhesFragment()
-        val bundle = Bundle()
-        bundle.putInt("key", itemID)
-        fragmentoDetalhes.arguments = bundle
-        parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentoDetalhes).commit()
 
+    fun filterLocal(text: String){
+        val filteredList: ArrayList<LocaisDataclass> = ArrayList()
+
+        for(item in locaisArraylist){
+            if(item.posto_saude.lowercase().contains(text.lowercase()) or item.distrito.lowercase().contains(text.lowercase())){
+                filteredList.add(item)
+            }
+
+            if(filteredList.isNotEmpty()){
+                locaisAdapter.filterlist(filteredList)
+            }
+
+        }
     }
 
 }

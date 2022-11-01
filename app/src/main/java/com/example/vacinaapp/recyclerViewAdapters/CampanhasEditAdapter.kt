@@ -65,9 +65,6 @@ class CampanhasEditAdapter(val listaCampanhasEdit: ArrayList<CampanhasDataClass>
                 })
                     builder.show()
 
-                //val fragment = DialogDeleteFragment.newInstance(id)
-                //val fm = (context as FragmentActivity).supportFragmentManager.beginTransaction()
-                //fragment.show(fm, "myFragment")
             }
             onClick(holder.btnDelete)
             //Toast.makeText(holder.itemView.context, "$id", Toast.LENGTH_SHORT).show()

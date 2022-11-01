@@ -20,21 +20,20 @@ import com.example.vacinaapp.recyclerViewAdapters.LocaisAdapter
 class InicioFragment : Fragment() {
 
     private var db: DataHelper? = null
-
     private lateinit var recyclerView: RecyclerView
     private lateinit var locaisArraylist: ArrayList<LocaisDataclass>
-
     private lateinit var recyclerViewCampanha: RecyclerView
     private lateinit var campanhasArraylist: ArrayList<CampanhasDataClass>
-
+    private lateinit var locaisAdapter: LocaisAdapter
     private lateinit var binding: FragmentInicioBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentInicioBinding.inflate(inflater)
-
+        locaisArraylist = ArrayList()
         return binding.root
     }
 
@@ -45,14 +44,9 @@ class InicioFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.recycler_view)
+        locaisAdapter = LocaisAdapter(locaisArraylist)
         recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = LocaisAdapter(locaisArraylist) {
-            locaisArraylist[it]
-        }
-        recyclerView.adapter = LocaisAdapter(locaisArraylist) {
-            listOnClickLocais(it)
-        }
+        recyclerView.adapter = locaisAdapter
 
         val campanhaslayoutManager = LinearLayoutManager(context)
         recyclerViewCampanha = view.findViewById(R.id.campanhas_recyclerview)
@@ -82,7 +76,6 @@ class InicioFragment : Fragment() {
         Log.d("listLocais()", "locaisSize=$locaisSize")
 
         // Add a list of locais
-        locaisArraylist = ArrayList()
         while (locaisCursor.moveToNext()) {
             val localId = locaisCursor.getInt(0)
             val localPosto = locaisCursor.getString(1)
@@ -167,16 +160,6 @@ class InicioFragment : Fragment() {
         fragmentoDetalhesCampanha.arguments = bundle
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragmentoDetalhesCampanha).commit()
-
-    }
-
-    private fun listOnClickLocais(itemID: Int) {
-        val fragmentoDetalhes = LocalDetalhesFragment()
-        val bundle = Bundle()
-        bundle.putInt("key", itemID)
-        fragmentoDetalhes.arguments = bundle
-        parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentoDetalhes)
-            .commit()
 
     }
 

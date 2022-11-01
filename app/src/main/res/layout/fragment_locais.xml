@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusableInTouchMode="true"
     tools:context=".fragments.LocaisFragment">
 
 
@@ -20,12 +21,18 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView3"
+        android:id="@+id/searchViewLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="10dp"
+
+        android:theme="@style/searchViewStyle"
+        android:background="@drawable/searchbar_layout"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:queryHint="Insira o nome ou endereço" />
+        app:queryHint="Insira o nome do posto ou distrito" />
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -25,7 +25,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/adicionar_campanha"
                 android:textColor="?android:textColorPrimary"
-                android:textSize="30sp"
+                android:textSize="27sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -336,12 +336,13 @@
 
             <EditText
                 android:id="@+id/label_hor_inicio_campanha"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="20dp"
                 android:autofillHints="name"
                 android:background="@drawable/layout_borda_edittext"
                 android:hint="@string/horario_ex"
+                android:nextFocusDown="@id/label_hor_final_campanha"
                 android:inputType="time"
                 android:singleLine="true"
                 android:textAlignment="center"
@@ -379,7 +380,7 @@
 
             <EditText
                 android:id="@+id/label_hor_final_campanha"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="36dp"
                 android:autofillHints="name"

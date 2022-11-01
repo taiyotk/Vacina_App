@@ -20,7 +20,7 @@
             android:paddingEnd="15dp"
             android:text="@string/campanhas"
             android:textColor="?android:textColorPrimary"
-            android:textSize="25sp"
+            android:textSize="27sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

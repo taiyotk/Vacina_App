@@ -28,7 +28,7 @@
                 android:paddingEnd="20dp"
                 android:text="@string/locais_de_vacinacao"
                 android:textColor="?android:textColorPrimary"
-                android:textSize="30sp"
+                android:textSize="27sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.145"
                 app:layout_constraintStart_toStartOf="parent"
