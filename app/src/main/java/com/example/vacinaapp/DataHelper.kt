@@ -152,10 +152,9 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
-                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
                         "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Covid-19', 'Sim', 'Maiores de 40 anos')," +
-                        "(NULL, 1, 'POSTO DE SAÚDE DE GALENA', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
+
 
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Difteria', 'Sim', 'Adolescentes')," +
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Febre Amarela', 'Sim', 'Bebês a partir de 9 meses, pessoas de 11 a 59 anos')," +
@@ -167,7 +166,6 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Pneumocócica', 'Sim', 'Crinças de até 2 meses')," +
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Poliomelite', 'Sim', 'Crianças menores de 2 a 4 meses')," +
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Diarreia causada por rotavírus', 'Sim', 'Crianças a partir de 2 meses a 4 meses')," +
-                        "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tétano', 'Sim', 'A partir dos 15 meses')," +
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Covid-19', 'Sim', 'Maiores de 40 anos')," +
                         "(NULL, 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Tuberculose', 'Sim', 'Crianças menores de 5 anos')," +
