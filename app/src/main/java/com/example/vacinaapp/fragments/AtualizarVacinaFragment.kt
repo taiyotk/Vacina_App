@@ -103,7 +103,6 @@ class AtualizarVacinaFragment : Fragment() {
             val query: Cursor =
                 db!!.rawQuery("SELECT * FROM tabela_vacina WHERE id_vacina = $idKey")
 
-
             //para checar se o cursor está lendo todas as colunas
             //val count: Int = query.count
             //val countColumns = query.columnCount
@@ -170,8 +169,6 @@ class AtualizarVacinaFragment : Fragment() {
                 }
             })
 
-
-
             when (idPostoVacina) {
                 1 -> {
                     rgDistritoCamp.check(R.id.galena_radioButton_vac_mod)
@@ -212,6 +209,15 @@ class AtualizarVacinaFragment : Fragment() {
 
             }
 
+            when (disponibilidade) {
+                "Sim" -> {
+                    rgDisponiblidade.check(R.id.disp_sim_mod)
+
+                }
+                "Não" -> {
+                    rgDisponiblidade.check(R.id.disp_nao_mod)
+                }
+            }
 
             //adiciona os dados do banco nos editTexts
             edit_doenca.setText(doencaVacina)
@@ -239,55 +245,55 @@ class AtualizarVacinaFragment : Fragment() {
         publico_salvar = edit_detalhes.text.toString()
 
         when (postoEscolhido) {
-            R.id.rb_posto_galena_camp_mod -> {
+            R.id.rb_posto_saude_galena_vac_mod -> {
                 posto_id_vacina_salvar = 1
                 posto_nome_vacina_salvar = "POSTO DE SAÚDE DE GALENA"
                 distrito_vacina_salvar = "Galena"
                 //Toast.makeText(requireContext(), "Posto Galena", Toast.LENGTH_SHORT).show()
             }
-            R.id.rb_posto_ponte_firme_camp_mod -> {
+            R.id.rb_posto_saude_ponte_firme_vac_mod -> {
                 posto_id_vacina_salvar = 2
                 posto_nome_vacina_salvar = "POSTO DE SAÚDE DE PONTE FIRME"
                 distrito_vacina_salvar = "Ponte Firme"
                 //Toast.makeText(requireContext(), "ponte firme", Toast.LENGTH_SHORT).show()
             }
-            R.id.rb_posto_aeroporto_camp_mod -> {
+            R.id.rb_posto_saude_aeroporto_vac_mod -> {
                 posto_id_vacina_salvar = 3
                 posto_nome_vacina_salvar = "PSF AEROPORTO"
                 distrito_vacina_salvar = "Presidente Olegário"
                 //Toast.makeText(requireContext(), "Posto Aeroporto", Toast.LENGTH_SHORT).show()
             }
-            R.id.rb_posto_andorinhas_camp_mod -> {
+            R.id.rb_posto_saude_andorinhas_vac_mod -> {
                 posto_id_vacina_salvar = 4
                 posto_nome_vacina_salvar = "UBS ANDORINHAS"
                 distrito_vacina_salvar = "Presidente Olegário"
                 //Toast.makeText(requireContext(), "Posto Andorinhas", Toast.LENGTH_SHORT).show()
             }
-            R.id.rb_posto_godinho_camp_mod -> {
+            R.id.rb_posto_saude_godinho_vac_mod -> {
                 posto_id_vacina_salvar = 5
                 posto_nome_vacina_salvar = "UBS BILÉ GODINHO"
                 distrito_vacina_salvar = "Presidente Olegário"
                 //Toast.makeText(requireContext(), "Posto Godinho", Toast.LENGTH_SHORT).show()
             }
-            R.id.rb_posto_dercina_maria_camp_mod -> {
+            R.id.rb_posto_saude_dercina_maria_vac_mod -> {
                 posto_id_vacina_salvar = 6
                 posto_nome_vacina_salvar = "UBS DERCINA MARIA ANDRÉ"
                 distrito_vacina_salvar = "Santiago de Minas"
                 //Toast.makeText(requireContext(), "Posto Dercina Maria", Toast.LENGTH_SHORT).show()
             }
-            R.id.rb_posto_mateus_caixeta_camp_mod -> {
+            R.id.rb_posto_saude_mateus_caixeta_vac_mod -> {
                 posto_id_vacina_salvar = 7
                 posto_nome_vacina_salvar = "UBS MATEUS CAIXETA"
                 distrito_vacina_salvar = "Presidente Olegário"
                 //Toast.makeText(requireContext(), "Mateus Caixeta", Toast.LENGTH_SHORT).show()
             }
-            R.id.rb_posto_planalto_camp_mod -> {
+            R.id.rb_posto_saude_planalto_vac_mod -> {
                 posto_id_vacina_salvar = 8
                 posto_nome_vacina_salvar = "UBS PLANALTO"
                 distrito_vacina_salvar = "Presidente Olegário"
                 //Toast.makeText(requireContext(), "Posto Planalto", Toast.LENGTH_SHORT).show()
             }
-            R.id.rb_posto_zona_rural_camp_mod -> {
+            R.id.rb_posto_saude_zona_rural_vac_mod -> {
                 posto_id_vacina_salvar = 9
                 posto_nome_vacina_salvar = "UBS ZONA RURAL"
                 distrito_vacina_salvar = "Presidente Olegário"
@@ -296,12 +302,12 @@ class AtualizarVacinaFragment : Fragment() {
         }
 
         when (disponibilidadeEscolhida) {
-            R.id.disp_sim -> {
+            R.id.disp_sim_mod -> {
 
                 disp_salvar = "Sim"
 
             }
-            R.id.disp_nao -> {
+            R.id.disp_nao_mod -> {
 
                 disp_salvar = "Não"
 
@@ -309,11 +315,10 @@ class AtualizarVacinaFragment : Fragment() {
         }
 
 
-
         if (!edit_detalhes.text.isEmpty() && !edit_doenca.text.isEmpty() && posto_id_vacina_salvar != -1
         ) {
 
-            if (posto_id_vacina_salvar == idPostoVacina && doenca_vac_salvar == doencaVacina && publico_salvar == publicoVacina) {
+            if (posto_id_vacina_salvar == idPostoVacina && doenca_vac_salvar == doencaVacina && publico_salvar == publicoVacina && disp_salvar == disponibilidade) {
                 Toast.makeText(context, "Nenhum dado foi alterado", Toast.LENGTH_SHORT).show()
 
             } else {
