@@ -48,6 +48,16 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         private const val PUBLICO_CAMPANHA = "publico_campanha"
         private const val DETALHES = "detalhes"                  //detalhes da campanha
 
+        //usuario
+        private const val TABELA_USUARIO = "tab_usuario"
+        private const val ID_USUARIO = "id_usuario"              //primary key
+        private const val NOME_COMPLETO = "nome_completo"
+        private const val CPF = "cpf"
+        private const val TELEFONE_USUARIO = "telefone_usuario"
+        private const val EMAIL = "email_usuario"
+        private const val NOME_USUARIO = "nome_usuario"
+        private const val SENHA = "senha"
+
     }
 
 
@@ -95,6 +105,11 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                 DETALHES + " TEXT" + ")"
                 )
         db?.execSQL(criaTab3)
+
+        val criaTabUsuario = (
+                "CREATE TABLE $TABELA_USUARIO ($ID_USUARIO INTEGER PRIMARY KEY, $NOME_COMPLETO TEXT, $CPF TEXT, $TELEFONE_USUARIO TEXT, $EMAIL TEXT, $NOME_USUARIO TEXT, $SENHA TEXT)"
+                )
+        db?.execSQL(criaTabUsuario)
 
         val q1 =(
             "INSERT INTO tabela_postos(id_local, posto_saude, distrito, endereco, telefone, segunda, terca, quarta, quinta, sexta, sabado, domingo) "+
@@ -271,6 +286,12 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                         "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço')"
                 )
         db?.execSQL(q3)
+
+        val queryUsuario = (
+            "INSERT INTO $TABELA_USUARIO($ID_USUARIO, $NOME_COMPLETO, $CPF, $TELEFONE_USUARIO, $EMAIL, $NOME_USUARIO, $SENHA) VALUES (NULL, 'João Silva Sousa', '123456789-12', '(34) 98765-4321', 'joao123@email.com', 'joaoS', '1234abcd'), " +
+                    "(NULL, 'Maria Silva Oliveira', '123456789-01', '(34) 99999-9999', 'mariaSO@email.com', 'MariaSilva', 'senha123')"
+        )
+        db?.execSQL(queryUsuario)
 
     }
 
