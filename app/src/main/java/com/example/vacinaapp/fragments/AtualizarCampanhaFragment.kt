@@ -31,11 +31,11 @@ class AtualizarCampanhaFragment : Fragment() {
     private lateinit var hor_camp_salvar: String
     private lateinit var publico_camp_salvar: String
     private lateinit var detalhes_camp_salvar: String
+    private var idDistrito: Int = -1
 
     private lateinit var rgDistritoCamp: RadioGroup
     private lateinit var rgPostosCamp: RadioGroup
     private lateinit var buttonSalvar: Button
-    private lateinit var listaCampanhas: ArrayList<CampanhasDataClass>
 
     //do banco de dados
     private var idCampanha: Int = -1
@@ -120,15 +120,16 @@ class AtualizarCampanhaFragment : Fragment() {
 
             if(query.moveToNext()){
                 idCampanha = query.getInt(0)
-                distritoCampanha = query.getString(1)
-                idPostoCampanha = query.getInt(2)
-                postoNomeCampanha = query.getString(3)
-                nomeCampanha = query.getString(4)
-                doencaCampanha = query.getString(5)
-                dataCampanha = query.getString(6)
-                horarioCampanha = query.getString(7)
-                publicoCampanha = query.getString(8)
-                detalhesCampanha = query.getString(9)
+                idDistrito = query.getInt(1)
+                distritoCampanha = query.getString(2)
+                idPostoCampanha = query.getInt(3)
+                postoNomeCampanha = query.getString(4)
+                nomeCampanha = query.getString(5)
+                doencaCampanha = query.getString(6)
+                dataCampanha = query.getString(7)
+                horarioCampanha = query.getString(8)
+                publicoCampanha = query.getString(9)
+                detalhesCampanha = query.getString(10)
 
                 Log.d("dadosPosto", "id_campanha=$idCampanha, distrito_campanha=$distritoCampanha, id_posto_campanha=$idPostoCampanha, posto_nome_campanha=$postoNomeCampanha, nome_campanha=$nomeCampanha, doenca_campanha=$doencaCampanha, data=$dataCampanha, horario=$horarioCampanha, publico_campanha=$publicoCampanha, detalhes=$detalhesCampanha")
             }
@@ -272,54 +273,63 @@ class AtualizarCampanhaFragment : Fragment() {
                 posto_id_camp_salvar = 1
                 posto_nome_camp_salvar = "POSTO DE SAÚDE DE GALENA"
                 distrito_camp_salvar = "Galena"
+                idDistrito = 1
                 //Toast.makeText(requireContext(), "Posto Galena", Toast.LENGTH_SHORT).show()
             }
             R.id.rb_posto_ponte_firme_camp_mod -> {
                 posto_id_camp_salvar = 2
                 posto_nome_camp_salvar = "POSTO DE SAÚDE DE PONTE FIRME"
                 distrito_camp_salvar = "Ponte Firme"
+                idDistrito = 2
                 //Toast.makeText(requireContext(), "ponte firme", Toast.LENGTH_SHORT).show()
             }
             R.id.rb_posto_aeroporto_camp_mod -> {
                 posto_id_camp_salvar = 3
                 posto_nome_camp_salvar = "PSF AEROPORTO"
                 distrito_camp_salvar = "Presidente Olegário"
+                idDistrito = 3
                 //Toast.makeText(requireContext(), "Posto Aeroporto", Toast.LENGTH_SHORT).show()
             }
             R.id.rb_posto_andorinhas_camp_mod -> {
                 posto_id_camp_salvar = 4
                 posto_nome_camp_salvar = "UBS ANDORINHAS"
                 distrito_camp_salvar = "Presidente Olegário"
+                idDistrito = 3
                 //Toast.makeText(requireContext(), "Posto Andorinhas", Toast.LENGTH_SHORT).show()
             }
             R.id.rb_posto_godinho_camp_mod -> {
                 posto_id_camp_salvar = 5
                 posto_nome_camp_salvar = "UBS BILÉ GODINHO"
                 distrito_camp_salvar = "Presidente Olegário"
+                idDistrito = 3
                 //Toast.makeText(requireContext(), "Posto Godinho", Toast.LENGTH_SHORT).show()
             }
             R.id.rb_posto_dercina_maria_camp_mod -> {
                 posto_id_camp_salvar = 6
                 posto_nome_camp_salvar = "UBS DERCINA MARIA ANDRÉ"
                 distrito_camp_salvar = "Santiago de Minas"
+                idDistrito = 4
                 //Toast.makeText(requireContext(), "Posto Dercina Maria", Toast.LENGTH_SHORT).show()
             }
             R.id.rb_posto_mateus_caixeta_camp_mod -> {
                 posto_id_camp_salvar = 7
                 posto_nome_camp_salvar = "UBS MATEUS CAIXETA"
                 distrito_camp_salvar = "Presidente Olegário"
+                idDistrito = 3
                 //Toast.makeText(requireContext(), "Mateus Caixeta", Toast.LENGTH_SHORT).show()
             }
             R.id.rb_posto_planalto_camp_mod -> {
                 posto_id_camp_salvar = 8
                 posto_nome_camp_salvar = "UBS PLANALTO"
                 distrito_camp_salvar = "Presidente Olegário"
+                idDistrito = 3
                 //Toast.makeText(requireContext(), "Posto Planalto", Toast.LENGTH_SHORT).show()
             }
             R.id.rb_posto_zona_rural_camp_mod -> {
                 posto_id_camp_salvar = 9
                 posto_nome_camp_salvar = "UBS ZONA RURAL"
                 distrito_camp_salvar = "Presidente Olegário"
+                idDistrito = 3
                 //Toast.makeText(requireContext(), "Posto Zona Rural", Toast.LENGTH_SHORT).show()
             }
         }
@@ -334,7 +344,7 @@ class AtualizarCampanhaFragment : Fragment() {
 
             } else {
 
-                val result = db?.updateCampanha(id_campanha, distrito_camp_salvar, posto_id_camp_salvar, posto_nome_camp_salvar, titulo_camp_salvar, doenca_camp_salvar, data_camp_salvar, horarioCampanha, publico_camp_salvar, detalhes_camp_salvar)
+                val result = db?.updateCampanha(id_campanha, idDistrito, distrito_camp_salvar, posto_id_camp_salvar, posto_nome_camp_salvar, titulo_camp_salvar, doenca_camp_salvar, data_camp_salvar, horarioCampanha, publico_camp_salvar, detalhes_camp_salvar)
 
                 if(result!!.equals(-1)) {
                     Toast.makeText(context, "Campanha não atualizada.", Toast.LENGTH_SHORT).show()

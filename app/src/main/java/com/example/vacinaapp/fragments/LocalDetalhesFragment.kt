@@ -141,7 +141,7 @@ class LocalDetalhesFragment : Fragment() {
 
         //checa se o fetch deu certo
         val campanhasCursor: Cursor = db!!.rawQuery(
-            "SELECT id_campanha, distrito_campanha, id_posto_campanha, posto_nome_campanha, nome_campanha, doenca_campanha, data, horario, publico_campanha, detalhes" +
+            "SELECT id_campanha, distrito_fk, distrito_campanha, id_posto_campanha, posto_nome_campanha, nome_campanha, doenca_campanha, data, horario, publico_campanha, detalhes" +
                     " FROM tab_campanha WHERE id_posto_campanha = " + idposto
         )
 
@@ -149,21 +149,23 @@ class LocalDetalhesFragment : Fragment() {
         Log.d("listVacinas()", "vacinasSize=" + vacinasSize)
 
         // Add a list of vacinas
-        campanhasArraylist = ArrayList<CampanhasDataClass>()
+        campanhasArraylist = ArrayList()
         while (campanhasCursor.moveToNext()) {
             val idCampanha = campanhasCursor.getInt(0)
-            val distritoCampanha = campanhasCursor.getString(1)
-            val idPostoCampanha = campanhasCursor.getInt(2)
-            val postoNomeCampanha = campanhasCursor.getString(3)
-            val nomeCampanha = campanhasCursor.getString(4)
-            val doencaCampanha = campanhasCursor.getString(5)
-            val data = campanhasCursor.getString(6)
-            val horario = campanhasCursor.getString(7)
-            val publicoCampanha = campanhasCursor.getString(8)
-            val detalhes = campanhasCursor.getString(9)
+            val distritoId = campanhasCursor.getInt(1)
+            val distritoCampanha = campanhasCursor.getString(2)
+            val idPostoCampanha = campanhasCursor.getInt(3)
+            val postoNomeCampanha = campanhasCursor.getString(4)
+            val nomeCampanha = campanhasCursor.getString(5)
+            val doencaCampanha = campanhasCursor.getString(6)
+            val data = campanhasCursor.getString(7)
+            val horario = campanhasCursor.getString(8)
+            val publicoCampanha = campanhasCursor.getString(9)
+            val detalhes = campanhasCursor.getString(10)
 
+            Log.d("teste", "fk_id=$distritoId")
             campanhasArraylist.add(
-                CampanhasDataClass(idCampanha,distritoCampanha,idPostoCampanha,postoNomeCampanha,nomeCampanha,doencaCampanha,data,horario,publicoCampanha,detalhes)
+                CampanhasDataClass(idCampanha,distritoId, distritoCampanha,idPostoCampanha,postoNomeCampanha,nomeCampanha,doencaCampanha,data,horario,publicoCampanha,detalhes)
             )
 
         }
@@ -184,24 +186,24 @@ class LocalDetalhesFragment : Fragment() {
 
         val db = DataHelper(requireContext())
         val cursorDados: Cursor = db.rawQuery(
-            "SELECT id_local, posto_saude, distrito, endereco, telefone," +
-                    "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos WHERE id_local = " + keyLocal
+            "SELECT * FROM tabela_postos WHERE id_local = " + keyLocal
         )
 
 
         if (cursorDados.moveToNext()) {
             val localId = cursorDados.getInt(0)
             val localPosto = cursorDados.getString(1)
-            val localDistrito = cursorDados.getString(2)
-            val localEndereco = cursorDados.getString(3)
-            val telefone = cursorDados.getString(4)
-            val horSegunda = cursorDados.getString(5)
-            val horTerca = cursorDados.getString(6)
-            val horQuarta = cursorDados.getString(7)
-            val horQuinta = cursorDados.getString(8)
-            val horSexta = cursorDados.getString(9)
-            val horSabado = cursorDados.getString(10)
-            val horDomingo = cursorDados.getString(11)
+            val distritoId = cursorDados.getInt(2)
+            val localDistrito = cursorDados.getString(3)
+            val localEndereco = cursorDados.getString(4)
+            val telefone = cursorDados.getString(5)
+            val horSegunda = cursorDados.getString(6)
+            val horTerca = cursorDados.getString(7)
+            val horQuarta = cursorDados.getString(8)
+            val horQuinta = cursorDados.getString(9)
+            val horSexta = cursorDados.getString(10)
+            val horSabado = cursorDados.getString(11)
+            val horDomingo = cursorDados.getString(12)
 
             Log.d(
                 "Dados_posto: ",

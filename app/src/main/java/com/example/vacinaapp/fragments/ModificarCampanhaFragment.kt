@@ -154,15 +154,16 @@ class ModificarCampanhaFragment : Fragment() {
 
             while (campanhasCursor.moveToNext()) {
                 val campanhaId = campanhasCursor.getInt(0)
-                val campanhaDistrito = campanhasCursor.getString(1)
-                val campanhaIdposto = campanhasCursor.getInt(2)
-                val campanhaPostoNome = campanhasCursor.getString(3)
-                val campanhaNome = campanhasCursor.getString(4)
-                val campanhaDoenca = campanhasCursor.getString(5)
-                val campanhaData = campanhasCursor.getString(6)
-                val campanhaHorario = campanhasCursor.getString(7)
-                val campanhaPublico = campanhasCursor.getString(8)
-                val campanhaDetalhes = campanhasCursor.getString(9)
+                val idDistrito = campanhasCursor.getInt(1)
+                val campanhaDistrito = campanhasCursor.getString(2)
+                val campanhaIdposto = campanhasCursor.getInt(3)
+                val campanhaPostoNome = campanhasCursor.getString(4)
+                val campanhaNome = campanhasCursor.getString(5)
+                val campanhaDoenca = campanhasCursor.getString(6)
+                val campanhaData = campanhasCursor.getString(7)
+                val campanhaHorario = campanhasCursor.getString(8)
+                val campanhaPublico = campanhasCursor.getString(9)
+                val campanhaDetalhes = campanhasCursor.getString(10)
 
                 Log.d(
                     "listaCampanhasEdit()",
@@ -172,6 +173,7 @@ class ModificarCampanhaFragment : Fragment() {
                 arrayCampanhasEdit.add(
                     CampanhasDataClass(
                         campanhaId,
+                        idDistrito,
                         campanhaDistrito,
                         campanhaIdposto,
                         campanhaPostoNome,
@@ -196,24 +198,26 @@ class ModificarCampanhaFragment : Fragment() {
 
             while (campanhasCursor.moveToNext()) {
                 val campanhaId = campanhasCursor.getInt(0)
-                val campanhaDistrito = campanhasCursor.getString(1)
-                val campanhaIdposto = campanhasCursor.getInt(2)
-                val campanhaPostoNome = campanhasCursor.getString(3)
-                val campanhaNome = campanhasCursor.getString(4)
-                val campanhaDoenca = campanhasCursor.getString(5)
-                val campanhaData = campanhasCursor.getString(6)
-                val campanhaHorario = campanhasCursor.getString(7)
-                val campanhaPublico = campanhasCursor.getString(8)
-                val campanhaDetalhes = campanhasCursor.getString(9)
+                val idDistrito = campanhasCursor.getInt(1)
+                val campanhaDistrito = campanhasCursor.getString(2)
+                val campanhaIdposto = campanhasCursor.getInt(3)
+                val campanhaPostoNome = campanhasCursor.getString(4)
+                val campanhaNome = campanhasCursor.getString(5)
+                val campanhaDoenca = campanhasCursor.getString(6)
+                val campanhaData = campanhasCursor.getString(7)
+                val campanhaHorario = campanhasCursor.getString(8)
+                val campanhaPublico = campanhasCursor.getString(9)
+                val campanhaDetalhes = campanhasCursor.getString(10)
 
                 Log.d(
                     "listaCampanhasEdit()",
-                    "campanha_id= $campanhaId, distrito_campanha= $campanhaDistrito, id_posto_campanha= $campanhaIdposto, posto_nome_campanha= $campanhaPostoNome, nome_campanha= $campanhaNome, doenca_campanha=$campanhaDoenca, data= $campanhaData, horario= $campanhaHorario, publico_campanha= $campanhaPublico, detalhes= $campanhaDetalhes"
+                    "campanha_id= $campanhaId, distritoId = $idDistrito, distrito_campanha= $campanhaDistrito, id_posto_campanha= $campanhaIdposto, posto_nome_campanha= $campanhaPostoNome, nome_campanha= $campanhaNome, doenca_campanha=$campanhaDoenca, data= $campanhaData, horario= $campanhaHorario, publico_campanha= $campanhaPublico, detalhes= $campanhaDetalhes"
                 )
 
                 arrayCampanhasEdit.add(
                     CampanhasDataClass(
                         campanhaId,
+                        idDistrito,
                         campanhaDistrito,
                         campanhaIdposto,
                         campanhaPostoNome,

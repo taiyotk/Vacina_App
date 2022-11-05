@@ -13,6 +13,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         private const val dbName = "BancoDados.db"
         private const val TABELANOME = "tabela_postos"
         private const val ID = "id_local"
+        private const val ID_DISTRITO_FK = "id_distrito_fk"
         private const val POSTO = "posto_saude"
         private const val DISTRITO = "distrito"
         private const val ENDERECO = "endereco"
@@ -38,6 +39,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         //TABELA DE CAMPANHAS
         private const val TABELA_CAMPANHA = "tab_campanha"
         private const val ID_CAMPANHA = "id_campanha"
+        private const val DISTRITO_FK_CAMPANHA = "distrito_fk"
         private const val DISTRITO_CAMPANHA = "distrito_campanha"
         private const val ID_POSTO_CAMPANHA = "id_posto_campanha"
         private const val POSTO_NOME_CAMPANHA = "posto_nome_campanha"
@@ -48,7 +50,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         private const val PUBLICO_CAMPANHA = "publico_campanha"
         private const val DETALHES = "detalhes"                  //detalhes da campanha
 
-        //usuario
+        //tabela usuario
         private const val TABELA_USUARIO = "tab_usuario"
         private const val ID_USUARIO = "id_usuario"              //primary key
         private const val NOME_COMPLETO = "nome_completo"
@@ -58,51 +60,26 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         private const val NOME_USUARIO = "nome_usuario"
         private const val SENHA = "senha"
 
+        //tabela distritos
+        private const val TAB_DISTRITOS = "distrito_tab"
+        private const val ID_DISTRITO = "id_distrito"
+        private const val DISTRITO_NOME = "distrito_nome"
     }
 
 
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val criaTab1 = ("CREATE TABLE " + TABELANOME + " ("
-                + ID + " INTEGER PRIMARY KEY, " +
-                POSTO + " TEXT, " +
-                DISTRITO + " TEXT, " +
-                ENDERECO + " TEXT, " +
-                TELEFONE + " TEXT, " +
-                SEGUNDA + " TEXT, " +
-                TERCA + " TEXT, " +
-                QUARTA + " TEXT, " +
-                QUINTA + " TEXT, " +
-                SEXTA + " TEXT, " +
-                SABADO + " TEXT, " +
-                DOMINGO + " TEXT" +
-                ")")
+        val criaTab1 = ("CREATE TABLE $TABELANOME ($ID INTEGER PRIMARY KEY, $POSTO TEXT, $ID_DISTRITO_FK INTEGER,$DISTRITO TEXT, $ENDERECO TEXT, $TELEFONE TEXT, $SEGUNDA TEXT, $TERCA TEXT, $QUARTA TEXT, $QUINTA TEXT, $SEXTA TEXT, $SABADO TEXT, $DOMINGO TEXT, FOREIGN KEY($ID_DISTRITO_FK) REFERENCES $TAB_DISTRITOS($ID_DISTRITO))")
 
         db?.execSQL(criaTab1)
 
         val criaTab2 = (
-                "CREATE TABLE " + TABELA_VACINA + " (" +
-                ID_VACINA + " INTEGER PRIMARY KEY, " +
-                ID_POSTO + " INTEGER NOT NULL, " +
-                POSTO_NOME + " TEXT, " +
-                DOENCA + " TEXT, " +
-                DISPONIBILIDADE + " TEXT, " +
-                PUBLICO + " TEXT" + ")"
+                "CREATE TABLE $TABELA_VACINA ($ID_VACINA INTEGER PRIMARY KEY, $ID_POSTO INTEGER NOT NULL, $POSTO_NOME TEXT, $DOENCA TEXT, $DISPONIBILIDADE TEXT, $PUBLICO TEXT)"
                 )
         db?.execSQL(criaTab2)
 
         val criaTab3 = (
-                "CREATE TABLE " + TABELA_CAMPANHA + " (" +
-                ID_CAMPANHA + " INTEGER PRIMARY KEY, " +
-                DISTRITO_CAMPANHA + " TEXT NOT NULL, " +
-                ID_POSTO_CAMPANHA + " INTEGER, " +
-                POSTO_NOME_CAMPANHA + " TEXT," +
-                NOME_CAMPANHA + " TEXT, " +
-                DOENCA_CAMPANHA + " TEXT, " +
-                DATA + " TEXT, " +
-                HORARIO + " TEXT, " +
-                PUBLICO_CAMPANHA + " TEXT, " +
-                DETALHES + " TEXT" + ")"
+                "CREATE TABLE $TABELA_CAMPANHA ($ID_CAMPANHA INTEGER PRIMARY KEY, $DISTRITO_FK_CAMPANHA INTEGER, $DISTRITO_CAMPANHA TEXT NOT NULL, $ID_POSTO_CAMPANHA INTEGER, $POSTO_NOME_CAMPANHA TEXT,$NOME_CAMPANHA TEXT, $DOENCA_CAMPANHA TEXT, $DATA TEXT, $HORARIO TEXT, $PUBLICO_CAMPANHA TEXT, $DETALHES TEXT, FOREIGN KEY($DISTRITO_FK_CAMPANHA) REFERENCES $TAB_DISTRITOS($ID_DISTRITO))"
                 )
         db?.execSQL(criaTab3)
 
@@ -111,43 +88,48 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                 )
         db?.execSQL(criaTabUsuario)
 
+        val criaTabDistrito = (
+                "CREATE TABLE $TAB_DISTRITOS ($ID_DISTRITO INTEGER PRIMARY KEY, $DISTRITO_NOME)"
+                )
+        db?.execSQL(criaTabDistrito)
+
         val q1 =(
-            "INSERT INTO tabela_postos(id_local, posto_saude, distrito, endereco, telefone, segunda, terca, quarta, quinta, sexta, sabado, domingo) "+
+            "INSERT INTO tabela_postos(id_local, posto_saude, id_distrito_fk, distrito, endereco, telefone, segunda, terca, quarta, quinta, sexta, sabado, domingo) "+
                     "VALUES " +
-                    "(1, 'POSTO DE SAÚDE DE GALENA', 'Galena', 'Zona rural - Galena, Pres. Olegário - MG, 38750-000', "+
+                    "(1, 'POSTO DE SAÚDE DE GALENA', 1,'Galena', 'Zona rural - Galena, Pres. Olegário - MG, 38750-000', "+
                     "'Não informado', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00'," +
                     "'Fechado', 'Fechado'), " +
 
 
-                    "(2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Ponte Firme', 'R. Princesa Isabel - Pte. Firme, Pres. Olegário - MG, 38750-000', "+
+                    "(2, 'POSTO DE SAÚDE DE PONTE FIRME',2, 'Ponte Firme', 'R. Princesa Isabel - Pte. Firme, Pres. Olegário - MG, 38750-000', "+
                     "'Não informado', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00'," +
                     "'Fechado', 'Fechado'), " +
 
-                    "(3, 'PSF AEROPORTO', 'Presidente Olegário', 'R. Pres. J K, 690 - Pres. Olegário, MG, 38750-000', "+
+                    "(3, 'PSF AEROPORTO', 3, 'Presidente Olegário', 'R. Pres. J K, 690 - Pres. Olegário, MG, 38750-000', "+
                     "'(34) 38112885', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00'," +
                     "'Fechado', 'Fechado'), " +
 
-                    "(4, 'UBS ANDORINHAS', 'Presidente Olegário', 'R. Saturnino Xavier Rosa, 661 - Pres. Olegário, MG, 38750-000', "+
+                    "(4, 'UBS ANDORINHAS',3, 'Presidente Olegário', 'R. Saturnino Xavier Rosa, 661 - Pres. Olegário, MG, 38750-000', "+
                     "'(38) 38112136', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00'," +
                     "'Fechado', 'Fechado'), " +
 
-                    "(5, 'UBS BILÉ GODINHO', 'Presidente Olegário', 'R. Ilídio Araújo, 314 - Pres. Olegário, MG, 38750-000', "+
+                    "(5, 'UBS BILÉ GODINHO',3, 'Presidente Olegário', 'R. Ilídio Araújo, 314 - Pres. Olegário, MG, 38750-000', "+
                     "'(34) 38112136', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00'," +
                     "'Fechado', 'Fechado'), " +
 
-                    "(6, 'UBS DERCINA MARIA ANDRÉ', 'Santiago de Minas', 'Estrada Pres. Olegário  - Zona Rural - Presidente Olegário, MG - CEP: 38750000', "+
+                    "(6, 'UBS DERCINA MARIA ANDRÉ',4, 'Santiago de Minas', 'Estrada Pres. Olegário  - Zona Rural - Presidente Olegário, MG - CEP: 38750000', "+
                     "'Não informado', '07:00 às 16:00', '07:00 às 16:00', '07:00 às 16:00', '07:00 às 16:00', '07:00 às 16:00'," +
                     "'Fechado', 'Fechado'), " +
 
-                    "(7, 'UBS MATEUS CAIXETA', 'Presidente Olegário', 'R. Isabel De Souza Vasconcelos, bairro Mateus caixeta, 115 - Pres. Olegário - MG, 38750-000', "+
+                    "(7, 'UBS MATEUS CAIXETA',3, 'Presidente Olegário', 'R. Isabel De Souza Vasconcelos, bairro Mateus caixeta, 115 - Pres. Olegário - MG, 38750-000', "+
                     "'Não informado', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00'," +
                     "'Fechado', 'Fechado'), " +
 
-                    "(8, 'UBS PLANALTO', 'Presidente Olegário', 'R. Pimpim Moreira, bairro Planalto, 915 - Pres. Olegário, MG, 38750-000', "+
+                    "(8, 'UBS PLANALTO',3, 'Presidente Olegário', 'R. Pimpim Moreira, bairro Planalto, 915 - Pres. Olegário, MG, 38750-000', "+
                     "'(34) 38112205', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00', '07:00 às 17:00'," +
                     "'Fechado', 'Fechado'), " +
 
-                    "(9, 'UBS ZONA RURAL', 'Presidente Olegário', 'Rua Brejo Alegre, Planalto - Pres. Olegário - MG, 38750-000', "+
+                    "(9, 'UBS ZONA RURAL',3, 'Presidente Olegário', 'Rua Brejo Alegre, Planalto - Pres. Olegário - MG, 38750-000', "+
                     "'(34) 38112973', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00', '07:00 às 19:00'," +
                     "'Fechado', 'Fechado')"
             )
@@ -237,51 +219,51 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         db?.execSQL(q2)
 
         val q3 = (
-                "INSERT INTO ${TABELA_CAMPANHA}(${ID_CAMPANHA}, ${DISTRITO_CAMPANHA}, ${ID_POSTO_CAMPANHA}, ${POSTO_NOME_CAMPANHA}, ${NOME_CAMPANHA}, ${DOENCA_CAMPANHA}, ${DATA}, ${HORARIO}, ${PUBLICO_CAMPANHA}, ${DETALHES}) " +
+                "INSERT INTO ${TABELA_CAMPANHA}(${ID_CAMPANHA}, $DISTRITO_FK_CAMPANHA, ${DISTRITO_CAMPANHA}, ${ID_POSTO_CAMPANHA}, ${POSTO_NOME_CAMPANHA}, ${NOME_CAMPANHA}, ${DOENCA_CAMPANHA}, ${DATA}, ${HORARIO}, ${PUBLICO_CAMPANHA}, ${DETALHES}) " +
                         "VALUES" +
-                        "(NULL, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA','Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
+                        "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA','Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
                         " 'Crianças menores de 5 anos, idosos com mais de 59 anos e profissionais da área da saúde', " +
                         "'Campanha sazonal de combate a gripe na região de Galena. Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade'), "+
-                        "(NULL, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
+                        "(NULL,1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
                         "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
                         "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
-                        "(NULL, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
                         "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
                         "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
-                        "(NULL, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
                         "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
                         "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
-                        "(NULL, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
+                        "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
                         "'Público dos 4 anos de idade a 59 anos', " +
                         "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço'), "+
-                        "(NULL, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
+                        "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
                         " 'Crianças menores de 5 anos, idosos com mais de 59 anos e profissionais da área da saúde', " +
                         "'Campanha sazonal de combate a gripe na região de Ponte Firme. Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade'), "+
-                        "(NULL, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
+                        "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
                         "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
                         "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
-                        "(NULL, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
                         "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
                         "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
-                        "(NULL, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
                         "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
                         "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
-                        "(NULL, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
+                        "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
                         "'Público dos 4 anos de idade a 59 anos', " +
                         "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço'), "+
-                        "(NULL, 'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
+                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
                         " 'Crianças menores de 5 anos, idosos com mais de 59 anos e profissionais da área da saúde', " +
                         "'Campanha sazonal de combate a gripe na região de Presidente Olegário. Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade'), "+
-                        "(NULL, 'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
+                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
                         "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
                         "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
-                        "(NULL, 'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
                         "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
                         "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
-                        "(NULL, 'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
                         "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
                         "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
-                        "(NULL, 'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
+                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
                         "'Público dos 4 anos de idade a 59 anos', " +
                         "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço')"
                 )
@@ -292,6 +274,11 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                     "(NULL, 'Maria Silva Oliveira', '123456789-01', '(34) 99999-9999', 'mariaSO@email.com', 'MariaSilva', 'senha123')"
         )
         db?.execSQL(queryUsuario)
+
+        val queryDistrito = (
+                "INSERT INTO $TAB_DISTRITOS($ID_DISTRITO, $DISTRITO_NOME) VALUES (1, 'Galena'), (2, 'Ponte Firme'), (3, 'Presidente Olegário'), (4, 'Santiago de Minas')"
+                )
+        db?.execSQL(queryDistrito)
 
     }
 
@@ -319,11 +306,12 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         return result
     }
 
-    fun insertCampanha(distrito_campanha: String, id_posto_campanha: Int, posto_nome_campanha: String, nome_campanha: String,
+    fun insertCampanha(id_distrito: Int, distrito_campanha: String, id_posto_campanha: Int, posto_nome_campanha: String, nome_campanha: String,
                        doenca_campanha: String, data_campanha: String, horario: String, publico_campanha: String, detalhes_campanha: String): Long{
 
         val db: SQLiteDatabase = this.writableDatabase
         val contentValuesCamp = ContentValues()
+        contentValuesCamp.put(DISTRITO_FK_CAMPANHA, id_distrito)
         contentValuesCamp.put(DISTRITO_CAMPANHA, distrito_campanha)
         contentValuesCamp.put(ID_POSTO_CAMPANHA, id_posto_campanha)
         contentValuesCamp.put(POSTO_NOME_CAMPANHA, posto_nome_campanha)
@@ -345,10 +333,11 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         return Integer.parseInt("$success") != -1
     }
 
-    fun updateCampanha(id_campanha: Int, distrito_campanha: String, id_posto_campanha: Int, nome_posto: String, nome_campanha: String, doenca_campanha: String, data_campanha: String, horario_campanha: String, publico_campanha: String, detalhes_campanha: String): Int {
+    fun updateCampanha(id_campanha: Int,id_distrito: Int, distrito_campanha: String, id_posto_campanha: Int, nome_posto: String, nome_campanha: String, doenca_campanha: String, data_campanha: String, horario_campanha: String, publico_campanha: String, detalhes_campanha: String): Int {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(DISTRITO_CAMPANHA, distrito_campanha)
+        contentValues.put(DISTRITO_FK_CAMPANHA, id_distrito)
         contentValues.put(ID_POSTO_CAMPANHA, id_posto_campanha)
         contentValues.put(POSTO_NOME_CAMPANHA, nome_posto)
         contentValues.put(NOME_CAMPANHA, nome_campanha)

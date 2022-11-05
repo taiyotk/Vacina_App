@@ -74,7 +74,7 @@ class VacinasAdapter(
 
         //clicklistener do Editar
         holder.edit.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "Editar clicado!", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(holder.itemView.context, "Editar clicado!", Toast.LENGTH_SHORT).show()
 
             context = holder.itemView.context
             val id_key = currentItem.id_vacina

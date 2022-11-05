@@ -39,25 +39,26 @@ class CampanhaDetalhesFragment : Fragment() {
 
         val db = DataHelper(requireContext())
         val campanhasCursor: Cursor = db.rawQuery(
-            "SELECT id_campanha, distrito_campanha, id_posto_campanha, posto_nome_campanha, nome_campanha, doenca_campanha, data, horario, publico_campanha, detalhes" +
+            "SELECT id_campanha, distrito_fk, distrito_campanha, id_posto_campanha, posto_nome_campanha, nome_campanha, doenca_campanha, data, horario, publico_campanha, detalhes" +
                     " FROM tab_campanha WHERE id_campanha = " + keyLocal
         )
 
         if (campanhasCursor.moveToNext()) {
             val idCampanha = campanhasCursor.getInt(0)
-            val distritoCampanha = campanhasCursor.getString(1)
-            val idPostoCampanha = campanhasCursor.getInt(2)
-            val postoNomeCampanha = campanhasCursor.getString(3)
-            val nomeCampanha = campanhasCursor.getString(4)
-            val doencaCampanha = campanhasCursor.getString(5)
-            val data = campanhasCursor.getString(6)
-            val horario = campanhasCursor.getString(7)
-            val publicoCampanha = campanhasCursor.getString(8)
-            val detalhes = campanhasCursor.getString(9)
+            val idDistrito = campanhasCursor.getInt(1)
+            val distritoCampanha = campanhasCursor.getString(2)
+            val idPostoCampanha = campanhasCursor.getInt(3)
+            val postoNomeCampanha = campanhasCursor.getString(4)
+            val nomeCampanha = campanhasCursor.getString(5)
+            val doencaCampanha = campanhasCursor.getString(6)
+            val data = campanhasCursor.getString(7)
+            val horario = campanhasCursor.getString(8)
+            val publicoCampanha = campanhasCursor.getString(9)
+            val detalhes = campanhasCursor.getString(10)
 
             Log.d(
                 "listCategories()",
-                "id_campanha= " + idCampanha + "distrito= " + distritoCampanha + "id_posto= " + idPostoCampanha
+                "id_campanha= $idCampanha, distrito= $distritoCampanha, id_posto= $idPostoCampanha, id_distrito=$idDistrito"
             )
 
             val textviewNomeCampanha: TextView = requireView().findViewById(R.id.campanha_nome)

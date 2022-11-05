@@ -70,7 +70,7 @@ class LocaisFragment : Fragment() {
         db = DataHelper(requireContext())
 
         //checa se o fetch deu certo
-        val locaisCursor: Cursor = db!!.rawQuery("SELECT id_local, posto_saude, distrito, endereco, telefone," +
+        val locaisCursor: Cursor = db!!.rawQuery("SELECT id_local, posto_saude, id_distrito_fk, distrito, endereco, telefone," +
                 "segunda, terca, quarta, quinta, sexta, sabado, domingo FROM tabela_postos")
         val locaisSize: Int = locaisCursor.count
         Log.d("listLocais()", "locaisSize=" + locaisSize)
@@ -80,22 +80,24 @@ class LocaisFragment : Fragment() {
         while (locaisCursor.moveToNext()) {
             val localId = locaisCursor.getInt(0)
             val localPosto = locaisCursor.getString(1)
-            val localDistrito = locaisCursor.getString(2)
-            val localEndereco = locaisCursor.getString(3)
-            val telefone = locaisCursor.getString(4)
-            val horSegunda = locaisCursor.getString(5)
-            val horTerca = locaisCursor.getString(6)
-            val horQuarta = locaisCursor.getString(7)
-            val horQuinta = locaisCursor.getString(8)
-            val horSexta = locaisCursor.getString(9)
-            val horSabado = locaisCursor.getString(10)
-            val horDomingo = locaisCursor.getString(11)
+            val distritoId = locaisCursor.getInt(2)
+            val localDistrito = locaisCursor.getString(3)
+            val localEndereco = locaisCursor.getString(4)
+            val telefone = locaisCursor.getString(5)
+            val horSegunda = locaisCursor.getString(6)
+            val horTerca = locaisCursor.getString(7)
+            val horQuarta = locaisCursor.getString(8)
+            val horQuinta = locaisCursor.getString(9)
+            val horSexta = locaisCursor.getString(10)
+            val horSabado = locaisCursor.getString(11)
+            val horDomingo = locaisCursor.getString(12)
 
 
-            Log.d("listCategories()", "id_local=" + localId + " posto_saude=" + localPosto + " endereco=" +
-                    localEndereco)
+            Log.d("listCategories()",
+                "id_local=$localId posto_saude=$localPosto endereco=$localEndereco id_fk=$distritoId"
+            )
             locaisArraylist.add(
-                LocaisDataclass(localId, localPosto, localDistrito, localEndereco, telefone,
+                LocaisDataclass(localId, localPosto, distritoId, localDistrito, localEndereco, telefone,
             horSegunda, horTerca, horQuarta, horQuinta, horSexta, horSabado, horDomingo)
             )
 

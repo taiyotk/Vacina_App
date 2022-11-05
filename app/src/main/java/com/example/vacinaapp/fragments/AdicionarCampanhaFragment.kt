@@ -24,6 +24,7 @@ class AdicionarCampanhaFragment : Fragment() {
     private lateinit var horario_completo_camp: String
     private lateinit var publico_alvo_camp: String
     private lateinit var detalhes_camp: String
+    private var id_distrito: Int = -1
 
     private lateinit var db: DataHelper
 
@@ -152,54 +153,63 @@ class AdicionarCampanhaFragment : Fragment() {
                 R.id.rb_posto_saude_galena_camp -> {
                     id_posto_camp = 1
                     distrito_camp = "Galena"
+                    id_distrito = 1
                     posto_nome_camp = "POSTO DE SAÚDE DE GALENA"
                     //Toast.makeText(requireContext(), "Posto Galena", Toast.LENGTH_SHORT).show()
                 }
                 R.id.rb_posto_saude_ponte_firme_camp -> {
                     id_posto_camp = 2
                     distrito_camp = "Ponte Firme"
+                    id_distrito = 2
                     posto_nome_camp = "POSTO DE SAÚDE DE PONTE FIRME"
                     //Toast.makeText(requireContext(), "ponte firme", Toast.LENGTH_SHORT).show()
                 }
                 R.id.rb_posto_saude_aeroporto_camp -> {
                     id_posto_camp = 3
                     distrito_camp = "Presidente Olegário"
+                    id_distrito = 3
                     posto_nome_camp = "PSF AEROPORTO"
                     //Toast.makeText(requireContext(), "Posto Aeroporto", Toast.LENGTH_SHORT).show()
                 }
                 R.id.rb_posto_saude_andorinhas_camp -> {
                     id_posto_camp = 4
                     distrito_camp = "Presidente Olegário"
+                    id_distrito = 3
                     posto_nome_camp = "UBS ANDORINHAS"
                     //Toast.makeText(requireContext(), "Posto Andorinhas", Toast.LENGTH_SHORT).show()
                 }
                 R.id.rb_posto_saude_godinho_camp -> {
                     id_posto_camp = 5
                     distrito_camp = "Presidente Olegário"
+                    id_distrito = 3
                     posto_nome_camp = "UBS BILÉ GODINHO"
                     //Toast.makeText(requireContext(), "Posto Godinho", Toast.LENGTH_SHORT).show()
                 }
                 R.id.rb_posto_saude_dercina_maria_camp -> {
                     id_posto_camp = 6
                     distrito_camp = "Santiago de Minas"
+                    id_distrito = 4
                     posto_nome_camp = "UBS DERCINA MARIA ANDRÉ"
                     //Toast.makeText(requireContext(), "Posto Dercina Maria", Toast.LENGTH_SHORT).show()
                 }
                 R.id.rb_posto_saude_mateus_caixeta_camp -> {
                     id_posto_camp = 7
                     distrito_camp = "Presidente Olegário"
+                    id_distrito = 3
                     posto_nome_camp = "UBS MATEUS CAIXETA"
                     //Toast.makeText(requireContext(), "Mateus Caixeta", Toast.LENGTH_SHORT).show()
                 }
                 R.id.rb_posto_saude_planalto_camp -> {
                     id_posto_camp = 8
                     distrito_camp = "Presidente Olegário"
+                    id_distrito = 3
                     posto_nome_camp = "UBS PLANALTO"
                     //Toast.makeText(requireContext(), "Posto Planalto", Toast.LENGTH_SHORT).show()
                 }
                 R.id.rb_posto_saude_zona_rural_camp -> {
                     id_posto_camp = 9
                     distrito_camp = "Presidente Olegário"
+                    id_distrito = 3
                     posto_nome_camp = "UBS ZONA RURAL"
                     //Toast.makeText(requireContext(), "Posto Zona Rural", Toast.LENGTH_SHORT).show()
                 }
@@ -210,7 +220,7 @@ class AdicionarCampanhaFragment : Fragment() {
                 !publico_label.text.isEmpty() && !detalhesLabel.text.isEmpty() &&
                 id_posto_camp != -1) {
 
-                val result = db.insertCampanha(distrito_camp, id_posto_camp, posto_nome_camp, titulo_campanha, doenca_camp,
+                val result = db.insertCampanha(id_distrito, distrito_camp, id_posto_camp, posto_nome_camp, titulo_campanha, doenca_camp,
                 data_completa_camp, horario_completo_camp, publico_alvo_camp, detalhes_camp)
                 if(result.equals(-1)){
                     Toast.makeText(context, "Campanha não inserida.", Toast.LENGTH_SHORT).show()
