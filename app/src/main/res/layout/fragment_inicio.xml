@@ -54,6 +54,7 @@
             app:layout_constraintTop_toBottomOf="@+id/campanhas_recyclerview" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:paddingBottom="30dp"
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

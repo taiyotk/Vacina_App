@@ -11,6 +11,7 @@
     </string-array>
 
     <string-array name="reply_entries_distritos">
+        <item>Todos os distritos</item>
         <item>@string/galena_entrada</item>
         <item>@string/ponte_firme_entrada</item>
         <item>@string/presidente_olegario_entrada</item>
@@ -18,10 +19,11 @@
     </string-array>
 
     <string-array name="reply_values_distritos">
-        <item>@string/galena_valor</item>
-        <item>@string/ponte_firme_valor</item>
-        <item>@string/presidente_olegario_valor</item>
-        <item>@string/santiago_de_minas_valor</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
 
     <string-array name="reply_entries_temas">

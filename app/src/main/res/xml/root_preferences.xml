@@ -7,19 +7,20 @@
 
     <PreferenceCategory app:title="@string/tela_inicial">
 
-        <MultiSelectListPreference
+        <ListPreference
             app:key="resposta_distritos"
             app:title="Filtrar distritos"
             app:summary="@string/descricao_filtrar_distritos"
-            app:defaultValue="@array/reply_values_distritos"
+            app:defaultValue="0"
             app:entries="@array/reply_entries_distritos"
             app:entryValues="@array/reply_values_distritos"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Preferências do app">
-
+        <!--Esta Opções estão temporariamente desativadas-->
         <ListPreference
+            app:isPreferenceVisible="false"
             app:key="tema_escolhido"
             app:title="Tema do app"
             app:summary="@string/escolher_tema"
@@ -31,6 +32,7 @@
 
         <SwitchPreferenceCompat
             app:key="menu_visibilidade"
+            app:isPreferenceVisible="false"
             app:title="Menu do agente de saúde - Visibilidade"
             app:summary="Ocultar área do menu do agente de saúde"
             app:singleLineTitle="false"
@@ -39,12 +41,14 @@
             app:defaultValue="true"/>
 
         <ListPreference
+            app:isPreferenceVisible="false"
             app:key="fonte_preferencia"
             app:title="Tamanho da fonte"
             app:summary="Definir tamanho da fonte"
             app:defaultValue="@string/media_valor"
             app:entries="@array/reply_entries_fontsize"
             app:entryValues="@array/reply_values_fontsize"/>
+        <!--Esta Opções estão temporariamente desativadas-->
 
         <Preference
             app:layout="@layout/reset_item_preference"

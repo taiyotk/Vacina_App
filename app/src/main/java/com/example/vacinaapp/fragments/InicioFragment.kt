@@ -6,7 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
@@ -25,7 +27,13 @@ class InicioFragment : Fragment() {
     private lateinit var recyclerViewCampanha: RecyclerView
     private lateinit var campanhasArraylist: ArrayList<CampanhasDataClass>
     private lateinit var locaisAdapter: LocaisAdapter
+    private lateinit var campanhasCursor: Cursor
+    private lateinit var locaisCursor: Cursor
+
     private lateinit var binding: FragmentInicioBinding
+
+    private var filterId: Int? = -1//numero do filtro do distrito
+    private var key_distrito_pref = "resposta_distritos"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +41,15 @@ class InicioFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentInicioBinding.inflate(inflater)
+        readPrefs()
         locaisArraylist = ArrayList()
+
         return binding.root
+    }
+
+    private fun readPrefs(){
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        filterId = prefs.getString(key_distrito_pref, "0")?.toInt()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,7 +66,6 @@ class InicioFragment : Fragment() {
         val campanhaslayoutManager = LinearLayoutManager(context)
         recyclerViewCampanha = view.findViewById(R.id.campanhas_recyclerview)
         recyclerViewCampanha.layoutManager = campanhaslayoutManager
-        recyclerViewCampanha.setHasFixedSize(true)
         recyclerViewCampanha.isNestedScrollingEnabled = false
         recyclerViewCampanha.adapter = CampanhasAdapterHome(campanhasArraylist) {
             campanhasArraylist[it]
@@ -67,10 +81,16 @@ class InicioFragment : Fragment() {
     private fun dataInitializeLocais() {
         db = DataHelper(requireContext())
 
-        //checa se o fetch deu certo
-        val locaisCursor: Cursor = db!!.rawQuery(
-            "SELECT * FROM tabela_postos"
-        )
+        if(filterId == 0){
+            locaisCursor = db!!.rawQuery(
+                "SELECT * FROM tabela_postos"
+            )
+        } else {
+            locaisCursor = db!!.rawQuery(
+                "SELECT * FROM tabela_postos WHERE id_distrito_fk = $filterId"
+            )
+        }
+
         val locaisSize: Int = locaisCursor.count
         Log.d("listLocais()", "locaisSize=$locaisSize")
 
@@ -111,10 +131,16 @@ class InicioFragment : Fragment() {
 
         db = DataHelper(requireContext())
 
-        //checa se o fetch deu certo
-        val campanhasCursor: Cursor = db!!.rawQuery(
-            "SELECT * FROM tab_campanha WHERE id_campanha ORDER BY random() LIMIT 3"
-        )
+        if(filterId == 0){
+            campanhasCursor = db!!.rawQuery(
+                "SELECT * FROM tab_campanha WHERE id_campanha ORDER BY random() LIMIT 3"
+            )
+        } else {
+            campanhasCursor = db!!.rawQuery(
+                "SELECT * FROM tab_campanha WHERE distrito_fk = $filterId"
+            )
+        }
+
 
         val vacinasSize: Int = campanhasCursor.count
         Log.d("listVacinas()", "vacinasSize=$vacinasSize")
