@@ -1,5 +1,6 @@
 package com.example.vacinaapp.fragments
 
+import android.content.SharedPreferences
 import android.database.Cursor
 import android.os.Bundle
 import android.util.Log
@@ -31,9 +32,10 @@ class InicioFragment : Fragment() {
     private lateinit var locaisCursor: Cursor
 
     private lateinit var binding: FragmentInicioBinding
-
-    private var filterId: Int? = -1//numero do filtro do distrito
+    private var filterSet: Set<String>? = setOf("1,2,3,4")//numero do filtro do distrito
+    private lateinit var filterString: String
     private var key_distrito_pref = "resposta_distritos"
+    private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,15 +43,21 @@ class InicioFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentInicioBinding.inflate(inflater)
-        readPrefs()
+
+        readSetString()
         locaisArraylist = ArrayList()
 
         return binding.root
     }
 
-    private fun readPrefs(){
-        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        filterId = prefs.getString(key_distrito_pref, "0")?.toInt()
+    private fun readSetString(){
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        filterSet = sharedPrefs.getStringSet(key_distrito_pref, setOf("1,2,3,4"))
+        filterString = filterSet.toString().replace("[", "").replace("]", "");
+        //Log.d("filterset", "filterSet=$filterSet")
+        //Log.d("filterString", "filterString=$filterString")
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,16 +88,9 @@ class InicioFragment : Fragment() {
 
     private fun dataInitializeLocais() {
         db = DataHelper(requireContext())
-
-        if(filterId == 0){
-            locaisCursor = db!!.rawQuery(
-                "SELECT * FROM tabela_postos"
+        locaisCursor = db!!.rawQuery(
+            "SELECT * FROM tabela_postos WHERE id_distrito_fk IN ($filterString)"
             )
-        } else {
-            locaisCursor = db!!.rawQuery(
-                "SELECT * FROM tabela_postos WHERE id_distrito_fk = $filterId"
-            )
-        }
 
         val locaisSize: Int = locaisCursor.count
         Log.d("listLocais()", "locaisSize=$locaisSize")
@@ -131,13 +132,13 @@ class InicioFragment : Fragment() {
 
         db = DataHelper(requireContext())
 
-        if(filterId == 0){
+        if(filterString.contains("1, 2, 3, 4")){
             campanhasCursor = db!!.rawQuery(
                 "SELECT * FROM tab_campanha WHERE id_campanha ORDER BY random() LIMIT 3"
             )
         } else {
             campanhasCursor = db!!.rawQuery(
-                "SELECT * FROM tab_campanha WHERE distrito_fk = $filterId"
+                "SELECT * FROM tab_campanha WHERE distrito_fk IN ($filterString)"
             )
         }
 

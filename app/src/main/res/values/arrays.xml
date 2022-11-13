@@ -11,7 +11,6 @@
     </string-array>
 
     <string-array name="reply_entries_distritos">
-        <item>Todos os distritos</item>
         <item>@string/galena_entrada</item>
         <item>@string/ponte_firme_entrada</item>
         <item>@string/presidente_olegario_entrada</item>
@@ -19,7 +18,6 @@
     </string-array>
 
     <string-array name="reply_values_distritos">
-        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>

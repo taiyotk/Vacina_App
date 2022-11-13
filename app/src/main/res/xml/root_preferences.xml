@@ -7,13 +7,12 @@
 
     <PreferenceCategory app:title="@string/tela_inicial">
 
-        <ListPreference
+        <MultiSelectListPreference
             app:key="resposta_distritos"
             app:title="Filtrar distritos"
             app:summary="@string/descricao_filtrar_distritos"
-            app:defaultValue="0"
             app:entries="@array/reply_entries_distritos"
-            app:entryValues="@array/reply_values_distritos"/>
+            app:entryValues="@array/reply_values_distritos" />
 
     </PreferenceCategory>
 
