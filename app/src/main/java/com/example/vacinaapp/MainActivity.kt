@@ -1,17 +1,23 @@
 package com.example.vacinaapp
 
+import android.app.AlertDialog
+import android.content.SharedPreferences
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import com.example.vacinaapp.fragments.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
@@ -21,6 +27,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+
+    var registerState: Int = 0 //0 para não logado e 1 para logado
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
 
@@ -29,16 +37,18 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
     private val configFragment = ConfigFragment()
     private val pesquisarFragment = PesquisarFragment()
     private val usuarioFragment = UsuarioFragment()
-    private val local1Fragment = Local1Fragment()
-    private val local2Fragment = Local2Fragment()
     private val modificarCampanhaFragment = ModificarCampanhaFragment()
     private val adicionarVacinaFragment = AdicionarVacinaFragment()
-    private val campanhasFinalizadasFragment = CampanhasFinalizadasFragment()
     private val loginFragment = LoginFragment()
+    private lateinit var navigationView: NavigationView
+    private lateinit var navMenu: Menu
+    private lateinit var menuItemEntrar: MenuItem
+    private lateinit var menuItemSair: MenuItem
+    private lateinit var menuItemMeusDados: MenuItem
+    private lateinit var menuAreaVacinas: MenuItem
+    private var loginKey = "com.example.vacinaapp.loginState"
 
-    //classe do banco de dados
     private lateinit var databaseHelper:  DataHelper
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,11 +66,20 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
 
-        val navigationView: NavigationView = findViewById(R.id.nav_view)
+        navigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+
+        navMenu = navigationView.menu
+        menuItemEntrar = navMenu.findItem(R.id.entrar)
+        menuItemSair = navMenu.findItem(R.id.sair)
+        menuItemMeusDados = navMenu.findItem(R.id.meusdados)
+        menuAreaVacinas = navMenu.findItem(R.id.vacinacao_area)
 
         //inicializacao do databasehelper
         databaseHelper = DataHelper(this)
+
+        registerState = readSharedPrefLogin()
+        changeVisibility(registerState)
 
     }
 
@@ -71,12 +90,10 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
             R.id.pesquisar -> replaceFragment(pesquisarFragment)
             R.id.ic_config -> replaceFragment(configFragment)
             R.id.meusdados -> replaceFragment(usuarioFragment)
-            R.id.local1 -> replaceFragment(local1Fragment)
-            R.id.local2 -> replaceFragment(local2Fragment)
             R.id.modificar_campanha -> replaceFragment(modificarCampanhaFragment)
-            R.id.adicionar_vacina -> replaceFragment(adicionarVacinaFragment) //id do ic errado modificar_vacin antigo
-            R.id.campanhas_finalizadas -> replaceFragment(campanhasFinalizadasFragment)
+            R.id.adicionar_vacina -> replaceFragment(adicionarVacinaFragment)
             R.id.entrar -> replaceFragment(loginFragment)
+            R.id.sair -> sair()
 
         }
         drawer.closeDrawer(GravityCompat.START)
@@ -138,6 +155,53 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         return super.dispatchTouchEvent(ev)
     }
 
+    fun changeVisibility(state: Int) {
+
+        if(state == 1){
+            menuItemEntrar.isVisible = false
+            menuItemSair.isVisible = true
+            menuItemMeusDados.isVisible = true
+            menuAreaVacinas.isVisible = true
+
+        } else{
+            menuItemEntrar.isVisible = true
+            menuItemMeusDados.isVisible = false
+            menuAreaVacinas.isVisible = false
+            menuItemSair.isVisible = false
+
+        }
+    }
+
+    private fun readSharedPrefLogin(): Int{
+
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val value = prefs.getInt(loginKey, 0)
+        Log.d("sharedPrefLogin", "valor${prefs.getInt(loginKey, 0)}")
+
+        return value
+
+    }
+
+    fun sair(){
+
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Encerrar sessão")
+        builder.setMessage("Deseja realmente encerrar a sessão?")
+        builder.setPositiveButton("Sim") { dialogInterface, i ->
+            val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+            val editor = prefs.edit()
+            editor.putInt(loginKey, 0)
+            editor.apply()
+            val intent = intent
+            finish()
+            startActivity(intent)
+        }
+        builder.setNegativeButton("Cancelar") { dialogInterface, i ->
+            dialogInterface.cancel()
+        }
+        builder.show()
+
+    }
 
 }
 

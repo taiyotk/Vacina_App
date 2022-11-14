@@ -1,20 +1,29 @@
 package com.example.vacinaapp.fragments
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
+import androidx.preference.PreferenceManager
+import com.example.vacinaapp.MainActivity
 import com.example.vacinaapp.R
+import com.google.android.material.navigation.NavigationView
 
 class LoginFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var mainActivity: MainActivity
+    private lateinit var botaoentrar: Button
+    private var loginKey = "com.example.vacinaapp.loginState"
+    private var loginState: Int = 0
+    private lateinit var navigationView: NavigationView
+    private lateinit var navMenu: Menu
+    private lateinit var menuItemEntrar: MenuItem
+    private lateinit var menuItemSair: MenuItem
+    private lateinit var menuItemMeusDados: MenuItem
+    private lateinit var menuAreaVacinas: MenuItem
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,17 +31,70 @@ class LoginFragment : Fragment() {
     ): View? {
         val inflar = inflater.inflate(R.layout.fragment_login, container, false)
 
-        val botaoentrar = inflar.findViewById<Button>(R.id.botao_entrar)
-        botaoentrar.setOnClickListener {
-            val inicioFragment = InicioFragment()
+        mainActivity = MainActivity()
 
-            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, inicioFragment)
-
-            transaction.commit()
-        }
 
         return inflar
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navigationView = activity?.findViewById(R.id.nav_view)!!
+        navMenu = navigationView.menu
+        menuItemEntrar = navMenu.findItem(R.id.entrar)
+        menuItemSair = navMenu.findItem(R.id.sair)
+        menuItemMeusDados = navMenu.findItem(R.id.meusdados)
+        menuAreaVacinas = navMenu.findItem(R.id.vacinacao_area)
+        botaoentrar = view.findViewById(R.id.botao_entrar)
+
+        botaoentrar.setOnClickListener {
+            val inicioFragment = InicioFragment()
+            parentFragmentManager.commit {
+                setCustomAnimations(
+                    R.anim.slide_in,
+                    R.anim.fade_out
+                )
+                replace(R.id.fragment_container, inicioFragment)
+            }
+
+            editLoginKey() //funcao que coloca o estado de login(1 para logado e 0 para não logado)
+            loginState = readSharedPref() //le e armazena o valor do login na variavel
+            login(loginState) //funcao que muda a visibilidade do menu
+        }
+
+
+
+    }
+
+    private fun editLoginKey(){
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val editor = prefs.edit()
+        editor.putInt(loginKey, 1)
+        editor.apply()
+    }
+
+    fun readSharedPref(): Int{
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val value = prefs.getInt(loginKey, 0)
+        Log.d("sharedPrefLogin", "valor${prefs.getInt(loginKey, 0)}")
+
+        return value
+    }
+
+    fun login(loginState: Int){
+        if(loginState == 1){
+            menuItemEntrar.isVisible = false
+            menuItemSair.isVisible = true
+            menuItemMeusDados.isVisible = true
+            menuAreaVacinas.isVisible = true
+
+        } else{
+            menuItemEntrar.isVisible = true
+            menuItemMeusDados.isVisible = false
+            menuAreaVacinas.isVisible = false
+            menuItemSair.isVisible = false
+
+        }
     }
 
     companion object {
