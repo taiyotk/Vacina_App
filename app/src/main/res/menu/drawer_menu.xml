@@ -48,23 +48,6 @@
         </menu>
     </item>
     <item
-        android:title="@string/locais_de_vacinacao"
-        android:id="@+id/locais_de_vacinacao_area"
-        android:visible="false">
-        <menu>
-            <group>
-                <item
-                    android:id="@+id/local1"
-                    android:icon="@drawable/ic_clinic"
-                    android:title="Posto 1"/>
-                <item
-                    android:id="@+id/local2"
-                    android:icon="@drawable/ic_clinic"
-                    android:title="Posto 2"/>
-            </group>
-        </menu>
-    </item>
-    <item
         android:title="@string/vacinacao"
         android:id="@+id/vacinacao_area"
         android:visible="true">
@@ -78,11 +61,6 @@
                     android:id="@+id/adicionar_vacina"
                     android:icon="@drawable/edit_property_ic"
                     android:title="@string/adicionar_vacina"/>
-                <item
-                    android:visible="false"
-                    android:id="@+id/campanhas_finalizadas"
-                    android:icon="@drawable/calendar_checked_ic"
-                    android:title="@string/campanhas_finalizadas"/>
             </group>
         </menu>
     </item>

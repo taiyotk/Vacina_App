@@ -3,7 +3,6 @@ package com.example.vacinaapp.recyclerViewAdapters
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,10 +45,10 @@ class CampanhasEditAdapter(val listaCampanhasEdit: ArrayList<CampanhasDataClass>
                 val builder: AlertDialog.Builder = AlertDialog.Builder(context)
                 builder.setTitle("Apagar Campanha")
                 builder.setMessage("Deseja Realmente apagar a campanha?")
-                builder.setPositiveButton("Sim", DialogInterface.OnClickListener { dialogInterface, i ->
+                builder.setPositiveButton("Sim") { dialogInterface, i ->
                     val db = DataHelper(context)
                     db.deleteCampanha(id)
-                    if(db.deleteCampanha(id) == true){
+                    if (db.deleteCampanha(id)) {
                         Toast.makeText(context, "Campanha apagada", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, "Campanha não apagada", Toast.LENGTH_SHORT).show()
@@ -59,11 +58,11 @@ class CampanhasEditAdapter(val listaCampanhasEdit: ArrayList<CampanhasDataClass>
                     notifyItemRemoved(position)
                     notifyItemRangeChanged(position, listaCampanhasEdit.size)
 
-                })
-                builder.setNegativeButton("Não", DialogInterface.OnClickListener { dialogInterface, i ->
+                }
+                builder.setNegativeButton("Não") { dialogInterface, i ->
                     dialogInterface.cancel()
-                })
-                    builder.show()
+                }
+                builder.show()
 
             }
             onClick(holder.btnDelete)
