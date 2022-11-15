@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Button
+
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import android.widget.TextView
 import androidx.fragment.app.commit
 import androidx.preference.PreferenceManager
 import com.example.vacinaapp.DataHelper
@@ -27,6 +29,7 @@ class LoginFragment : Fragment() {
     private lateinit var menuItemSair: MenuItem
     private lateinit var menuItemMeusDados: MenuItem
     private lateinit var menuAreaVacinas: MenuItem
+    private lateinit var textviewCadastro: TextView
 
 
 
@@ -38,8 +41,8 @@ class LoginFragment : Fragment() {
     ): View? {
         val inflar = inflater.inflate(R.layout.fragment_login, container, false)
 
+        textviewCadastro = inflar.findViewById(R.id.textViewLogin)
         mainActivity = MainActivity()
-
 
         return inflar
     }
@@ -80,6 +83,26 @@ class LoginFragment : Fragment() {
         }
             else
                 Toast.makeText(context, "Login falhou", Toast.LENGTH_SHORT).show()
+
+            parentFragmentManager.commit {
+                setCustomAnimations(
+                    R.anim.slide_in,
+                    R.anim.fade_out
+                )
+                replace(R.id.fragment_container, inicioFragment)
+            }
+
+            editLoginKey() //funcao que coloca o estado de login(1 para logado e 0 para não logado)
+            loginState = readSharedPref() //le e armazena o valor do login na variavel
+            login(loginState) //funcao que muda a visibilidade do menu
+        }
+
+        textviewCadastro.setOnClickListener{
+            val cadastroFragment = CadastroFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, cadastroFragment)
+                .addToBackStack(null)
+                .commit()
         }
 
     }

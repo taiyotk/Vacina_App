@@ -368,5 +368,20 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
 
     }
 
+    fun insertUsuario(nome_completo: String, cpf: String, telefone: String, email: String, nome_usuario: String, senha: String): Long{
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(NOME_COMPLETO, nome_completo)
+        contentValues.put(CPF, cpf)
+        contentValues.put(TELEFONE_USUARIO, telefone)
+        contentValues.put(EMAIL, email)
+        contentValues.put(NOME_USUARIO, nome_usuario)
+        contentValues.put(SENHA, senha)
+
+
+        val success = db.insert(TABELA_USUARIO, null, contentValues)
+        return success
+    }
+
 
 }

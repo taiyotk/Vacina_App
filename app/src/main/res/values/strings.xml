@@ -110,7 +110,7 @@
     <string name="quinta">Quinta:</string>
     <string name="sexta">Sexta:</string>
     <string name="endereco_do_posto">Endereço do posto</string>
-    <string name="telefone_exemplo">(34) 00000 0000</string>
+    <string name="telefone_exemplo">(00) 00000 0000</string>
     <string name="sabado">Sábado:</string>
     <string name="domingo">Domingo:</string>
     <string name="terca">Terça:</string>
@@ -178,6 +178,30 @@
     <string name="informacoes_adicionais_hint">Informações adicionais</string>
     <string name="descricao_botao">Botão do publico</string>
     <string name="modificar_vacina">Modificar vacina</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="nome_completo">Nome completo:</string>
+    <string name="nome_completo_hint">Nome completo</string>
+    <string name="cpf">CPF:</string>
+    <string name="cpf_hint">000.000.000–00</string>
+    <string name="e_mail">E-mail:</string>
+    <string name="seu_email">Seu e-mail</string>
+    <string name="proximo">Próximo</string>
+    <string name="senha_e_usuario">Usuário e Senha</string>
+    <string name="crie_um_nome_de_usuario">Crie um nome de usuário:</string>
+    <string name="usuario_hint">Usuário</string>
+    <string name="crie_uma_senha">Crie uma senha:</string>
+    <string name="cabecalho_senha_titulo">(deve ter no mínimo 8 caraceres e incluir letras, números e caracteres especiais)</string>
+    <string name="senha_hint">Senha</string>
+    <string name="confirme_sua_senha">Confirme sua senha:</string>
+    <string name="digite_hint">Digite sua senha novamente</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="e_mail_invalido">E-mail inválido!</string>
+    <string name="aviso_obrigatorio">Campo Obrigatório!</string>
+    <string name="aviso_senha_numero">*Senha com números</string>
+    <string name="qt_caracteres_item">*Mínimo de 8 caracteres</string>
+    <string name="senha_com_letras">*Senha com letras maiúsculas e minúsculas</string>
+    <string name="senha_com_caracteres_especiais">*Senha com caracteres especiais</string>
+    <string name="aviso_senha_errada">As senhas precisam ser as mesmas</string>
 
 
     <!--Array de postos spinner-->
