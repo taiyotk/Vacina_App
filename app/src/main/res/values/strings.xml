@@ -90,7 +90,7 @@
     <string name="usuario">Usuário:</string>
     <string name="senha">Senha:</string>
     <string name="entrar">Entrar</string>
-    <string name="crie_sua_conta_aqui">Crie sua conta aqui</string>
+    <string name="crie_sua_conta_aqui"><u>Crie sua conta aqui</u></string>
     <string name="menu">MENU</string>
     <string name="app_logo">app_logo</string>
     <string name="unidades_de_saude">Unidades de Saúde</string>

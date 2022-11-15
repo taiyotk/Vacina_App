@@ -68,6 +68,14 @@ class LoginFragment : Fragment() {
             loginOnClick()
         }
 
+        textviewCadastro.setOnClickListener {
+            val cadastroFragment = CadastroFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, cadastroFragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
     }
 
     private fun loginOnClick(){
