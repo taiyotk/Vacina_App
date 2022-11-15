@@ -28,10 +28,6 @@ class LoginFragment : Fragment() {
     private lateinit var menuItemMeusDados: MenuItem
     private lateinit var menuAreaVacinas: MenuItem
 
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,8 +58,8 @@ class LoginFragment : Fragment() {
             val inicioFragment = InicioFragment()
 
             val args = listOf(usuario.text.toString(), senha.text.toString()).toTypedArray()
-            val rs = db.rawQuery("SELECT * FROM tab_usuario WHERE  nome_usuario = ? AND senha = ?", args)
-            if (rs.moveToNext()){
+            val dadosLogin = db.rawQuery("SELECT nome_usuario, senha FROM tab_usuario WHERE  nome_usuario = ? AND senha = ?", args)
+            if (dadosLogin.moveToNext()){
                 parentFragmentManager.commit {
                     setCustomAnimations(
                         R.anim.slide_in,
@@ -76,10 +72,14 @@ class LoginFragment : Fragment() {
                 loginState = readSharedPref() //le e armazena o valor do login na variavel
                 login(loginState) //funcao que muda a visibilidade do menu
             Toast.makeText(context, "Login feito com sucesso", Toast.LENGTH_SHORT).show()
-            rs.close()
+            dadosLogin.close()
         }
-            else
-                Toast.makeText(context, "Login falhou", Toast.LENGTH_SHORT).show()
+            else if (usuario.text.isEmpty() || senha.text.isEmpty()){
+                Toast.makeText(context, "Preencha todos os dados", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Toast.makeText(context, "Nome do usuário ou senha incorreto", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
