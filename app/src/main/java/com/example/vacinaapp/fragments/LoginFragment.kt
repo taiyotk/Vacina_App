@@ -30,10 +30,6 @@ class LoginFragment : Fragment() {
     private lateinit var menuAreaVacinas: MenuItem
     private lateinit var textviewCadastro: TextView
 
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

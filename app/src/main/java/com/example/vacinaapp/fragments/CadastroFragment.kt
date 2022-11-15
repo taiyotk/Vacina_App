@@ -12,7 +12,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.R
 import java.util.regex.Pattern
 
@@ -61,7 +60,6 @@ class CadastroFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun afterTextChanged(editable: Editable?) {

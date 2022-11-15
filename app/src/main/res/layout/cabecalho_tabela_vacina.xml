@@ -60,6 +60,7 @@
             android:background="@drawable/border"
             android:clickable="true"
             android:focusable="true"
+            android:visibility="gone"
             android:padding="5dp"
             android:text="@string/editar"
             android:textAlignment="center"

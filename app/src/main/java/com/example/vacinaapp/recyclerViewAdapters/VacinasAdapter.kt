@@ -2,9 +2,11 @@ package com.example.vacinaapp.recyclerViewAdapters
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.R
 import com.example.vacinaapp.dataClass.VacinasDataClass
@@ -25,12 +28,15 @@ class VacinasAdapter(
 ) : RecyclerView.Adapter<VacinasViewHolder>() {
 
     private lateinit var context: Context
+    private var state = 0
+    private var loginKey = "com.example.vacinaapp.loginState"
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacinasViewHolder {
 
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.recyclerview_item_vacina, parent, false)
+
         return VacinasViewHolder(itemView)
 
     }
@@ -40,10 +46,12 @@ class VacinasAdapter(
     }
 
     override fun onBindViewHolder(holder: VacinasViewHolder, position: Int) {
-
+        context = holder.itemView.context
         val currentItem = listaVacinas[position]
         holder.doenca.text = currentItem.doenca
         holder.disponibilidade.text = currentItem.disponibilidade
+
+        state = readSharedPref()
         //holder.ver.text = currentItem.publico
 
         //funcao que muda a cor do sim para verde e não para vermelho
@@ -53,6 +61,12 @@ class VacinasAdapter(
         } else if (holder.disponibilidade.text == "Não") {
             holder.disponibilidade.setTextColor(Color.parseColor("#db0200"))
             holder.disponibilidade.setTypeface(null, Typeface.BOLD)
+        }
+
+        if(state == 0){
+            holder.edit.visibility = View.GONE
+        } else {
+            holder.edit.visibility = View.VISIBLE
         }
 
         //clicklistener do Publico
@@ -76,7 +90,6 @@ class VacinasAdapter(
         holder.edit.setOnClickListener {
             //Toast.makeText(holder.itemView.context, "Editar clicado!", Toast.LENGTH_SHORT).show()
 
-            context = holder.itemView.context
             val id_key = currentItem.id_vacina
             fun getKey(key: Int) {
                 val fragment = AtualizarVacinaFragment()
@@ -94,6 +107,14 @@ class VacinasAdapter(
             getKey(id_key)
 
         }
+    }
+
+    fun readSharedPref(): Int{
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val value = prefs.getInt(loginKey, 0)
+        Log.d("sharedPrefLogin", "valor${prefs.getInt(loginKey, 0)}")
+
+        return value
     }
 }
 

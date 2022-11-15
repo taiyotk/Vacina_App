@@ -1,5 +1,6 @@
 package com.example.vacinaapp.fragments
 
+import android.content.SharedPreferences
 import android.database.Cursor
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vacinaapp.DataHelper
@@ -21,24 +23,14 @@ import com.example.vacinaapp.recyclerViewAdapters.CampanhasAdapter
 
 class LocalDetalhesFragment : Fragment() {
 
-    //o id do textview do titulo é nome_posto_titulo
-    //id do textview do endereco é textview_endereco
-    //id do textview do endereco é textview_telefone
-    //id do textview dos horarios: segunda_label, terca_label ...
-    //id da textview da tabela de vacinas no xml: doenca_texview, disp_textview, ver_textview
-
-    //private lateinit var recyclerViewVacina: RecyclerView
-    //private lateinit var locaisArraylist: ArrayList<LocaisDataclass>
-
-
     private var db: DataHelper? = null
-
     private lateinit var recyclerViewVacina: RecyclerView
     private lateinit var vacinasArraylist: ArrayList<VacinasDataClass>
-
-
     private lateinit var recyclerViewCampanha: RecyclerView
     private lateinit var campanhasArraylist: ArrayList<CampanhasDataClass>
+    private lateinit var cabecEditVacina: TextView
+    private var loginKey = "com.example.vacinaapp.loginState"
+    private var loginState = 0
 
     companion object {
 
@@ -46,8 +38,6 @@ class LocalDetalhesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -56,6 +46,10 @@ class LocalDetalhesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_local_detalhes, container, false)
+        cabecEditVacina = view.findViewById(R.id.editar)
+
+        loginState = readSharedPref()
+        changeVisibilityVac(loginState)
 
         return view
     }
@@ -71,6 +65,7 @@ class LocalDetalhesFragment : Fragment() {
         recyclerViewVacina.layoutManager = vacinaslayoutManager
         recyclerViewVacina.setHasFixedSize(true)
         recyclerViewVacina.isNestedScrollingEnabled = false
+
         recyclerViewVacina.adapter = VacinasAdapter(vacinasArraylist) {
             vacinasArraylist[it]
         }
@@ -235,6 +230,23 @@ class LocalDetalhesFragment : Fragment() {
 
         }
 
+
+    }
+
+    fun readSharedPref(): Int{
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val value = prefs.getInt(loginKey, 0)
+        Log.d("sharedPrefLogin", "valor${prefs.getInt(loginKey, 0)}")
+
+        return value
+    }
+
+    fun changeVisibilityVac(state: Int){
+        if(state == 1){
+            cabecEditVacina.visibility = View.VISIBLE
+        } else {
+            cabecEditVacina.visibility = View.GONE
+        }
 
     }
 
