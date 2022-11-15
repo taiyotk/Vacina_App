@@ -50,38 +50,50 @@ class LoginFragment : Fragment() {
         menuAreaVacinas = navMenu.findItem(R.id.vacinacao_area)
         botaoentrar = view.findViewById(R.id.botao_entrar)
 
+        senha.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                loginOnClick()
+                return@OnKeyListener true
+            }
+            false
+        })
+
+        botaoentrar.setOnClickListener {
+            loginOnClick()
+        }
+
+    }
+
+    private fun loginOnClick(){
         val helper = DataHelper(requireContext())
         val db = helper.readableDatabase
 
 
-        botaoentrar.setOnClickListener {
-            val inicioFragment = InicioFragment()
+        val inicioFragment = InicioFragment()
 
-            val args = listOf(usuario.text.toString(), senha.text.toString()).toTypedArray()
-            val dadosLogin = db.rawQuery("SELECT nome_usuario, senha FROM tab_usuario WHERE  nome_usuario = ? AND senha = ?", args)
-            if (dadosLogin.moveToNext()){
-                parentFragmentManager.commit {
-                    setCustomAnimations(
-                        R.anim.slide_in,
-                        R.anim.fade_out
-                    )
-                    replace(R.id.fragment_container, inicioFragment)
-                }
+        val args = listOf(usuario.text.toString(), senha.text.toString()).toTypedArray()
+        val dadosLogin = db.rawQuery("SELECT nome_usuario, senha FROM tab_usuario WHERE  nome_usuario = ? AND senha = ?", args)
+        if (dadosLogin.moveToNext()){
+            parentFragmentManager.commit {
+                setCustomAnimations(
+                    R.anim.slide_in,
+                    R.anim.fade_out
+                )
+                replace(R.id.fragment_container, inicioFragment)
+            }
 
-                editLoginKey() //funcao que coloca o estado de login(1 para logado e 0 para não logado)
-                loginState = readSharedPref() //le e armazena o valor do login na variavel
-                login(loginState) //funcao que muda a visibilidade do menu
+            editLoginKey() //funcao que coloca o estado de login(1 para logado e 0 para não logado)
+            loginState = readSharedPref() //le e armazena o valor do login na variavel
+            login(loginState) //funcao que muda a visibilidade do menu
             Toast.makeText(context, "Login feito com sucesso", Toast.LENGTH_SHORT).show()
             dadosLogin.close()
         }
-            else if (usuario.text.isEmpty() || senha.text.isEmpty()){
-                Toast.makeText(context, "Preencha todos os dados", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                Toast.makeText(context, "Nome do usuário ou senha incorreto", Toast.LENGTH_SHORT).show()
-            }
+        else if (usuario.text.isEmpty() || senha.text.isEmpty()){
+            Toast.makeText(context, "Preencha todos os dados", Toast.LENGTH_SHORT).show()
         }
-
+        else{
+            Toast.makeText(context, "Nome do usuário ou senha incorreto", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun editLoginKey(){
