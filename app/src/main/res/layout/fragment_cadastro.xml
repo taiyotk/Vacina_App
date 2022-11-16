@@ -68,20 +68,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/nome_completo_titulo" />
 
-
-            <TextView
-                android:id="@+id/textview_aviso_email"
-                android:visibility="invisible"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:text="@string/e_mail_invalido"
-                android:textColor="@color/vermelho"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
-
             <TextView
                 android:id="@+id/cpf_titulo"
                 android:layout_width="match_parent"
@@ -109,7 +95,6 @@
                 android:gravity="center_vertical"
                 android:hint="@string/cpf_hint"
                 android:maxLength="14"
-                android:digits="0123456789.-"
                 android:inputType="numberDecimal"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -185,6 +170,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/email_titulo" />
+
+            <TextView
+                android:id="@+id/textview_aviso_email"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/e_mail_invalido"
+                android:textColor="@color/vermelho"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
 
             <Button
                 android:id="@+id/proximo_button"
