@@ -25,9 +25,6 @@ class CadastroFragment : Fragment() {
     private lateinit var proximoButton: Button
     private lateinit var emailNotValidated: String
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -77,7 +74,6 @@ class CadastroFragment : Fragment() {
                     editTextCpf.text.append("-")
                 }
             }
-
 
         })
 
@@ -176,6 +172,7 @@ class CadastroFragment : Fragment() {
         val pattern: Pattern = Patterns.EMAIL_ADDRESS
         return pattern.matcher(email).matches()
     }
+
     companion object {
 
     }
