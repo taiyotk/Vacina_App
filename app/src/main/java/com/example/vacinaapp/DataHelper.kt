@@ -270,7 +270,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         db?.execSQL(q3)
 
         val queryUsuario = (
-            "INSERT INTO $TABELA_USUARIO($ID_USUARIO, $NOME_COMPLETO, $CPF, $TELEFONE_USUARIO, $EMAIL, $NOME_USUARIO, $SENHA) VALUES (NULL, 'João Silva Sousa', '123456789-12', '(34) 98765-4321', 'joao123@email.com', 'joaoS', '1234abcd'), " +
+            "INSERT INTO $TABELA_USUARIO($ID_USUARIO, $NOME_COMPLETO, $CPF, $TELEFONE_USUARIO, $EMAIL, $NOME_USUARIO, $SENHA) VALUES (NULL, 'João Silva Sousa', '123456789-12', '(34) 98765-4321', 'joao123@email.com', 'joaoS', '12345678'), " +
                     "(NULL, 'Maria Silva Oliveira', '123456789-01', '(34) 99999-9999', 'mariaSO@email.com', 'MariaSilva', 'senha123')"
         )
         db?.execSQL(queryUsuario)
@@ -383,5 +383,19 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         return success
     }
 
+    //a funcao só serve para os dados pessoais, não senha e nem nome de usuário
+    fun updateUsuarioDados(id_usuario: Int, nome_completo: String, cpf: String, telefone: String, email: String): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(NOME_COMPLETO, nome_completo)
+        contentValues.put(CPF, cpf)
+        contentValues.put(TELEFONE_USUARIO, telefone)
+        contentValues.put(EMAIL, email)
+
+        val success = db.update(TABELA_USUARIO, contentValues, "$ID_VACINA = $id_usuario", null)
+        db.close()
+        return success
+
+    }
 
 }

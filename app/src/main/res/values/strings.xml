@@ -202,6 +202,10 @@
     <string name="senha_com_letras">*Senha com letras maiúsculas e minúsculas</string>
     <string name="senha_com_caracteres_especiais">*Senha com caracteres especiais</string>
     <string name="aviso_senha_errada">As senhas precisam ser as mesmas</string>
+    <string name="alterar_dados">Alterar dados</string>
+    <string name="nome">Nome:</string>
+    <string name="confirme_com_sua_senha">Confirme com sua senha:</string>
+    <string name="confirmar">Confirmar</string>
 
 
     <!--Array de postos spinner-->
