@@ -59,8 +59,6 @@ class AtualizarVacinaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id_key: Int = getKey() //id da vacina
-        Log.d("id_key_teste", "idKey é $id_key")
-
 
         edit_doenca = view.findViewById(R.id.label_doenca)
         edit_detalhes = view.findViewById(R.id.edittext_publico)
@@ -79,10 +77,6 @@ class AtualizarVacinaFragment : Fragment() {
             view.findViewById<RadioButton>(R.id.presidente_olegario_radioButton_vac_mod)
         val santiagoDistrito =
             view.findViewById<RadioButton>(R.id.santiago_de_minas_radioButton_vac_mod)
-
-        //Disponiblidade
-        //val sim = view.findViewById<RadioButton>(R.id.disp_sim_mod)
-        //val nao = view.findViewById<RadioButton>(R.id.disp_nao_mod)
 
         //postos
         val postoGalena = view.findViewById<RadioButton>(R.id.rb_posto_saude_galena_vac_mod)
