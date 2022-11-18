@@ -1,5 +1,6 @@
 package com.example.vacinaapp.fragments
 
+import android.database.Cursor
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -33,13 +34,12 @@ class ModificarUsuarioFragment : Fragment() {
     private lateinit var emailFinal: String
     private lateinit var senhaDigit: String  //var que guarda a senha digitada// tem que fazer uma verificacao no banco para ver se a senha no banco é a mesma
 
-    private var usuarioId: Int = 0
+    private var usuarioId: Int = 0   // chave que deve ser tirada do bundle
     private lateinit var nomeCompDatabase: String
     private lateinit var cpfDatabase: String
     private lateinit var telefoneDatabase: String
     private lateinit var emailDatabase: String
     private lateinit var senhaDatabase: String //var que guarda a senha obtida pelo banco
-
 
     private lateinit var db: DataHelper
 
@@ -63,34 +63,58 @@ class ModificarUsuarioFragment : Fragment() {
         botaoConfirmar = view.findViewById(R.id.confirmar_button)
         textViewAviso = view.findViewById(R.id.textview_aviso_email)
 
+        loadData(usuarioId)
+
         return view
+    }
+
+    fun loadData(id_usuario: Int){
+        db = DataHelper(requireContext())
+
+        val query: Cursor =
+            db.rawQuery("SELECT * FROM tab_usuario WHERE id_usuario = $id_usuario")
+
+        if(query.moveToNext()){
+            nomeCompDatabase = query.getString(1)
+            cpfDatabase = query.getString(2)
+            telefoneDatabase = query.getString(3)
+            emailDatabase = query.getString(4)
+            senhaDatabase = query.getString(6)
+
+        }
+        editTextNomeComp.setText(nomeCompDatabase)
+        editTextCpf.setText(cpfDatabase)
+        editTextTel.setText(telefoneDatabase)
+        editTextEmail.setText(emailDatabase)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         editTextCpf.addTextChangedListener(object: TextWatcher {
-            var first = 0
-            var second = 0
+            var firstcpf = 0
+            var secondcpf = 0
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
             }
 
             override fun afterTextChanged(editable: Editable?) {
-                val lenghtEditText = editTextCpf.text.length
-                second = first
-                first = lenghtEditText
+                val lengthEditText = editTextCpf.text.length
+                secondcpf = firstcpf
+                firstcpf = lengthEditText
 
-                if(lenghtEditText == 3 && first > second){
+                if(lengthEditText == 3 && firstcpf > secondcpf){
                     editTextCpf.text.append(".")
                 }
-                if(lenghtEditText == 7 && first > second){
+                if(lengthEditText == 7 && firstcpf > secondcpf){
                     editTextCpf.text.append(".")
                 }
-                if(lenghtEditText == 11 && first > second){
+                if(lengthEditText == 11 && firstcpf > secondcpf){
                     editTextCpf.text.append("-")
                 }
             }
@@ -156,37 +180,54 @@ class ModificarUsuarioFragment : Fragment() {
 
         }
 
-        botaoConfirmar.setOnClickListener{
-            senhaDigit = editTextSenhaConfirm.text.toString()//checar na database se a senha escrita é a mesma do banco
+        botaoConfirmar.setOnClickListener {
+            senhaDigit =
+                editTextSenhaConfirm.text.toString()//checar na database se a senha escrita é a mesma do banco
             nomeFinal = editTextNomeComp.text.toString() //nome para salvar
             cpfFinal = editTextCpf.text.toString()  //cpf para salvar
             telFinal = editTextTel.text.toString()   //telefone para salvar
             emailFinal = editTextEmail.text.toString()  //emial para salvar
 
-            if(editTextNomeComp.text.isEmpty() or editTextCpf.text.isEmpty() or editTextTel.text.isEmpty() or editTextEmail.text.isEmpty() or editTextSenhaConfirm.text.isEmpty()){
-                Toast.makeText(requireContext(), "Favor preencher todos os dados!", Toast.LENGTH_SHORT).show()
+            if (editTextNomeComp.text.isEmpty() or editTextCpf.text.isEmpty() or editTextTel.text.isEmpty() or editTextEmail.text.isEmpty() or editTextSenhaConfirm.text.isEmpty()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Favor preencher todos os dados!",
+                    Toast.LENGTH_SHORT
+                ).show()
 
-            } else if(nomeFinal == nomeCompDatabase && cpfFinal == cpfDatabase && telFinal == telefoneDatabase && emailFinal == emailDatabase){
-                Toast.makeText(requireContext(), "Nenhum dado foi alterado.", Toast.LENGTH_SHORT).show()
+            } else if (nomeFinal == nomeCompDatabase && cpfFinal == cpfDatabase && telFinal == telefoneDatabase && emailFinal == emailDatabase && senhaDigit == senhaDatabase) {
+                Toast.makeText(requireContext(), "Nenhum dado foi alterado.", Toast.LENGTH_SHORT)
+                    .show()
 
-            } else if (senhaDigit == senhaDatabase){
-                val res = db.updateUsuarioDados(usuarioId, nomeFinal, cpfFinal, telFinal, emailFinal)
-                if (res == -1){
-                    Toast.makeText(requireContext(), "Erro ao atualizar usuário.", Toast.LENGTH_SHORT).show()
+            } else if ((nomeFinal != nomeCompDatabase || cpfFinal != cpfDatabase || telFinal != telefoneDatabase || emailFinal != emailDatabase) && senhaDigit == senhaDatabase) {
+                val res =
+                    db.updateUsuarioDados(usuarioId, nomeFinal, cpfFinal, telFinal, emailFinal)
+                if (res == -1) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Erro ao atualizar usuário.",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                 } else {
-                    Toast.makeText(requireContext(), "Usuário atualizado com sucesso!.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Usuário atualizado com sucesso!.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     val usuarioFragment = UsuarioFragment()
-                    parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                    parentFragmentManager.popBackStack(
+                        null,
+                        FragmentManager.POP_BACK_STACK_INCLUSIVE
+                    )
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, usuarioFragment)
                         .commit()
-
                 }
 
-
+            } else {
+                Toast.makeText(requireContext(), "Senha Incorreta!", Toast.LENGTH_SHORT).show()
             }
-
         }
 
     }

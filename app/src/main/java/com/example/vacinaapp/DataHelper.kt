@@ -230,9 +230,6 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                         "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
                         "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
                         "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
-                        "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
-                        "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
-                        "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
                         "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
                         "'Público dos 4 anos de idade a 59 anos', " +
                         "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço'), "+
@@ -392,7 +389,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         contentValues.put(TELEFONE_USUARIO, telefone)
         contentValues.put(EMAIL, email)
 
-        val success = db.update(TABELA_USUARIO, contentValues, "$ID_VACINA = $id_usuario", null)
+        val success = db.update(TABELA_USUARIO, contentValues, "$ID_USUARIO = $id_usuario", null)
         db.close()
         return success
 
