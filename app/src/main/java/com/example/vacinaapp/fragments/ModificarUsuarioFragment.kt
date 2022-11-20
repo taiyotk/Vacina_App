@@ -25,6 +25,7 @@ class ModificarUsuarioFragment : Fragment() {
     private lateinit var editTextTel: EditText
     private lateinit var editTextEmail: EditText
     private lateinit var editTextSenhaConfirm: EditText
+    private lateinit var editTextNomeUsuario: EditText
     private lateinit var textViewAviso: TextView
     private lateinit var botaoConfirmar: Button
     private lateinit var emailNotValidated: String
@@ -32,6 +33,7 @@ class ModificarUsuarioFragment : Fragment() {
     private lateinit var cpfFinal: String
     private lateinit var telFinal: String
     private lateinit var emailFinal: String
+    private lateinit var usuarioFinal: String
     private lateinit var senhaDigit: String  //var que guarda a senha digitada// tem que fazer uma verificacao no banco para ver se a senha no banco é a mesma
 
     private var usuarioId: Int = 0   // chave que deve ser tirada do bundle
@@ -39,6 +41,7 @@ class ModificarUsuarioFragment : Fragment() {
     private lateinit var cpfDatabase: String
     private lateinit var telefoneDatabase: String
     private lateinit var emailDatabase: String
+    private lateinit var usuarioDatabase: String
     private lateinit var senhaDatabase: String //var que guarda a senha obtida pelo banco
 
     private lateinit var db: DataHelper
@@ -59,6 +62,7 @@ class ModificarUsuarioFragment : Fragment() {
         editTextTel = view.findViewById(R.id.tel_edittext_editar)
         editTextEmail = view.findViewById(R.id.email_edittext_editar)
         editTextNomeComp = view.findViewById(R.id.nome_edittext_editar)
+        editTextNomeUsuario = view.findViewById(R.id.usuario_edittext_editar)
         editTextSenhaConfirm = view.findViewById(R.id.senha_edittext_editar)
         botaoConfirmar = view.findViewById(R.id.confirmar_button)
         textViewAviso = view.findViewById(R.id.textview_aviso_email)
@@ -79,6 +83,7 @@ class ModificarUsuarioFragment : Fragment() {
             cpfDatabase = query.getString(2)
             telefoneDatabase = query.getString(3)
             emailDatabase = query.getString(4)
+            usuarioDatabase = query.getString(5)
             senhaDatabase = query.getString(6)
 
         }
@@ -86,6 +91,7 @@ class ModificarUsuarioFragment : Fragment() {
         editTextCpf.setText(cpfDatabase)
         editTextTel.setText(telefoneDatabase)
         editTextEmail.setText(emailDatabase)
+        editTextNomeUsuario.setText(usuarioDatabase)
 
     }
 
@@ -181,27 +187,27 @@ class ModificarUsuarioFragment : Fragment() {
         }
 
         botaoConfirmar.setOnClickListener {
-            senhaDigit =
-                editTextSenhaConfirm.text.toString()//checar na database se a senha escrita é a mesma do banco
+            senhaDigit = editTextSenhaConfirm.text.toString()//checar na database se a senha escrita é a mesma do banco
             nomeFinal = editTextNomeComp.text.toString() //nome para salvar
             cpfFinal = editTextCpf.text.toString()  //cpf para salvar
             telFinal = editTextTel.text.toString()   //telefone para salvar
-            emailFinal = editTextEmail.text.toString()  //emial para salvar
+            emailFinal = editTextEmail.text.toString()  //email para salvar
+            usuarioFinal = editTextNomeUsuario.text.toString()
 
-            if (editTextNomeComp.text.isEmpty() or editTextCpf.text.isEmpty() or editTextTel.text.isEmpty() or editTextEmail.text.isEmpty() or editTextSenhaConfirm.text.isEmpty()) {
+            if (editTextNomeComp.text.isEmpty() or editTextCpf.text.isEmpty() or editTextTel.text.isEmpty() or editTextEmail.text.isEmpty() or editTextSenhaConfirm.text.isEmpty() or editTextNomeUsuario.text.isEmpty()) {
                 Toast.makeText(
                     requireContext(),
                     "Favor preencher todos os dados!",
                     Toast.LENGTH_SHORT
                 ).show()
 
-            } else if (nomeFinal == nomeCompDatabase && cpfFinal == cpfDatabase && telFinal == telefoneDatabase && emailFinal == emailDatabase && senhaDigit == senhaDatabase) {
+            } else if (nomeFinal == nomeCompDatabase && cpfFinal == cpfDatabase && telFinal == telefoneDatabase && emailFinal == emailDatabase && senhaDigit == senhaDatabase && usuarioDatabase == usuarioFinal) {
                 Toast.makeText(requireContext(), "Nenhum dado foi alterado.", Toast.LENGTH_SHORT)
                     .show()
 
-            } else if ((nomeFinal != nomeCompDatabase || cpfFinal != cpfDatabase || telFinal != telefoneDatabase || emailFinal != emailDatabase) && senhaDigit == senhaDatabase) {
+            } else if ((nomeFinal != nomeCompDatabase || cpfFinal != cpfDatabase || telFinal != telefoneDatabase || emailFinal != emailDatabase || usuarioFinal != usuarioDatabase) && senhaDigit == senhaDatabase) {
                 val res =
-                    db.updateUsuarioDados(usuarioId, nomeFinal, cpfFinal, telFinal, emailFinal)
+                    db.updateUsuarioDados(usuarioId, nomeFinal, cpfFinal, telFinal, emailFinal, usuarioFinal)
                 if (res == -1) {
                     Toast.makeText(
                         requireContext(),

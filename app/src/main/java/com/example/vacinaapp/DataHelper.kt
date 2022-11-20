@@ -381,13 +381,14 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
     }
 
     //a funcao só serve para os dados pessoais, não senha e nem nome de usuário
-    fun updateUsuarioDados(id_usuario: Int, nome_completo: String, cpf: String, telefone: String, email: String): Int {
+    fun updateUsuarioDados(id_usuario: Int, nome_completo: String, cpf: String, telefone: String, email: String, usuario: String): Int {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(NOME_COMPLETO, nome_completo)
         contentValues.put(CPF, cpf)
         contentValues.put(TELEFONE_USUARIO, telefone)
         contentValues.put(EMAIL, email)
+        contentValues.put(NOME_USUARIO, usuario)
 
         val success = db.update(TABELA_USUARIO, contentValues, "$ID_USUARIO = $id_usuario", null)
         db.close()

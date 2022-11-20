@@ -188,6 +188,41 @@
                 app:layout_constraintTop_toBottomOf="@+id/email_edittext_editar" />
 
             <TextView
+                android:id="@+id/usuario_titulo_editar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/nome_de_usuario"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/email_edittext_editar" />
+
+
+            <EditText
+                android:id="@+id/usuario_edittext_editar"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:autofillHints="emailAddress"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/layout_borda_edittext"
+                android:gravity="center_vertical"
+                android:hint="@string/nome_de_usuario_hint"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/usuario_titulo_editar" />
+
+            <TextView
                 android:id="@+id/confirmar_senha_titulo_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -199,7 +234,7 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_edittext_editar"/>
+                app:layout_constraintTop_toBottomOf="@+id/usuario_edittext_editar"/>
 
             <EditText
                 android:id="@+id/senha_edittext_editar"

@@ -206,6 +206,8 @@
     <string name="nome">Nome:</string>
     <string name="confirme_com_sua_senha">Confirme com sua senha:</string>
     <string name="confirmar">Confirmar</string>
+    <string name="nome_de_usuario">Nome de usuário:</string>
+    <string name="nome_de_usuario_hint">Nome de usuário</string>
 
 
     <!--Array de postos spinner-->
