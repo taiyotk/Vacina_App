@@ -224,13 +224,13 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                         "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA','Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
                         " 'Crianças menores de 5 anos, idosos com mais de 59 anos e profissionais da área da saúde', " +
                         "'Campanha sazonal de combate a gripe na região de Galena. Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade'), "+
-                        "(NULL,1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
+                        "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
                         "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
                         "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
-                        "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 4, 'Santiago de Minas', 6, 'UBS DERCINA MARIA ANDRÉ', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
                         "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
                         "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
-                        "(NULL, 1, 'Galena', 1, 'POSTO DE SAÚDE DE GALENA', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
+                        "(NULL, 3, 'Presidente Olegário', 8, 'UBS PLANALTO', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
                         "'Público dos 4 anos de idade a 59 anos', " +
                         "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço'), "+
                         "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
@@ -239,36 +239,27 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
                         "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
                         "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
                         "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
-                        "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
-                        "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
-                        "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
-                        "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
-                        "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
-                        "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
-                        "(NULL, 2, 'Ponte Firme', 2, 'POSTO DE SAÚDE DE PONTE FIRME', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
-                        "'Público dos 4 anos de idade a 59 anos', " +
-                        "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço'), "+
                         "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra gripe', 'Gripe - H1N1', '17/03/2022 até 20/03/2022', '08:00 às 14:00'," +
                         " 'Crianças menores de 5 anos, idosos com mais de 59 anos e profissionais da área da saúde', " +
                         "'Campanha sazonal de combate a gripe na região de Presidente Olegário. Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade'), "+
-                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
+                        "(NULL, 3, 'Presidente Olegário', 4, 'UBS ANDORINHAS', 'Campanha contra COVID-19', 'COVID-19', '20/07/2022 até 23/07/2022', '09:00 às 15:00'," +
                         "'Adultos com mais de 40 anos que já tomaram a terceira dose da vacina', " +
                         "'No dia 23/07 o horário de atendimento será das 8:00 até as 14:00.\nNos outros dias o horário será normal.'), "+
-                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 3,'Presidente Olegário', 7, 'UBS MATEUS CAIXETA', 'Campanha contra Tétano - Reforço', 'Tétano', '17/05/2022', '08:00 às 14:00'," +
                         "'Pessoas que já completaram 10 anos desde a última vacina contra o tétano.', " +
                         "'Lembre-se de levar o cartão do SUS, o cartão de vacinação e um documento de identidade.'), "+
-                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
+                        "(NULL, 3,'Presidente Olegário', 9, 'UBS ZONA RURAL', 'Campanha contra HPV', 'HPV', '25/05/2022', '08:00 às 14:00'," +
                         "'Meninas de 9 a 14 anos e meninos com 11 a 14 anos', " +
                         "'Aplicação tanto da 1ª dose quanto da 2ª dose para o público'), "+
-                        "(NULL, 3,'Presidente Olegário', 3, 'PSF AEROPORTO', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
+                        "(NULL, 3,'Presidente Olegário', 5, 'UBS BILÉ GODINHO', 'Campanha contra Febre amarela', 'Febre Amarela', '04/03/2022 a 06/03/2022', '08:30 às 15:00'," +
                         "'Público dos 4 anos de idade a 59 anos', " +
                         "'Crianças, ao completarem 4 anos de idade, devem receber 1 (uma) dose de reforço; Pessoas de 5 a 59 anos de idade, não vacinadas ou sem comprovante de vacinação, devem receber 1 (uma) dose; Pessoas que receberam apenas 1 (uma) dose da vacina antes de completarem 5 anos de idade devem receber 1 (uma) dose de reforço')"
                 )
         db?.execSQL(q3)
 
         val queryUsuario = (
-            "INSERT INTO $TABELA_USUARIO($ID_USUARIO, $NOME_COMPLETO, $CPF, $TELEFONE_USUARIO, $EMAIL, $NOME_USUARIO, $SENHA) VALUES (NULL, 'João Silva Sousa', '123456789-12', '(34) 98765-4321', 'joao123@email.com', 'joaoS', '12345678'), " +
-                    "(NULL, 'Maria Silva Oliveira', '123456789-01', '(34) 99999-9999', 'mariaSO@email.com', 'MariaSilva', 'senha123')"
+            "INSERT INTO $TABELA_USUARIO($ID_USUARIO, $NOME_COMPLETO, $CPF, $TELEFONE_USUARIO, $EMAIL, $NOME_USUARIO, $SENHA) VALUES (NULL, 'João Silva Sousa', '123456789-12', '(34) 98765-4321', 'joao123@email.com', 'usuario1', '12345678'), " +
+                    "(NULL, 'Maria Silva Oliveira', '123456789-01', '(34) 99999-9999', 'mariaSO@email.com', 'maria', 'senha123')"
         )
         db?.execSQL(queryUsuario)
 
@@ -380,7 +371,7 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
         return success
     }
 
-    //a funcao só serve para os dados pessoais, não senha e nem nome de usuário
+    //a funcao só serve para os dados pessoais, não senha
     fun updateUsuarioDados(id_usuario: Int, nome_completo: String, cpf: String, telefone: String, email: String, usuario: String): Int {
         val db = this.writableDatabase
         val contentValues = ContentValues()
