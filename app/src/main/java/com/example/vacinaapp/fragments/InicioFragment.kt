@@ -53,7 +53,7 @@ class InicioFragment : Fragment() {
     private fun readSetString(){
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         filterSet = sharedPrefs.getStringSet(key_distrito_pref, setOf("1,2,3,4"))
-        filterString = filterSet.toString().replace("[", "").replace("]", "");
+        filterString = filterSet.toString().replace("[", "").replace("]", "")
         //Log.d("filterset", "filterSet=$filterSet")
         //Log.d("filterString", "filterString=$filterString")
 
@@ -88,9 +88,16 @@ class InicioFragment : Fragment() {
 
     private fun dataInitializeLocais() {
         db = DataHelper(requireContext())
-        locaisCursor = db!!.rawQuery(
-            "SELECT * FROM tabela_postos WHERE id_distrito_fk IN ($filterString)"
+        if (filterString.isEmpty()){
+            locaisCursor = db!!.rawQuery(
+                "SELECT * FROM tabela_postos"
             )
+        } else {
+            locaisCursor = db!!.rawQuery(
+                "SELECT * FROM tabela_postos WHERE id_distrito_fk IN ($filterString)"
+            )
+        }
+
 
         val locaisSize: Int = locaisCursor.count
         Log.d("listLocais()", "locaisSize=$locaisSize")
@@ -134,7 +141,11 @@ class InicioFragment : Fragment() {
 
         if(filterString.contains("1, 2, 3, 4")){
             campanhasCursor = db!!.rawQuery(
-                "SELECT * FROM tab_campanha WHERE id_campanha ORDER BY random() LIMIT 3"
+                "SELECT * FROM tab_campanha ORDER BY random() LIMIT 3"
+            )
+        } else if (filterString.isEmpty()){
+            campanhasCursor = db!!.rawQuery(
+                "SELECT * FROM tab_campanha ORDER BY RANDOM() LIMIT 3"
             )
         } else {
             campanhasCursor = db!!.rawQuery(
