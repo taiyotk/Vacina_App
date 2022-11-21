@@ -29,6 +29,14 @@ class UsuarioFragment : Fragment() {
                 .commit()
         }
 
+        modificar_senha.setOnClickListener {
+            val senhaFragment = ModificarSenhaFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, senhaFragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
     }
 
 }

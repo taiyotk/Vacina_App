@@ -158,6 +158,17 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp" />
 
+            <TextView
+                android:id="@+id/aviso_erro_senha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/aviso_senha_errada"
+                android:textColor="@color/vermelho"
+                android:textSize="13sp"
+                android:visibility="invisible"/>
+
             <Button
                 android:id="@+id/confirmar_button"
                 android:layout_width="wrap_content"

@@ -218,7 +218,7 @@ class ModificarUsuarioFragment : Fragment() {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Usuário atualizado com sucesso!.",
+                        "Usuário atualizado com sucesso!",
                         Toast.LENGTH_SHORT
                     ).show()
                     val usuarioFragment = UsuarioFragment()
