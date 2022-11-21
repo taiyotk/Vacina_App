@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?background"
+    tools:context=".fragments.ModificarSenhaFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+            <TextView
+                android:id="@+id/titulo_alterar_dados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/alterar_senha"
+                android:textAlignment="center"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/senha_antiga_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/Digitar_senha_atual"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/senha_atual"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="30dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/layout_borda_edittext"
+                android:gravity="center_vertical"
+                android:hint="@string/senha_atual_hint"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+
+            <TextView
+                android:id="@+id/senha_nova_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/digitar_nova_senha_"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/nova_senha"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="30dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/layout_borda_edittext"
+                android:gravity="center_vertical"
+                android:hint="@string/nova_senha_hint"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+            <TextView
+                android:id="@+id/aviso_senha_qt_caract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/qt_caracteres_item"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/aviso_senha_numero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/aviso_senha_numero"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/letras_aviso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/senha_com_letras"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/caract_especial_aviso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/senha_com_caracteres_especiais"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/confirmar_senha_titulo_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/confirme_a_nova_senha"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/confirmar_nova_senha"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/layout_borda_edittext"
+                android:gravity="center_vertical"
+                android:hint="@string/nova_senha_hint"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+            <Button
+                android:id="@+id/confirmar_button"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:text="@string/confirmar"
+                android:textSize="19sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

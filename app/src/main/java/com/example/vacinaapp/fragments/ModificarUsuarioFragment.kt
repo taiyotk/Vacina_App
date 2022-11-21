@@ -36,7 +36,7 @@ class ModificarUsuarioFragment : Fragment() {
     private lateinit var usuarioFinal: String
     private lateinit var senhaDigit: String  //var que guarda a senha digitada// tem que fazer uma verificacao no banco para ver se a senha no banco é a mesma
 
-    private var usuarioId: Int = 0   // chave que deve ser tirada do bundle
+    private var usuarioId: Int = 1   // chave que deve ser tirada do bundle
     private lateinit var nomeCompDatabase: String
     private lateinit var cpfDatabase: String
     private lateinit var telefoneDatabase: String
