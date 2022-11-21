@@ -172,7 +172,10 @@ class LocalDetalhesFragment : Fragment() {
         val bundle = Bundle()
         bundle.putInt("key", itemID)
         fragmentoDetalhesCampanha.arguments = bundle
-        parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentoDetalhesCampanha).commit()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragmentoDetalhesCampanha)
+            .addToBackStack(null)
+            .commit()
 
     }
 

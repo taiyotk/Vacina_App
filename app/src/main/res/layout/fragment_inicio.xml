@@ -5,6 +5,7 @@
     android:id="@+id/locais_fragment_layout_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?background"
     tools:context=".fragments.LocaisFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout

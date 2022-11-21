@@ -6,6 +6,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:clickable="true"
+    android:background="?background"
     tools:context=".fragments.PesquisarFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 

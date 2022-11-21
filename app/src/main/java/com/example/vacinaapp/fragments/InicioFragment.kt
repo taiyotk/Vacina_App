@@ -22,6 +22,7 @@ import com.example.vacinaapp.recyclerViewAdapters.LocaisAdapter
 
 class InicioFragment : Fragment() {
 
+    private lateinit var inicioFragment: InicioFragment
     private var db: DataHelper? = null
     private lateinit var recyclerView: RecyclerView
     private lateinit var locaisArraylist: ArrayList<LocaisDataclass>
@@ -197,8 +198,11 @@ class InicioFragment : Fragment() {
         val bundle = Bundle()
         bundle.putInt("key", itemID)
         fragmentoDetalhesCampanha.arguments = bundle
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragmentoDetalhesCampanha).commit()
+        val ft = parentFragmentManager.beginTransaction()
+        ft.replace(R.id.fragment_container, fragmentoDetalhesCampanha)
+        ft.addToBackStack("iniciofrag")
+        ft.commit()
+
 
     }
 
