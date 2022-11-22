@@ -11,7 +11,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -19,7 +18,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.example.vacinaapp.fragments.*
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -56,7 +54,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         replaceFragment(inicioFragment)
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
-        supportActionBar?.hide()
+
         drawer = findViewById(R.id.drawer_layout)
 
         toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,
@@ -120,7 +118,25 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         return super.onOptionsItemSelected(item)
     }
 
-    fun showAlertDialog(view: View) {
+    override fun onBackPressed() {
+        exit()
+
+    }
+
+    private fun exit(){
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+
+        builder.setTitle("Sair")
+        builder.setMessage("Deseja realmente sair do app?")
+        builder.setPositiveButton("Sim") { dialogInterface, i ->
+            finish()
+        }
+        builder.setNegativeButton("Cancelar") { dialogInterface, i ->
+            dialogInterface.cancel()
+        }
+        builder.show()
+    }
+    /*fun showAlertDialog(view: View) {
         MaterialAlertDialogBuilder(this)
             .setTitle("Restaurar Configurações")
             .setMessage("Deseja realmente restaurar as configurações para o original?")
@@ -133,11 +149,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
                     dialog, _ -> dialog.dismiss()
             }
             .show()
-    }
-
-    private fun showSnackbar(msg: String) {
-        Snackbar.make(fragment_container, msg, Snackbar.LENGTH_SHORT).show()
-    }
+    }*/
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         if (ev?.action == MotionEvent.ACTION_UP){
