@@ -1,10 +1,12 @@
 package com.example.vacinaapp.fragments
 
+import android.content.SharedPreferences
 import android.database.Cursor
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.preference.PreferenceManager
 import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.R
 import java.util.regex.Matcher
@@ -48,12 +51,22 @@ class ModificarSenhaFragment : Fragment() {
     private var stateLength = 0
 
     // Banco de dados
-    private var usuarioId: Int = 1   // chave que deve ser tirada do bundle
+    private var loginKey = "com.example.vacinaapp.loginState"
+    private var loginState = 0 // chave que deve ser tirada do bundle
     private lateinit var db: DataHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //pegar os dados do bundle aqui
+        fun readSharedPref(): Int{
+            val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            val value = prefs.getInt(loginKey, 0)
+            Log.d("sharedPrefLogin", "valor${prefs.getInt(loginKey, 0)}")
+
+            return value
+        }
+
+        loginState = readSharedPref()
 
     }
 
@@ -78,7 +91,7 @@ class ModificarSenhaFragment : Fragment() {
 
         botaoConfirmar = view.findViewById(R.id.confirmar_button)
 
-        loadData(usuarioId)
+        loadData(loginState)
 
         return view
     }
@@ -190,7 +203,7 @@ class ModificarSenhaFragment : Fragment() {
 
             } else if (senhaDigit == senhaDatabase &&  senhaNovaDigit == senhaNovaDigitConfirm && senhaNovaDigit != senhaDatabase && senhaNovaDigitConfirm != senhaDatabase && stateLetra == 1 && stateLength == 1 && stateCaractSp == 1 && stateNum == 1) {
 
-                val res = db.updateUsuarioSenha(usuarioId, senhaNovaDigit)
+                val res = db.updateUsuarioSenha(loginState, senhaNovaDigit)
 
                 if (res == -1) {
                     Toast.makeText(requireContext(), "Erro ao alterar senha.", Toast.LENGTH_SHORT).show()

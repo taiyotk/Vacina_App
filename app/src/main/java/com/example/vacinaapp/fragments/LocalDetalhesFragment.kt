@@ -32,10 +32,6 @@ class LocalDetalhesFragment : Fragment() {
     private var loginKey = "com.example.vacinaapp.loginState"
     private var loginState = 0
 
-    companion object {
-
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -102,7 +98,7 @@ class LocalDetalhesFragment : Fragment() {
         )
 
         val vacinasSize: Int = vacinasCursor.count
-        Log.d("listVacinas()", "vacinasSize=" + vacinasSize)
+        Log.d("listVacinas()", "vacinasSize=$vacinasSize")
 
         // Add a list of vacinas
         vacinasArraylist = ArrayList<VacinasDataClass>()
@@ -141,7 +137,7 @@ class LocalDetalhesFragment : Fragment() {
         )
 
         val vacinasSize: Int = campanhasCursor.count
-        Log.d("listVacinas()", "vacinasSize=" + vacinasSize)
+        Log.d("listVacinas()", "vacinasSize=$vacinasSize")
 
         // Add a list of vacinas
         campanhasArraylist = ArrayList()
@@ -181,14 +177,14 @@ class LocalDetalhesFragment : Fragment() {
 
         val db = DataHelper(requireContext())
         val cursorDados: Cursor = db.rawQuery(
-            "SELECT * FROM tabela_postos WHERE id_local = " + keyLocal
+            "SELECT * FROM tabela_postos WHERE id_local = $keyLocal"
         )
 
 
         if (cursorDados.moveToNext()) {
             val localId = cursorDados.getInt(0)
             val localPosto = cursorDados.getString(1)
-            val distritoId = cursorDados.getInt(2)
+            cursorDados.getInt(2)
             val localDistrito = cursorDados.getString(3)
             val localEndereco = cursorDados.getString(4)
             val telefone = cursorDados.getString(5)
@@ -233,7 +229,7 @@ class LocalDetalhesFragment : Fragment() {
 
     }
 
-    fun readSharedPref(): Int{
+    private fun readSharedPref(): Int{
         val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val value = prefs.getInt(loginKey, 0)
         Log.d("sharedPrefLogin", "valor${prefs.getInt(loginKey, 0)}")
@@ -241,8 +237,8 @@ class LocalDetalhesFragment : Fragment() {
         return value
     }
 
-    fun changeVisibilityVac(state: Int){
-        if(state == 1){
+    private fun changeVisibilityVac(state: Int){
+        if(state >= 1){
             cabecEditVacina.visibility = View.VISIBLE
         } else {
             cabecEditVacina.visibility = View.GONE
