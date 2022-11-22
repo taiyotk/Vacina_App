@@ -12,7 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
+
 import androidx.fragment.app.FragmentActivity
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,10 +63,10 @@ class VacinasAdapter(
             holder.disponibilidade.setTypeface(null, Typeface.BOLD)
         }
 
-        if(state == 0){
-            holder.edit.visibility = View.GONE
-        } else {
+        if(state > 0){
             holder.edit.visibility = View.VISIBLE
+        } else {
+            holder.edit.visibility = View.GONE
         }
 
         //clicklistener do Publico
