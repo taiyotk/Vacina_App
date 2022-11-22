@@ -1,9 +1,11 @@
 package com.example.vacinaapp.fragments
 
+import android.content.SharedPreferences
 import android.database.Cursor
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +16,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
+import androidx.preference.PreferenceManager
 import com.example.vacinaapp.DataHelper
 import com.example.vacinaapp.R
 import java.util.regex.Pattern
@@ -36,7 +39,9 @@ class ModificarUsuarioFragment : Fragment() {
     private lateinit var usuarioFinal: String
     private lateinit var senhaDigit: String  //var que guarda a senha digitada// tem que fazer uma verificacao no banco para ver se a senha no banco é a mesma
 
-    private var usuarioId: Int = 0   // chave que deve ser tirada do bundle
+
+    private var loginKey = "com.example.vacinaapp.loginState"
+    private var loginState = 0 // chave que deve ser tirada do bundle
     private lateinit var nomeCompDatabase: String
     private lateinit var cpfDatabase: String
     private lateinit var telefoneDatabase: String
@@ -50,6 +55,15 @@ class ModificarUsuarioFragment : Fragment() {
         super.onCreate(savedInstanceState)
         //pegar os dados do bundle aqui
 
+        fun readSharedPref(): Int{
+            val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            val value = prefs.getInt(loginKey, 0)
+            Log.d("sharedPrefLogin", "valor${prefs.getInt(loginKey, 0)}")
+
+            return value
+        }
+
+        loginState = readSharedPref()
     }
 
     override fun onCreateView(
@@ -67,12 +81,12 @@ class ModificarUsuarioFragment : Fragment() {
         botaoConfirmar = view.findViewById(R.id.confirmar_button)
         textViewAviso = view.findViewById(R.id.textview_aviso_email)
 
-        loadData(usuarioId)
+        loadData(loginState)
 
         return view
     }
 
-    fun loadData(id_usuario: Int){
+    private fun loadData(id_usuario: Int){
         db = DataHelper(requireContext())
 
         val query: Cursor =
@@ -207,7 +221,7 @@ class ModificarUsuarioFragment : Fragment() {
 
             } else if ((nomeFinal != nomeCompDatabase || cpfFinal != cpfDatabase || telFinal != telefoneDatabase || emailFinal != emailDatabase || usuarioFinal != usuarioDatabase) && senhaDigit == senhaDatabase) {
                 val res =
-                    db.updateUsuarioDados(usuarioId, nomeFinal, cpfFinal, telFinal, emailFinal, usuarioFinal)
+                    db.updateUsuarioDados(loginState, nomeFinal, cpfFinal, telFinal, emailFinal, usuarioFinal)
                 if (res == -1) {
                     Toast.makeText(
                         requireContext(),
@@ -218,7 +232,7 @@ class ModificarUsuarioFragment : Fragment() {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Usuário atualizado com sucesso!.",
+                        "Usuário atualizado com sucesso!",
                         Toast.LENGTH_SHORT
                     ).show()
                     val usuarioFragment = UsuarioFragment()
@@ -243,7 +257,5 @@ class ModificarUsuarioFragment : Fragment() {
         return pattern.matcher(email).matches()
     }
 
-    companion object {
 
-    }
 }

@@ -78,24 +78,27 @@ class LoginFragment : Fragment() {
         val helper = DataHelper(requireContext())
         val db = helper.readableDatabase
 
-
         val inicioFragment = InicioFragment()
 
         val args = listOf(usuario.text.toString(), senha.text.toString()).toTypedArray()
-        val dadosLogin = db.rawQuery("SELECT nome_usuario, senha FROM tab_usuario WHERE  nome_usuario = ? AND senha = ?", args)
+        val dadosLogin = db.rawQuery("SELECT * FROM tab_usuario WHERE  nome_usuario = ? AND senha = ?", args)
+
         if (dadosLogin.moveToNext()){
+
+            val idUsuario  = dadosLogin.getInt(0)
+
             parentFragmentManager.commit {
-                setCustomAnimations(
-                    R.anim.slide_in,
-                    R.anim.fade_out
-                )
+                setCustomAnimations(R.anim.slide_in,R.anim.fade_out)
                 replace(R.id.fragment_container, inicioFragment)
             }
 
-            editLoginKey() //funcao que coloca o estado de login(1 para logado e 0 para não logado)
+            editLoginKey(idUsuario) //funcao que coloca o estado de login(1 para logado e 0 para não logado)
+
             loginState = readSharedPref() //le e armazena o valor do login na variavel
             login(loginState) //funcao que muda a visibilidade do menu
+
             Toast.makeText(context, "Login feito com sucesso", Toast.LENGTH_SHORT).show()
+
             dadosLogin.close()
         }
         else if (usuario.text.isEmpty() || senha.text.isEmpty()){
@@ -106,23 +109,25 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun editLoginKey(){
+    private fun editLoginKey(idUsuario: Int){
         val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val editor = prefs.edit()
-        editor.putInt(loginKey, 1)
+        editor.putInt(loginKey, idUsuario)
         editor.apply()
     }
 
-    fun readSharedPref(): Int{
+    private fun readSharedPref(): Int{
         val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+
         val value = prefs.getInt(loginKey, 0)
+
         Log.d("sharedPrefLogin", "valor${prefs.getInt(loginKey, 0)}")
 
         return value
     }
 
-    fun login(loginState: Int){
-        if(loginState == 1){
+    private fun login(loginState: Int){
+        if(loginState >= 1){
             menuItemEntrar.isVisible = false
             menuItemSair.isVisible = true
             menuItemMeusDados.isVisible = true
@@ -137,7 +142,4 @@ class LoginFragment : Fragment() {
         }
     }
 
-    companion object {
-
-    }
 }

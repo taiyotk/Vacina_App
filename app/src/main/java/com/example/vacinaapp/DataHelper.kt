@@ -387,4 +387,17 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, dbName, null, dbVe
 
     }
 
+    fun updateUsuarioSenha(id_usuario: Int, senha: String): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(SENHA, senha)
+
+
+        val success = db.update(TABELA_USUARIO, contentValues, "$ID_USUARIO = $id_usuario", null)
+        db.close()
+        return success
+
+    }
+
+
 }

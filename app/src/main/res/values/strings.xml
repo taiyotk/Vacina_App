@@ -208,6 +208,15 @@
     <string name="confirmar">Confirmar</string>
     <string name="nome_de_usuario">Nome de usuário:</string>
     <string name="nome_de_usuario_hint">Nome de usuário</string>
+    <string name="modificar_dados">Modificar informações pessoais</string>
+    <string name="modificar_senha">Modificar a senha de usuário</string>
+    <string name="alterar_os_dados">Alterar dados</string>
+    <string name="alterar_senha">Alterar senha</string>
+    <string name="Digitar_senha_atual">Digite a senha atual:</string>
+    <string name="senha_atual_hint">Senha atual</string>
+    <string name="digitar_nova_senha_">Digite a nova senha:</string>
+    <string name="nova_senha_hint">Nova senha</string>
+    <string name="confirme_a_nova_senha">Confirme a nova senha:</string>
 
 
     <!--Array de postos spinner-->
