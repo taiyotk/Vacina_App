@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingBottom="50dp">
+            android:paddingBottom="50dp"
+            android:theme="@style/ColoredHandleTheme">
 
             <TextView
                 android:id="@+id/titulo_alterar_dados"
@@ -57,7 +58,7 @@
                 android:background="@drawable/layout_borda_edittext"
                 android:gravity="center_vertical"
                 android:hint="@string/senha_atual_hint"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp" />
 
@@ -86,7 +87,7 @@
                 android:background="@drawable/layout_borda_edittext"
                 android:gravity="center_vertical"
                 android:hint="@string/nova_senha_hint"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp" />
 

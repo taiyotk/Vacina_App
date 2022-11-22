@@ -7,6 +7,7 @@
     android:focusableInTouchMode="true"
     android:clickable="true"
     android:background="?background"
+    android:theme="@style/ColoredHandleTheme"
     tools:context=".fragments.PesquisarFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 

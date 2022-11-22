@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="Theme.VacinaApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -40,6 +40,7 @@
 
     <style name="ColoredHandleTheme">
         <item name="colorControlActivated">@color/azul_cursor</item>
+        <item name="android:textColorHighlight">@color/azul_selecao</item>
     </style>
 
     <style name="searchViewStyle">

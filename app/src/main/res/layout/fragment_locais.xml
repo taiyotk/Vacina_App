@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:focusableInTouchMode="true"
     android:background="?background"
+    android:theme="@style/ColoredHandleTheme"
     tools:context=".fragments.LocaisFragment">
 
 

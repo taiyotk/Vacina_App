@@ -16,7 +16,8 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="Preferências do app">
+    <PreferenceCategory app:title="Preferências do app"
+        app:isPreferenceVisible="false">
         <!--Esta Opções estão temporariamente desativadas-->
         <ListPreference
             app:isPreferenceVisible="false"
