@@ -147,7 +147,7 @@ class ModificarCampanhaFragment : Fragment() {
 
         if (valorIdFiltro == 0) {
 
-            val campanhasCursor: Cursor = db!!.rawQuery("SELECT * FROM tab_campanha")
+            val campanhasCursor: Cursor = db!!.rawQuery("SELECT * FROM tab_campanha ORDER BY nome_campanha COLLATE NOCASE ASC")
             val campanhasSize: Int = campanhasCursor.count
             Log.d("listLocais()", "locaisSize= $campanhasSize")
 
@@ -192,7 +192,7 @@ class ModificarCampanhaFragment : Fragment() {
             arrayCampanhasEdit.clear()
 
             val campanhasCursor: Cursor =
-                db!!.rawQuery("SELECT * FROM tab_campanha WHERE id_posto_campanha = $valorIdFiltro")
+                db!!.rawQuery("SELECT * FROM tab_campanha WHERE id_posto_campanha = $valorIdFiltro ORDER BY nome_campanha COLLATE NOCASE ASC")
             val campanhasSize: Int = campanhasCursor.count
             Log.d("listLocais()", "locaisSize= $campanhasSize")
 

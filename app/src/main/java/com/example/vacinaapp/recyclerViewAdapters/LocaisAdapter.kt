@@ -49,7 +49,8 @@ class LocaisAdapter(private var listaLocais: ArrayList<LocaisDataclass>): Recycl
         fragmentoDetalhes.arguments = bundle
 
         val fm = (context as FragmentActivity).supportFragmentManager
-        val ft = fm.beginTransaction().replace(R.id.fragment_container, fragmentoDetalhes)
+        val ft = fm.beginTransaction()
+                ft.replace(R.id.fragment_container, fragmentoDetalhes).addToBackStack(null)
         ft.commit()
 
     }

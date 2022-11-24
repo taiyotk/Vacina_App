@@ -118,24 +118,6 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onBackPressed() {
-        exit()
-
-    }
-
-    private fun exit(){
-        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-
-        builder.setTitle("Sair")
-        builder.setMessage("Deseja realmente sair do app?")
-        builder.setPositiveButton("Sim") { dialogInterface, i ->
-            finish()
-        }
-        builder.setNegativeButton("Cancelar") { dialogInterface, i ->
-            dialogInterface.cancel()
-        }
-        builder.show()
-    }
     /*fun showAlertDialog(view: View) {
         MaterialAlertDialogBuilder(this)
             .setTitle("Restaurar Configurações")

@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:focusableInTouchMode="true"
     android:background="?background"
-    android:theme="@style/ColoredHandleTheme"
     tools:context=".fragments.LocaisFragment">
 
 
@@ -30,7 +29,6 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginTop="10dp"
-
         android:theme="@style/searchViewStyle"
         android:background="@drawable/searchbar_layout"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
