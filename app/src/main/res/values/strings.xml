@@ -102,7 +102,7 @@
     <string name="vacinas">Vacinas</string>
     <string name="nome_da_vacina">Nome da vacina</string>
     <string name="doenca">Doença</string>
-    <string name="ver">Ver</string>
+    <string name="ver">Público</string>
     <string name="dispon">Dispon.</string>
     <string name="nome_do_posto">Nome do posto</string>
     <string name="endereco">Endereço:</string>
@@ -137,7 +137,7 @@
     <string name="ubs_mateus_caixeta">UBS MATEUS CAIXETA</string>
     <string name="ubs_planalto">UBS PLANALTO</string>
     <string name="ubs_zona_rural">UBS ZONA RURAL</string>
-    <string name="publico">Público:</string>
+    <string name="publico">Disp.</string>
     <string name="publico_hint">Público</string>
     <string name="adicionar">Adicionar</string>
     <string name="editar">Editar</string>
